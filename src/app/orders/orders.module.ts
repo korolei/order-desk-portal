@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrdersComponent } from './orders/orders.component';
-import {OrdersService} from "./orders.service";
+import { OrdersService } from "./orders.service";
 
 @NgModule({
   imports: [

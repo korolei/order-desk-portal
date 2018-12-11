@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Order} from "./models/order.model";
-import {Quote} from "@angular/compiler";
+import { Order } from "./models/order.model";
+import { Quote } from "./models/quote.model";
 
 @NgModule({
   imports: [
