@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Order } from "./models/order.model";
-import { Quote } from "./models/quote.model";
+import {MessageService} from "./services/message.service";
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [
-    Order,
-    Quote
+  providers: [
+    MessageService
   ]
 })
 export class SharedModule { }

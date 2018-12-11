@@ -28,3 +28,4 @@ export class Quote implements IOrder{
         this.color = ord.warn ? "red" : "black";    
     }
 }
+
