@@ -1,2 +1,5 @@
-export class Quotes {
+export class Quote {
+  id: number;
+  name: string;
 }
+
