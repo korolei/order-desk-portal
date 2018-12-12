@@ -9,11 +9,14 @@ import { QuoteListComponent } from './quote-list/quote-list.component';
   //   SideNavComponent
   // ],
   imports: [
-    CommonModule
+    CommonModule,
+    // OrderListComponent,
+    // QuoteListComponent
   ],
-  // exports: [
-  //   SideNavComponent
-  // ],
+  exports: [
+    OrderListComponent,
+    QuoteListComponent
+  ],
   providers: [
     MessageService
   ],
