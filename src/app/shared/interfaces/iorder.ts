@@ -1,14 +1,6 @@
-import { ICustomer } from "./icustomer";
-import { IItem } from "./iitem";
+import {ISaleItem} from "./isale-item";
 
-export interface IOrder {
-    id: number;
-    customer: ICustomer;
-    status: string;
-    quotedOn?: Date;
+export interface IOrder extends ISaleItem {
     orderedOn?: Date;
     deliverBy?: Date;
-    items: IItem[];
-    total: number;
-    warn?: boolean;
 }
