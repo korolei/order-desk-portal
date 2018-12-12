@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {AppService} from "../app.service";
-import {Quote} from "@angular/compiler";
-import {Observable} from "rxjs";
-import {catchError, tap} from "rxjs/operators";
-import {HttpClient} from "@angular/common/http";
+import { AppService } from "../app.service";
+import { Quote } from '../shared/models/quote.model';
+import { Observable } from "rxjs";
+import { catchError, tap } from "rxjs/operators";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'

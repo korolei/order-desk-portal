@@ -22,24 +22,13 @@ import { map } from 'rxjs/operators';
     }
     `,
     `
-    .husky-icon{
-      padding: 0 14px;
-      color: maroon;
-      font-size: 36px;
-    }
-    `,
-    `
-    .toolbar-spacer{
-      flex: 1 0 auto;
-    }
-    `,
-    `
     .husky-logo{
       margin-left: 1em;
     }
     `,
     `
     .search-autocomplete {
+      margin-left: 2em;
       border: 1px solid #bcbcbc;
       border-radius: 4px;
       position: relative;
