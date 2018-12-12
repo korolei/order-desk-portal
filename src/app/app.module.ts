@@ -1,25 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule }    from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AppService } from "./app.service";
-import { AuthModule } from "./auth/auth.module";
-import { OrdersModule } from "./orders/orders.module";
-import { QuotesModule } from "./quotes/quotes.module";
-import { SharedModule } from "./shared/shared.module";
-import { MaterialModule } from './shared/modules/material.module';
-import { CustomerComponent } from './customer/customer.component';
-import { HomeComponent } from './home/home.component';
-import { SideNavComponent } from './shared/side-nav/side-nav.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {InMemoryDataService} from './in-memory-data.service';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {AppService} from "./app.service";
+import {AuthModule} from "./auth/auth.module";
+import {OrdersModule} from "./orders/orders.module";
+import {QuotesModule} from "./quotes/quotes.module";
+import {SharedModule} from "./shared/shared.module";
+//import { MaterialModule } from './shared/modules/material.module';
+import {CustomerComponent} from './customer/customer.component';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerComponent,
-    SideNavComponent,
     HomeComponent
   ],
   imports: [
@@ -35,7 +33,7 @@ import { SideNavComponent } from './shared/side-nav/side-nav.component';
     AuthModule,
     OrdersModule,
     QuotesModule,
-    MaterialModule,
+    //MaterialModule,
     SharedModule
   ],
   providers: [ AppService ],
