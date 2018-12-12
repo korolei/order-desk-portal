@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { IItem } from '../shared/interfaces/iitem';
-import { Observable, of } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {IItem} from '../shared/interfaces/iitem';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ export class ItemsService {
   items: IItem[] =
   [
     {
+      id:1,
       hpn: 1,
       name: 'one',
       configuration: '',
@@ -20,9 +21,10 @@ export class ItemsService {
       warehouse: '',
       rushOrder: false,
       systemDown: false,
-      notes: []
+      notes: ['note #1','note #2']
     },
     {
+      id:2,
       hpn: 2,
       name: 'two',
       configuration: '',
@@ -34,9 +36,10 @@ export class ItemsService {
       warehouse: '',
       rushOrder: false,
       systemDown: false,
-      notes: []
+      notes: ['']
     },
     {
+      id:3,
       hpn: 3,
       name: 'three',
       configuration: '',
@@ -51,6 +54,7 @@ export class ItemsService {
       notes: []
     },
     {
+      id: 4,
       hpn: 4,
       name: 'four',
       configuration: '',
@@ -65,6 +69,7 @@ export class ItemsService {
       notes: []
     },
     {
+      id: 5,
       hpn: 5,
       name: 'five',
       configuration: '',
@@ -79,6 +84,7 @@ export class ItemsService {
       notes: []
     },
     {
+      id: 6,
       hpn: 6,
       name: 'six',
       configuration: '',
@@ -93,6 +99,7 @@ export class ItemsService {
       notes: []
     },
     {
+      id: 7,
       hpn: 7,
       name: 'seven',
       configuration: '',
@@ -107,6 +114,7 @@ export class ItemsService {
       notes: []
     },
     {
+      id:8,
       hpn: 8,
       name: 'eight',
       configuration: '',
@@ -121,6 +129,7 @@ export class ItemsService {
       notes: []
     },
     {
+      id:9,
       hpn: 9,
       name: 'nine',
       configuration: '',
@@ -135,6 +144,7 @@ export class ItemsService {
       notes: []
     },
     {
+      id: 10,
       hpn: 10,
       name: 'ten',
       configuration: '',

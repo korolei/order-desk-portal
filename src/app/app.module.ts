@@ -31,7 +31,7 @@ import { SideNavComponent } from './shared/side-nav/side-nav.component';
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
+      InMemoryDataService, { dataEncapsulation: false, delay: 1500 }
     ),
     AppRoutingModule,
     AuthModule,
