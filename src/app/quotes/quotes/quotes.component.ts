@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Quote} from "@angular/compiler";
 import {QuotesService} from "../quotes.service";
+import { Quote } from 'src/app/shared/models/quote';
 
 // @ts-ignore
 @Component({

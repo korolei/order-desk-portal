@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppService } from "../app.service";
-import { Quote } from '../shared/models/quote.model';
+import { Quote } from '../shared/models/quote';
 import { Observable } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Quote } from '../models/quote.model';
+import { Quote } from '../models/quote';
 import { QuotesService } from 'src/app/quotes/quotes.service';
 
 @Component({

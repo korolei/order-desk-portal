@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppService } from '../app.service';
 import { Observable } from 'rxjs';
-import { Order } from '../shared/models/order.model';
+import { Order } from '../shared/models/order';
 import { tap, catchError } from 'rxjs/operators';
 
 @Injectable({

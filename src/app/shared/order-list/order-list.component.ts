@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Order } from '../models/order.model';
+import { Order } from '../models/order';
 import { OrdersService } from 'src/app/orders/orders.service';
 
 @Component({
