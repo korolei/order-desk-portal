@@ -1,0 +1,43 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <div mat-list-item style="text-align:left; margin-left: 1em">Sales Functions</div>
+      <a mat-list-item href="#" style="margin-left: 1em">Home</a>
+      <a mat-list-item href="#" style="margin-left: 1em">Sales Orders</a>
+      <a mat-list-item href="#" style="margin-left: 1em">Quotations</a>
+      <a mat-list-item href="#" style="margin-left: 1em">Price Inquiry</a>
+      <a mat-list-item href="#" style="margin-left: 1em">Invoices</a>
+      <a mat-list-item href="#" style="margin-left: 1em">Inventory Fulfillment Inquiry</a>
+      <a mat-list-item href="#" style="margin-left: 1em">So Blocking</a>
+      <div mat-list-item style="text-align:left; margin-left: 1em">Returns Functions</div>
+      <a mat-list-item href="#" style="margin-left: 1em">Maintenance SOs</a>
+      <a mat-list-item href="#" style="margin-left: 1em">MSO Part Line</a>
+      <div mat-list-item style="text-align:left; margin-left: 1em">Service Functions</div>
+      <a mat-list-item href="#" style="margin-left: 1em">Configuration</a>
+      <a mat-list-item href="#" style="margin-left: 1em">Calls</a>
+      <a mat-list-item href="#" style="margin-left: 1em">SIR</a>
+      <a mat-list-item href="#" style="margin-left: 1em">SIF</a>
+      <a mat-list-item href="#" style="margin-left: 1em">Service Knowledge Center</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

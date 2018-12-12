@@ -13,12 +13,14 @@ import { SharedModule } from "./shared/shared.module";
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MaterialModule } from './shared/modules/material.module';
 import { CustomerComponent } from './customer/customer.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    CustomerComponent
+    CustomerComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,
