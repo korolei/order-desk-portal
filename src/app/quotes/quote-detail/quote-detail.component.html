@@ -1,0 +1,72 @@
+<div class="sale-details">
+  <mat-toolbar>
+    <span class="sale-details-header-item">
+      Quote # {{quote.id}}
+    </span>
+    <span class="sale-details-header-status">
+      Status: <span style="font-size: smaller; font-weight: lighter">{{quote.status}}</span>
+    </span>
+    <span class="toolbar-spacer"></span>
+    <mat-chip-list>
+    <mat-chip><a href="#">View Internal Notes</a></mat-chip>
+    <mat-chip><a href="#">Edit Quote</a></mat-chip>
+    <mat-chip><a href="#">Duplicate Quote</a></mat-chip>
+    <mat-chip><a href="#">Convert to Sales Order</a></mat-chip>
+    </mat-chip-list>
+  </mat-toolbar>
+  <mat-divider></mat-divider>
+  <div>
+      <mat-card class="dashboard-card">
+        <mat-card-header class="dashboard-card-header">
+          <mat-card-title  class="dashboard-card-title">
+            Shipping Information
+          </mat-card-title>
+          <!-- <mat-card-subtitle>{{card.description}}</mat-card-subtitle> -->
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <section class="mat-typography">
+          <h3>Ship-To Address </h3>
+          <p>100250695 - DEVTECH PET, INC</p>
+          <h3>Ship-To BP </h3>
+          <p>95905 - DEVTECH PET, INC - USD - 12 Howe Drive</p>
+          <h3>Address </h3>
+          <p>12 Howe Drive, 03031 Amherst, NH US</p>
+          <h3>Ship-To Contact </h3>
+          <p>Mike DeCampo</p>
+          </section>
+        </mat-card-content>
+      </mat-card>
+      <mat-divider></mat-divider>
+      <mat-card class="dashboard-card">
+          <mat-card-header class="dashboard-card-header">
+            <mat-card-title  class="dashboard-card-title">
+              Billing and Credit Information
+            </mat-card-title>
+            <!-- <mat-card-subtitle>{{card.description}}</mat-card-subtitle> -->
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <section class="mat-typography">
+            <h3>Sold-To Address </h3>
+            <p>100250695 - DEVTECH PET, INC</p>
+            <h3>Ship-To BP </h3>
+            <p>95905 - DEVTECH PET, INC - USD - 12 Howe Drive</p>
+            <h3>Address </h3>
+            <p>12 Howe Drive, 03031 Amherst, NH US</p>
+            <h3>Ship-To Contact </h3>
+            <p>Mike DeCampo</p>
+            <mat-grid-list class="dashboard-card-grid" cols="3" rowHeight="100px">
+                <mat-grid-tile>
+                    <h3>Currency Selection </h3> <br>
+                    <p>USD</p>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <h3>Terms of Payment </h3><br>
+                    <p>Net 30 Days</p>
+                </mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+            </mat-grid-list>
+            </section>
+          </mat-card-content>
+        </mat-card>
+    </div>
+</div>

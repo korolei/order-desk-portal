@@ -10,8 +10,9 @@ import { HttpClient } from "@angular/common/http";
 })
 export class QuotesService {
 
-quotesApi = 'api/quotes';
-  constructor(private http: HttpClient,private appService: AppService ) {}
+  quotesApi = 'api/quotes';
+  quoteApi = 'api/quote'
+  constructor(private http: HttpClient, private appService: AppService ) {}
 
   /** GET quotes from the server */
   getQuotes (): Observable<Quote[]> {
@@ -21,4 +22,11 @@ quotesApi = 'api/quotes';
         catchError(this.appService.handleError(this.quotesApi, []))
       );
   }
+  // getQuote(): Observable<Quote> {
+  //   return this.http.get<Quote>(this.quoteApi)
+  //   .pipe(
+  //     tap(_ => this.appService.log('fetched one quote')),
+  //     catchError(this.appService.handleError(this.quoteApi, []))
+  //   );
+  // }
 }

@@ -1,0 +1,59 @@
+
+.sale-details-header-item {
+  font-weight: bolder;
+  margin-left: 20px;
+}
+
+.sale-details-header-status {
+    font-weight: bolder;
+    margin-left: 5em;
+  }
+  
+  .sale-details-header {
+  font-size: large;
+  height: 50px;
+  margin-bottom: 6px;
+  background-color: gainsboro
+}
+
+.sale-details-chips {
+  position: relative;
+  text-align: left;
+}
+
+.toolbar-spacer{
+    flex: 1 1 auto;
+  }
+
+  .dashboard-card-content{
+      margin-left: 15%;
+  }
+
+.dashboard-card-title{
+    font-weight: bolder;
+}
+
+.dashboard-card-grid{
+    margin-left: -10%;
+}
+
+.dashboard-card-header{
+    margin-left: 10%;
+}
+
+h3{
+    font-weight: bolder;
+    margin-top: 5px;
+}
+
+p{
+    margin-left: 2em;
+}
+/* .sale-details-header-chip{
+  border: 1px solid gray;
+  border-radius: 4px;
+  background-color: #bcbcbc;
+  margin: 6px;
+  position: relative;
+  text-align: left;
+} */
