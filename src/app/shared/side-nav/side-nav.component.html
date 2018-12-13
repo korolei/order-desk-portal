@@ -4,8 +4,8 @@
     class="sidenav"
     fixedInViewport="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="!(isHandset$ | async)">
+    [mode]="push"
+    >
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
       <div mat-list-item style="text-align:left; margin-left: 1em">Sales Functions</div>
@@ -34,7 +34,7 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <img src="../../assets/husky-logo.png" class="husky-logo" aria-label="husky logo">
