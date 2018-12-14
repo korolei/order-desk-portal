@@ -9,15 +9,15 @@ import { tap, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class OrdersService {
-  quotesApi = 'api/quotes';
+  ordersApi = 'api/orders';
   constructor(private http: HttpClient,private appService: AppService ) {}
 
-  /** GET quotes from the server */
+  /** GET orders from the server */
   getOrders (): Observable<Order[]> {
-    return this.http.get<Order[]>(this.quotesApi)
+    return this.http.get<Order[]>(this.ordersApi)
       .pipe(
-        tap(_ => this.appService.log('fetched quotes')),
-        catchError(this.appService.handleError(this.quotesApi, []))
+        tap(_ => this.appService.log('fetched orders')),
+        catchError(this.appService.handleError(this.ordersApi, []))
       );
   }
 }

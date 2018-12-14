@@ -5,7 +5,32 @@ import { OrdersService } from 'src/app/orders/orders.service';
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
-  styles: []
+  styles: [
+  `
+  table {
+    width: 100%;
+  }
+  `
+  ,
+  `
+  .new-order {
+      margin-left: 5em;
+  }
+  `  
+  ,
+  `
+  .subtitle{
+    font-size: smaller;
+    padding-left: 2em;
+  }
+  `
+  ,
+  `  
+  .warn {
+      color: red;
+  }  
+  `
+  ]
 })
 export class OrderListComponent implements OnInit {
 
