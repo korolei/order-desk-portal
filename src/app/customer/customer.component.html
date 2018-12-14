@@ -1,25 +1,21 @@
 
-<mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
-
-  <ng-container matColumnDef="seqNo">
-    <div *matHeaderCellDef>#</div>
-    <div *matCellDef="let lesson">{{lesson.seqNo}}</div>
-  </ng-container>
-
-  <ng-container matColumnDef="description">
-    <div *matHeaderCellDef>Description</div>
-    <div class="description-cell"
-         *matCellDef="let lesson">{{lesson.description}}</div>
-  </ng-container>
-
-  <ng-container matColumnDef="duration">
-    <div *matHeaderCellDef>Duration</div>
-    <div class="duration-cell"
-         *matCellDef="let lesson">{{lesson.duration}}</div>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-
-</mat-table>
+<mat-toolbar>
+  <span>My Application</span>
+</mat-toolbar>
+<mat-grid-list cols="6">
+  <mat-grid-tile [colspan]="2" class="mat-h2">
+    Install Base <span *ngIf="installBaseData.length > 0"></span>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" class="mat-h2">
+    Quick Account Aging
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" class="mat-h2">
+    Case Management <span *ngIf="caseManagementData.length > 0">(5 of {{caseManagementData.length}} Tickets)</span>
+    <div><app-case-management [caseManagement]="caseManagementData"></app-case-management></div>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="3" class="mat-h2">
+    Open Quotations
+  <mat-card-content><app-quote-list></app-quote-list></mat-card-content>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="3" class="mat-h2">Open Sales Orders</mat-grid-tile>
+</mat-grid-list>

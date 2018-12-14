@@ -3,21 +3,20 @@ import {CommonModule} from '@angular/common';
 import {MessageService} from "./services/message.service";
 import {OrderListComponent} from './order-list/order-list.component';
 import {QuoteListComponent} from './quote-list/quote-list.component';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SideNavComponent} from './side-nav/side-nav.component';
 import {MessagesComponent} from './messages/messages.component';
 import {MaterialModule} from './modules/material.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule
   ],
   exports: [
     OrderListComponent,
     QuoteListComponent,
-    BrowserAnimationsModule,
-    CommonModule,
     MessagesComponent,
     MaterialModule,
     SideNavComponent
@@ -29,6 +28,7 @@ import {MaterialModule} from './modules/material.module';
     SideNavComponent,
     OrderListComponent,
     QuoteListComponent,
-    MessagesComponent]
+    MessagesComponent
+  ]
 })
 export class SharedModule { }

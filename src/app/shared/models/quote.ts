@@ -1,9 +1,8 @@
-import {IOrder} from "../interfaces/iorder";
 import {ICustomer} from "../interfaces/icustomer";
 import {IItem} from "../interfaces/iitem";
 import {IQuote} from "../interfaces/iquote";
 
-export class Quote implements IOrder{
+export class Quote implements IQuote{
     id: number;
     customer: ICustomer;
     status: string;

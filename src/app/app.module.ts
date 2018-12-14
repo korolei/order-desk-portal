@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
@@ -10,18 +10,15 @@ import {AuthModule} from "./auth/auth.module";
 import {OrdersModule} from "./orders/orders.module";
 import {QuotesModule} from "./quotes/quotes.module";
 import {SharedModule} from "./shared/shared.module";
-//import { MaterialModule } from './shared/modules/material.module';
-import {CustomerComponent} from './customer/customer.component';
-import {HomeComponent} from './home/home.component';
+import {HomeComponent} from "./home/home.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerComponent,
     HomeComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -33,7 +30,6 @@ import {HomeComponent} from './home/home.component';
     AuthModule,
     OrdersModule,
     QuotesModule,
-    //MaterialModule,
     SharedModule
   ],
   providers: [ AppService ],

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuotesService} from "../quotes.service";
-import { Quote } from 'src/app/shared/models/quote';
+import {Quote} from 'src/app/shared/models/quote';
 
 // @ts-ignore
 @Component({
@@ -15,5 +15,4 @@ export class QuotesComponent implements OnInit {
   ngOnInit() {
     this.quotesService.getQuotes().subscribe(q=> this.quotes = q);
   }
-
 }
