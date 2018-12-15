@@ -9,26 +9,38 @@ import {InstallBase} from "./models/install-base";
 import {QuickAccountAging} from "./models/quick-account-aging";
 import {CaseManagement} from "./models/case-management";
 import {Order} from "../shared/models/order";
+import {Person} from "../shared/models/person";
+import {IOrganization} from "../shared/interfaces/iorganization";
+import {Organization} from "../shared/models/organization";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  customerApi = 'api/customer/1';
-  installBaseApi = 'api/install-base/1';
-  quickAccountAgingApi = 'api/quick-account-aging/1';
-  caseManagementApi = 'api/case-management/1';
-  openQuotationsApi = 'api/open-quotations/1';
-  openSalesOrderApi = 'api/open-sales-order/1';
+  customerApi = 'api/person/';
+  organizationApi = 'api/organization/';
+  installBaseApi = 'api/installBase/';
+  quickAccountAgingApi = 'api/quickAccountAging/';
+  caseManagementApi = 'api/caseManagement/';
+  openQuotationsApi = 'api/quotes/';
+  openSalesOrderApi = 'api/orders/';
 
   customer: Customer;
   constructor(private http: HttpClient,private appService: AppService) { }
 
-  getCustomer(id:number): Observable<Customer> {
-    return this.http.get<Customer>(this.customerApi)
+  getCustomer(id:number): Observable<Person> {
+    return this.http.get<Person>(this.customerApi)
       .pipe(
         tap(_ => this.appService.log('fetched customer info')),
         catchError(this.appService.handleError(this.customerApi, null))
+      );
+  }
+
+  getOrganization(id:number): Observable<IOrganization> {
+    return this.http.get<Organization>(this.organizationApi)
+      .pipe(
+        tap(_ => this.appService.log('fetched organization info')),
+        catchError(this.appService.handleError(this.organizationApi, null))
       );
   }
 

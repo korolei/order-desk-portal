@@ -1,21 +1,89 @@
 
 <mat-toolbar>
-  <span>My Application</span>
+  <mat-grid-list [cols]="6">
+    <mat-grid-tile [colspan]="2">
+      Ship-To-Location
+      <mat-select>
+        <mat-option *ngFor="let address of addresses" [value]="address?.id">
+        {{address?.city}}
+      </mat-option>
+    </mat-select>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4">
+      <mat-icon>person</mat-icon>
+      <span class="mat-title">{{ organizationData?.contact?.firstName}} {{ organizationData?.contact?.lastName}}</span>
+      <span>{{ organizationData?.contact?.title}}</span>
+      <span>{{ organizationData?.bp_name}}</span>
+      <span>{{ customerData?.email}}</span>
+      <span>{{ customerData?.email}}</span>
+      <span>{{ organizationData?.address?.city}},
+        {{ organizationData?.address?.state}}
+        {{ organizationData?.address?.country}} {{ organizationData?.address?.country}} {{ organizationData?.address?.zip}}</span>
+      <a>Edit Address</a>
+    </mat-grid-tile>
+  </mat-grid-list>
 </mat-toolbar>
-<mat-grid-list cols="6">
-  <mat-grid-tile [colspan]="2" class="mat-h2">
-    Install Base <span *ngIf="installBaseData.length > 0"></span>
+<mat-grid-list [cols]="6">
+  <mat-grid-tile [colspan]="2">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          Install Base <span *ngIf="installBaseData.length > 0">(5 of {{installBaseData.length}} Machines) |
+          <a>View All</a>
+        </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngIf="installBaseData.length > 0">
+        <app-install-base [installBaseData]="installBaseData"></app-install-base>
+      </mat-card-content>
+    </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile [colspan]="2" class="mat-h2">
-    Quick Account Aging
+  <mat-grid-tile [colspan]="2">
+    <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Quick Account Aging <span *ngIf="quickAccountAgingData.length > 0">???</span>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngIf="quickAccountAgingData.length > 0">
+      <app-quick-account-aging [quickAccountAgingData]="quickAccountAgingData"></app-quick-account-aging>
+    </mat-card-content>
+  </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile [colspan]="2" class="mat-h2">
-    Case Management <span *ngIf="caseManagementData.length > 0">(5 of {{caseManagementData.length}} Tickets)</span>
-    <div><app-case-management [caseManagement]="caseManagementData"></app-case-management></div>
+  <mat-grid-tile [colspan]="2">
+    <mat-card>
+      <mat-card-header>
+          <mat-card-title>
+            Case Management <span *ngIf="caseManagementData.length > 0">(5 of {{caseManagementData.length}} Tickets)</span>
+          </mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngIf="caseManagementData.length > 0">
+        <app-case-management [caseManagement]="caseManagementData"></app-case-management>
+      </mat-card-content>
+    </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile [colspan]="3" class="mat-h2">
-    Open Quotations
-  <mat-card-content><app-quote-list></app-quote-list></mat-card-content>
+  <mat-grid-tile [colspan]="3">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          Open Quotations <span *ngIf="quotationsData.length > 0">(6 of {{quotationsData.length}})</span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngIf="caseManagementData.length > 0">
+        <app-quote-list [showOrders]="true"></app-quote-list>
+      </mat-card-content>
+    </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile [colspan]="3" class="mat-h2">Open Sales Orders</mat-grid-tile>
+  <mat-grid-tile [colspan]="3">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          Open Sales Orders <span *ngIf="ordersData.length > 0">(6 of {{ordersData.length}})</span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngIf="ordersData.length > 0">
+        <app-order-list [showOrders]="true"></app-order-list>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
 </mat-grid-list>

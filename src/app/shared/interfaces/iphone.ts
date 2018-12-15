@@ -1,9 +1,7 @@
-import { PhoneType } from "../enums/phone-type.enum";
-
 export interface IPhone {
-    type: PhoneType;
-    countryCode: number;
-    areaCode: number;
-    localNumber: number;
-    extension: number;
+    type: string;
+    countryCode: string;
+    areaCode: string;
+    localNumber: string;
+    extension: string;
 }

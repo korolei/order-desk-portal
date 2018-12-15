@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MatTableDataSource} from "@angular/material";
+import {InstallBase} from "../models/install-base";
 
 @Component({
   selector: 'app-install-base',
@@ -6,10 +8,11 @@ import {Component, OnInit} from '@angular/core';
   styles: []
 })
 export class InstallBaseComponent implements OnInit {
-
-  constructor() { }
+  @Input() installBaseData: InstallBase[]=[];
+  displayedColumns: string[] = ['machineNumber', 'dateInstalled', 'id'];
+  dataSource: MatTableDataSource<InstallBase>;
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource<InstallBase>(this.installBaseData);
   }
-
 }

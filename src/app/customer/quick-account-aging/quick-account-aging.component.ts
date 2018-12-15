@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MatTableDataSource} from "@angular/material";
+import {QuickAccountAging} from "../models/quick-account-aging";
 
 @Component({
   selector: 'app-quick-account-aging',
@@ -6,10 +8,13 @@ import {Component, OnInit} from '@angular/core';
   styles: []
 })
 export class QuickAccountAgingComponent implements OnInit {
-
-  constructor() { }
+  @Input() quickAccountAgingData: QuickAccountAging[]=[];
+  displayedColumns: string[] = ['agingTerm', 'amount'];
+  dataSource: MatTableDataSource<QuickAccountAging>;
+  totalAmount: number;
 
   ngOnInit() {
+    this.totalAmount = this.quickAccountAgingData.reduce(function(prev, cur) { return prev + cur.amount; }, 0) || 0;
+    this.dataSource = new MatTableDataSource<QuickAccountAging>(this.quickAccountAgingData);
   }
-
 }
