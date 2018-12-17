@@ -1,6 +1,7 @@
 import {IAddress} from "../interfaces/iaddress";
 
 export class Address implements IAddress{
+  name: string;
   city: string;
   country: string;
   state: string;

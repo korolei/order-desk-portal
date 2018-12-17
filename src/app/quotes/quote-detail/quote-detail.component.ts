@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { QuotesService } from '../quotes.service';
 import { Quote } from 'src/app/shared/models/quote';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quote-detail',
@@ -9,16 +10,25 @@ import { Quote } from 'src/app/shared/models/quote';
     '../../shared/styles/sale-details.css'
   ]
 })
-export class QuoteDetailComponent implements OnInit {
-  //@Input() 
-    quote: Quote;
-  constructor(private quoteService: QuotesService) { }
+export class QuoteDetailComponent implements OnInit, OnDestroy {
+  qouteId: number;
+  quote: Quote;
+  private sub: any;
+  constructor(private quoteService: QuotesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.quoteService.getQuotes()
-    .subscribe(quotes => {
-      this.quote = quotes[0];
+    this.sub = this.route.params
+    .subscribe(params => {
+      this.qouteId = +params['id'];
+      this.quoteService.getQuotes()
+      .subscribe(quotes => {
+        this.quote = quotes.find( quot => quot.id === this.qouteId );
+      });
     });
-}
-
+  }
+  
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+  
 }
