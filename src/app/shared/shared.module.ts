@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SideNavComponent} from './side-nav/side-nav.component';
 import {MessagesComponent} from './messages/messages.component';
 import {MaterialModule} from './modules/material.module';
+import { AddressPipe } from '../pipes/address.pipe';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {MaterialModule} from './modules/material.module';
     CommonModule,
     MessagesComponent,
     MaterialModule,
-    SideNavComponent
+    SideNavComponent,
+    AddressPipe
   ],
   providers: [
     MessageService
@@ -29,6 +31,8 @@ import {MaterialModule} from './modules/material.module';
     SideNavComponent,
     OrderListComponent,
     QuoteListComponent,
-    MessagesComponent]
+    MessagesComponent,
+    AddressPipe
+  ]
 })
 export class SharedModule { }

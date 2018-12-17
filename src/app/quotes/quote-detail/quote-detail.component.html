@@ -26,13 +26,21 @@
         <mat-card-content class="dashboard-card-content">
           <section class="mat-typography">
           <h3>Ship-To Address </h3>
-          <p>100250695 - DEVTECH PET, INC</p>
+          <p>{{quote?.customer?.organization?.shipTo?.name}}</p>
           <h3>Ship-To BP </h3>
-          <p>95905 - DEVTECH PET, INC - USD - 12 Howe Drive</p>
+          <p>{{quote?.customer?.organization?.bp_name}}</p>
           <h3>Address </h3>
-          <p>12 Howe Drive, 03031 Amherst, NH US</p>
+          <p>{{quote?.customer?.organization?.shipTo | address}}</p>
+          <!-- <p>{{quote?.customer?.organization?.address?.street}} , 
+             {{quote?.customer?.organization?.address?.zip}} 
+             {{quote?.customer?.organization?.address?.city}} ,
+             {{quote?.customer?.organization?.address?.state}}
+          </p> -->
           <h3>Ship-To Contact </h3>
-          <p>Mike DeCampo</p>
+          <p>
+            {{quote?.customer?.organization?.contact?.firstName}}
+            {{quote?.customer?.organization?.contact?.lastName}}
+          </p>
           </section>
         </mat-card-content>
       </mat-card>
@@ -47,11 +55,11 @@
           <mat-card-content class="dashboard-card-content">
             <section class="mat-typography">
             <h3>Sold-To Address </h3>
-            <p>100250695 - DEVTECH PET, INC</p>
+            <p>{{quote?.customer?.organization?.address?.name}}</p>
             <h3>Ship-To BP </h3>
-            <p>95905 - DEVTECH PET, INC - USD - 12 Howe Drive</p>
+            <p>{{quote?.customer?.organization?.bp_name}}</p>
             <h3>Address </h3>
-            <p>12 Howe Drive, 03031 Amherst, NH US</p>
+            <p>{{quote?.customer?.organization?.address | address}}</p>
             <h3>Ship-To Contact </h3>
             <p>Mike DeCampo</p>
             <mat-grid-list class="dashboard-card-grid" cols="3" rowHeight="100px">
@@ -68,5 +76,17 @@
             </section>
           </mat-card-content>
         </mat-card>
-    </div>
+        <mat-divider></mat-divider>
+        <mat-card class="dashboard-card">
+          <mat-card-title  class="dashboard-card-title">
+             Quote Information
+          </mat-card-title>
+        </mat-card>
+        <mat-divider></mat-divider>
+        <mat-card class="dashboard-card">
+          <mat-card-title  class="dashboard-card-title">
+              List Items
+          </mat-card-title>
+        </mat-card>
+      </div>
 </div>

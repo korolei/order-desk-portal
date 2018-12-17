@@ -5,6 +5,6 @@ import {IPerson} from "./iperson";
 export interface IOrganization extends IContact {
   bp_number: number;
   bp_name: string;
-    shipTo: IAddress;
-    contact: IPerson;
+  shipTo: IAddress;
+  contact: IPerson;
 }

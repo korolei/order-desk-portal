@@ -30,8 +30,22 @@ export class InMemoryDataService implements InMemoryDbService {
                 localNumber: 5555551
               } as IPhone
             ],
-            address: {} as IAddress,
-            shipTo: {} as IAddress,
+            address: {
+              name: "100250695 - DEVTECH PET, INC",
+              country: "US",
+              state: "NH",
+              city: "Amherst",
+              street: "12 Howe Drive",
+              zip: "03031"
+            } as IAddress,
+            shipTo: {
+              name: "100250695 - DEVTECH PET, INC",
+              country: "US",
+              state: "NH",
+              city: "Amherst",
+              street: "12 Howe Drive",
+              zip: "03031"
+            } as IAddress,
             contact: {
               firstName: "Mike",
               lastName: "DeCampo",

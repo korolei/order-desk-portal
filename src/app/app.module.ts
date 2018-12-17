@@ -13,12 +13,14 @@ import {SharedModule} from "./shared/shared.module";
 //import { MaterialModule } from './shared/modules/material.module';
 import {CustomerComponent} from './customer/customer.component';
 import {HomeComponent} from './home/home.component';
+//import { AddressPipe } from './pipes/address.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerComponent,
-    HomeComponent
+    HomeComponent,
+    //AddressPipe
   ],
   imports: [
     BrowserModule,
