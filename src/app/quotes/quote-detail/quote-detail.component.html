@@ -81,12 +81,35 @@
           <mat-card-title  class="dashboard-card-title">
              Quote Information
           </mat-card-title>
+          <mat-card-content class="dashboard-card-content">
+              <section class="mat-typography">
+                <h3>Placed By</h3>
+                <p>Email</p>
+              </section>
+              <section class="mat-typography">
+                <h3>Sales Order Type</h3>
+                <p>001</p>
+              </section>
+              <section class="mat-typography">
+                <h3>Sales Office</h3>
+                <p>SPUJ001 - Americas SPC Sales</p>
+              </section>
+          </mat-card-content>
         </mat-card>
         <mat-divider></mat-divider>
         <mat-card class="dashboard-card">
           <mat-card-title  class="dashboard-card-title">
               List Items
           </mat-card-title>
-        </mat-card>
+          <mat-card-content class="dashboard-card-content">
+              <section class="mat-typography">
+                <h3>Requested Date</h3>
+                <p>{{quote.quotedOn | date: shortDate}}</p>
+              </section>
+              <section>
+                <div class="item-list-header">Items:</div>
+              </section>
+            </mat-card-content>
+          </mat-card>
       </div>
 </div>

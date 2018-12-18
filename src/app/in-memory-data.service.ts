@@ -59,7 +59,15 @@ export class InMemoryDataService implements InMemoryDbService {
         total: 856.70,
         quotedOn: new Date('2018-11-13'),
         items: [
-          { id: 10001 }
+          {
+            id: 746547,
+            name: "20 Circuit Socket Housing",
+            qty: 2,
+            price: 3.60,
+            discount: 0.07,
+            total: 6.70,
+            warehouse: "Jeffersonville"
+          }
         ] as IItem[]
       } as IQuote,
       {

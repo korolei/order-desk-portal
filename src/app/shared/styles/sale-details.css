@@ -49,6 +49,11 @@ h3{
 p{
     margin-left: 2em;
 }
+
+.item-list-header {
+    font-weight: bolder;
+    font-size: larger;
+}
 /* .sale-details-header-chip{
   border: 1px solid gray;
   border-radius: 4px;
