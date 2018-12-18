@@ -6,8 +6,8 @@ import {Quote} from "../shared/models/quote";
 import {Order} from "../shared/models/order";
 import {CustomerService} from "./customer.service";
 import {Person} from "../shared/models/person";
-import {IAddress} from "../shared/interfaces/iaddress";
-import {IOrganization} from "../shared/interfaces/iorganization";
+import {Address} from "../shared/models/address";
+import {Organization} from "../shared/models/organization";
 
 @Component({
   selector: 'app-customer',
@@ -21,15 +21,15 @@ export class CustomerComponent implements OnInit {
   quickAccountAgingData: QuickAccountAging[] = [];
   quotationsData: Quote[] = [];
   ordersData: Order[] = [];
-  addresses: IAddress[] = [];
-  organizationData: IOrganization;
+  addresses: Address[] = [];
+  organizationData: Organization;
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
     this.customerService.getCustomer(1).subscribe(data => this.customerData = data);
     this.customerService.getOrganization(1).subscribe(data => {
-      this.organizationData = data;
-      this.addresses.push(data.address)
+      this.organizationData = new Organization(data);
+      this.addresses.map(a=> new Address(a))
     });
     this.customerService.getCaseManagement().subscribe(data => this.caseManagementData = data);
     this.customerService.getInstalBase().subscribe(data => this.installBaseData = data);

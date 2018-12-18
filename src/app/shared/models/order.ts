@@ -1,29 +1,27 @@
 import {IOrder} from "../interfaces/iorder";
 import {ICustomer} from "../interfaces/icustomer";
-import {IItem} from "../interfaces/iitem";
+import {Entity} from "./entity";
+import {Item} from "./item";
 
-export class Order implements IOrder{
-    id: number;
+export class Order extends Entity{
     customer: ICustomer;
     status: string;
     quotedOn?: Date;
     orderedOn?: Date;
     deliverBy?: Date;
-    items: IItem[];
+    items: Item[]=[];
     total: number;
     warn?: boolean;
-    color: string;
 
     constructor(ord: IOrder)
     {
-        this.id = ord.id;
+      super(ord.id);
         this.customer = ord.customer;
         this.status = ord.status;
         this.orderedOn = ord.orderedOn;
         this.deliverBy = ord.deliverBy;
-        this.items = ord.items;
+        this.items = ord.items.map(i=> new Item(i));
         this.total = ord.total;
         this.warn = ord.warn;
-        this.color = ord.warn ? "red" : "black";
     }
 }

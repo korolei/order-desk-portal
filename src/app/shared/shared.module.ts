@@ -7,6 +7,7 @@ import {SideNavComponent} from './side-nav/side-nav.component';
 import {MessagesComponent} from './messages/messages.component';
 import {MaterialModule} from './modules/material.module';
 import {RouterModule} from '@angular/router';
+import {AddressPipe} from "../pipes/address.pipe";
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {RouterModule} from '@angular/router';
     QuoteListComponent,
     MessagesComponent,
     MaterialModule,
-    SideNavComponent
+    SideNavComponent,
+    AddressPipe
   ],
   providers: [
     MessageService
@@ -28,7 +30,8 @@ import {RouterModule} from '@angular/router';
     SideNavComponent,
     OrderListComponent,
     QuoteListComponent,
-    MessagesComponent
+    MessagesComponent,
+    AddressPipe
   ]
 })
 export class SharedModule { }
