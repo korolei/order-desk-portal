@@ -1,0 +1,30 @@
+
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="ticketNumber">
+      <mat-header-cell *matHeaderCellDef> Ticket # </mat-header-cell>>
+      <mat-cell *matCellDef="let element"> {{element.ticketNumber}} </mat-cell>>
+    </ng-container>
+    <ng-container matColumnDef="dateOpened">
+      <mat-header-cell *matHeaderCellDef> Date Opened </mat-header-cell>>
+      <mat-cell *matCellDef="let element"> {{element.dateOpened | date:'shortDate'}} </mat-cell>>
+    </ng-container>
+    <ng-container matColumnDef="urgency">
+      <mat-header-cell *matHeaderCellDef> Urgency </mat-header-cell>>
+      <mat-cell *matCellDef="let element"> {{element.urgency}} </mat-cell>>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>>
+      <mat-cell *matCellDef="let element">
+      <span [ngClass]="element.status === emergencyStatus? 'mat-warn':''">
+        {{element.status}}
+      </span>
+      </mat-cell>>
+    </ng-container>
+    <ng-container matColumnDef="note">
+      <mat-header-cell *matHeaderCellDef> Notes </mat-header-cell>>
+      <mat-cell *matCellDef="let element"> {{element.note?.noteType}} </mat-cell>>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>>
+  </mat-table>

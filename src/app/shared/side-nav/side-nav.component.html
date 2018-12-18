@@ -9,7 +9,8 @@
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
       <div mat-list-item style="text-align:left; margin-left: 1em">Sales Functions</div>
-      <a mat-list-item href="#" style="margin-left: 1em">Home</a>
+      <a mat-list-item routerLink="" style="margin-left: 1em">Home</a>
+      <a mat-list-item [routerLink]="['/customer']">Customer Account</a>
       <a mat-list-item href="#" style="margin-left: 1em">Sales Orders</a>
       <a mat-list-item href="#" style="margin-left: 1em">Quotations</a>
       <a mat-list-item href="#" style="margin-left: 1em">Price Inquiry</a>
