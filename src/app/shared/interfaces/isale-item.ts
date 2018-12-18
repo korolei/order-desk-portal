@@ -1,11 +1,14 @@
-import {ICustomer} from "./icustomer";
-import {IItem} from "./iitem";
-
 export interface ISaleItem {
   id: number;
-  customer: ICustomer;
-  status: string;
-  items: IItem[];
-  total: number;
-  warn?: boolean;
+  amount: number;
+  item: string;
+  itemDescription:string;
+  lineDeliveryAddress:string;
+  linePlannedDeliveryDate:string;
+  linePlannedReceiptDate:string;
+  orderNumber:string;
+  price: number;
+  quantity: number;
+  salesPosition: number;
+  unit:string;
 }

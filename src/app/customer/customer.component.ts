@@ -2,12 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {InstallBase} from "./models/install-base";
 import {CaseManagement} from "./models/case-management";
 import {QuickAccountAging} from "./models/quick-account-aging";
-import {Quote} from "../shared/models/quote";
 import {Order} from "../shared/models/order";
 import {CustomerService} from "./customer.service";
 import {Person} from "../shared/models/person";
 import {Address} from "../shared/models/address";
 import {Organization} from "../shared/models/organization";
+import {Quote} from "@angular/compiler";
 
 @Component({
   selector: 'app-customer',

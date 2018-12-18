@@ -99,7 +99,7 @@ export class InMemoryDataService implements InMemoryDbService {
     return [
       { id: 200273170,
         customer: {id:1,
-          organization: {bp_name: "DevTech PET inc.", bp_number:95905} as IOrganization} as ICustomer,
+          organization: {bp_name: "DevTech PET inc.", bp_number:[95905]} as IOrganization} as IOrganization,
         status: OrderStatus[OrderStatus.Printed],
         total: 856.70,
         quotedOn: new Date('2018-11-13'),
