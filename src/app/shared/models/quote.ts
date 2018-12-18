@@ -1,27 +1,26 @@
-import {ICustomer} from "../interfaces/icustomer";
-import {IItem} from "../interfaces/iitem";
 import {IQuote} from "../interfaces/iquote";
+import {Entity} from "./entity";
+import {Customer} from "./customer";
+import {Item} from "./item";
 
-export class Quote implements IQuote{
+export class Quote extends Entity{
     id: number;
-    customer: ICustomer;
+    customer: Customer;
     status: string;
     quotedOn?: Date;
-    items: IItem[];
+    items: Item[]=[];
     total: number;
     warn?: boolean;
-    color: string;
 
-    constructor(ord: IQuote)
+    constructor(q: IQuote)
     {
-        this.id = ord.id;
-        this.customer = ord.customer;
-        this.status = ord.status;
-        this.quotedOn = ord.quotedOn;
-        this.items = ord.items;
-        this.total = ord.total;
-        this.warn = ord.warn;
-        this.color = ord.warn ? "red" : "black";
+      super(q.id);
+        this.customer = q.customer;
+        this.status = q.status;
+        this.quotedOn = q.quotedOn;
+        this.items = q.items.map(i=> new Item(i));
+        this.total = q.total;
+        this.warn = q.warn;
     }
 }
 

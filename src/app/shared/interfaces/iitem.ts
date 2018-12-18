@@ -1,3 +1,5 @@
+import {INote} from "./inote";
+
 export interface IItem {
   id: number;
   hpn: number;
@@ -11,5 +13,5 @@ export interface IItem {
   warehouse: string;
   rushOrder: boolean;
   systemDown: boolean;
-  notes: string[]
+  notes: INote[]
 }
