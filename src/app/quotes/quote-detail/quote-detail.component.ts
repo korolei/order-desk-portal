@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { QuotesService } from '../quotes.service';
-import { Quote } from 'src/app/shared/models/quote';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {QuotesService} from '../quotes.service';
+import {Quotation} from 'src/app/shared/models/quotation';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-quote-detail',
@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class QuoteDetailComponent implements OnInit, OnDestroy {
   qouteId: number;
-  quote: Quote;
+  quote: Quotation;
   private sub: any;
   constructor(private quoteService: QuotesService, private route: ActivatedRoute) { }
 
@@ -26,9 +26,9 @@ export class QuoteDetailComponent implements OnInit, OnDestroy {
       });
     });
   }
-  
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
-  
+
 }

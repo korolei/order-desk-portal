@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {QuotesService} from "../quotes.service";
-import {Quote} from 'src/app/shared/models/quote';
+import {Quotation} from 'src/app/shared/models/quotation';
 
 // @ts-ignore
 @Component({
@@ -9,7 +9,7 @@ import {Quote} from 'src/app/shared/models/quote';
   styles: []
 })
 export class QuotesComponent implements OnInit {
-  quotes: Quote[];
+  quotes: Quotation[];
   constructor(private quotesService: QuotesService) { }
 
   ngOnInit() {

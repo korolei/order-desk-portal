@@ -3,12 +3,12 @@ import {Customer} from "../shared/models/customer";
 import {HttpClient} from "@angular/common/http";
 import {AppService} from "../app.service";
 import {Observable} from "rxjs";
-import {Quote} from "../shared/models/quote";
+import {Quotation} from "../shared/models/quotation";
 import {catchError, tap} from "rxjs/operators";
 import {InstallBase} from "./models/install-base";
 import {QuickAccountAging} from "./models/quick-account-aging";
 import {CaseManagement} from "./models/case-management";
-import {Order} from "../shared/models/order";
+import {SalesOrder} from "../shared/models/sales-order";
 import {Person} from "../shared/models/person";
 import {IOrganization} from "../shared/interfaces/iorganization";
 import {Organization} from "../shared/models/organization";
@@ -68,16 +68,16 @@ export class CustomerService {
       );
   }
 
-  getOpenQuotations(): Observable<Quote[]> {
-    return this.http.get<Quote[]>(this.openQuotationsApi)
+  getOpenQuotations(): Observable<Quotation[]> {
+    return this.http.get<Quotation[]>(this.openQuotationsApi)
       .pipe(
         tap(_ => this.appService.log('fetched Open Quotations info')),
         catchError(this.appService.handleError(this.openQuotationsApi, []))
       );
   }
 
-  getOpenSalesOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.openSalesOrderApi)
+  getOpenSalesOrders(): Observable<SalesOrder[]> {
+    return this.http.get<SalesOrder[]>(this.openSalesOrderApi)
       .pipe(
         tap(_ => this.appService.log('fetched Open Sales Orders info')),
         catchError(this.appService.handleError(this.openSalesOrderApi, []))

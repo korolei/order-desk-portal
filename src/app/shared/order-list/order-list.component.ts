@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Order } from '../models/order';
-import { OrdersService } from 'src/app/orders/orders.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {SalesOrder} from '../models/sales-order';
+import {OrdersService} from 'src/app/orders/orders.service';
 
 @Component({
   selector: 'app-order-list',
@@ -16,7 +16,7 @@ import { OrdersService } from 'src/app/orders/orders.service';
   .new-order {
       margin-left: 5em;
   }
-  `  
+  `
   ,
   `
   .subtitle{
@@ -35,19 +35,19 @@ import { OrdersService } from 'src/app/orders/orders.service';
 export class OrderListComponent implements OnInit {
 
   @Input() showOrders: boolean;
-  list: Order[];
+  list: SalesOrder[];
   count: number;
   displayColumns: string[];
   //@ViewChild(MatPaginator) paginator: MatPaginator;
   //dataSource: MatTableDataSource<Order>;
-  constructor(private orderService: OrdersService) { 
-    
+  constructor(private orderService: OrdersService) {
+
   }
 
   ngOnInit() {
-      this.displayColumns = 
+      this.displayColumns =
       [
-        'id', 'customer.name', 'customer.id', 
+        'id', 'customer.name', 'customer.id',
         'total', 'deliverBy',
         'status'
       ];

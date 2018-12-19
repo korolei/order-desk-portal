@@ -1,13 +1,12 @@
 import {IOrganization} from "../interfaces/iorganization";
 import {Entity} from "./entity";
-import {Address} from "./address";
 import {Contact} from "./contact";
 
 export class Organization extends Entity{
   bp_number: number[];
   contacts: Contact[];
   bp_name: string;
-  shipTo: Address[];
+  shipTo: string;
 
   constructor(org: IOrganization){
     super(org.id);
