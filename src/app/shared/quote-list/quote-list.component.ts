@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { Quote } from '../models/quote';
-import { QuotesService } from 'src/app/quotes/quotes.service';
-import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Quotation} from '../models/quotation';
+import {QuotesService} from 'src/app/quotes/quotes.service';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-quote-list',
@@ -17,7 +17,7 @@ import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
     .new-order {
         margin-left: 5em;
     }
-    `  
+    `
     ,
     `
     .subtitle{
@@ -44,21 +44,21 @@ import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
 export class QuoteListComponent implements OnInit {
 
   @Input() showOrders: boolean;
-  list: Quote[];
+  list: Quotation[];
   count: number;
   displayColumns: string[];
-  @ViewChild(MatSort) sort: MatSort;  
+  @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource: MatTableDataSource<Quote> = new MatTableDataSource<Quote>();
-  constructor(private quoteService: QuotesService) { 
-    
+  dataSource: MatTableDataSource<Quotation> = new MatTableDataSource<Quotation>();
+  constructor(private quoteService: QuotesService) {
+
   }
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
-    this.displayColumns = 
+    this.displayColumns =
       [
-        'id', 'customer.name', 'customer.id', 
+        'id', 'customer.name', 'customer.id',
         'total', 'quotedOn',
         'status'
       ];

@@ -1,5 +1,5 @@
 import {Entity} from "./entity";
-import {IOrderItem, OrderItem} from "./orderItem";
+import {IOrderItem, OrderItem} from "./order-item";
 
 export class Quotation extends Entity{
   public creationDate: Date;

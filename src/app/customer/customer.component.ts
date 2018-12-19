@@ -2,12 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {InstallBase} from "./models/install-base";
 import {CaseManagement} from "./models/case-management";
 import {QuickAccountAging} from "./models/quick-account-aging";
-import {Order} from "../shared/models/order";
+import {SalesOrder} from "../shared/models/sales-order";
 import {CustomerService} from "./customer.service";
 import {Person} from "../shared/models/person";
 import {Address} from "../shared/models/address";
 import {Organization} from "../shared/models/organization";
-import {Quote} from "@angular/compiler";
+import {Quotation} from "../shared/models/quotation";
 
 @Component({
   selector: 'app-customer',
@@ -19,8 +19,8 @@ export class CustomerComponent implements OnInit {
   installBaseData: InstallBase[] = [];
   caseManagementData: CaseManagement[] = [];
   quickAccountAgingData: QuickAccountAging[] = [];
-  quotationsData: Quote[] = [];
-  ordersData: Order[] = [];
+  quotationsData: Quotation[] = [];
+  ordersData: SalesOrder[] = [];
   addresses: Address[] = [];
   organizationData: Organization;
   constructor(private customerService: CustomerService) { }
