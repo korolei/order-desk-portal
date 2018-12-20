@@ -6,7 +6,8 @@
     </ng-container>
     <ng-container matColumnDef="dateOpened">
       <mat-header-cell *matHeaderCellDef> Date Opened </mat-header-cell>>
-      <mat-cell *matCellDef="let element"> {{element.dateOpened | date:'shortDate'}} </mat-cell>>
+      <mat-cell *matCellDef="let element"> {{element.dateOpened | date:'yyyy-MM-dd'}}</mat-cell>
+      >
     </ng-container>
     <ng-container matColumnDef="urgency">
       <mat-header-cell *matHeaderCellDef> Urgency </mat-header-cell>>
@@ -15,9 +16,9 @@
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>>
       <mat-cell *matCellDef="let element">
-      <span [ngClass]="element.status === emergencyStatus? 'mat-warn':''">
+        <div [ngClass]="element.status === emergencyStatus? 'warn':''">
         {{element.status}}
-      </span>
+        </div>
       </mat-cell>>
     </ng-container>
     <ng-container matColumnDef="note">

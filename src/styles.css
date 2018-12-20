@@ -1,2 +1,59 @@
 /* You can add global styles to this file, and also import other style files*/
  @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+body {
+  margin: 0;
+}
+
+.icon {
+  display: inline-block;
+  height: 30px;
+  margin: 0 auto;
+  padding-right: 5px;
+  text-align: center;
+  vertical-align: middle;
+  width: 15%;
+}
+
+.mat-toolbar {
+}
+
+.mat-grid-list {
+}
+
+.mat-grid-tile {
+  /*height: 400px;*/
+}
+
+.mat-select {
+}
+
+.mat-option {
+}
+
+.mat-icon {
+}
+
+.mat-card {
+  /*width: 97%;*/
+  /*max-height: 450px;*/
+}
+
+.mat-card-header {
+}
+
+.mat-card-title {
+}
+
+.mat-card-content {
+}
+
+.mat-header-cell {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.warn {
+  color: crimson;
+  font-weight: bolder;
+}

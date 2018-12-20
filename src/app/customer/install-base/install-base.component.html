@@ -5,7 +5,7 @@
   </ng-container>
   <ng-container matColumnDef="dateInstalled">
     <mat-header-cell *matHeaderCellDef> Date Installed </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.dateInstalled | date:'shortDate'}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{element.dateInstalled | date:'yyyy-MM-dd'}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef></mat-header-cell>

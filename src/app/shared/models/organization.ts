@@ -3,8 +3,8 @@ import {Entity} from "./entity";
 import {Contact} from "./contact";
 
 export class Organization extends Entity{
-  bp_number: number[];
-  contacts: Contact[];
+  bp_number: number[] = [];
+  contacts: Contact[] = [];
   bp_name: string;
   shipTo: string;
 
