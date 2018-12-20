@@ -12,7 +12,7 @@ import {Quotation} from "../shared/models/quotation";
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  styles: []
+  styleUrls: ['./customer.css']
 })
 export class CustomerComponent implements OnInit {
   customerData: Person;

@@ -17,8 +17,8 @@ import {Organization} from "../shared/models/organization";
   providedIn: 'root'
 })
 export class CustomerService {
-  customerApi = 'api/person/';
-  organizationApi = 'api/organization/';
+  customerApi = 'api/person/1';
+  organizationApi = 'api/organization/1';
   installBaseApi = 'api/installBase/';
   quickAccountAgingApi = 'api/quickAccountAging/';
   caseManagementApi = 'api/caseManagement/';

@@ -7,13 +7,15 @@ import {SideNavComponent} from './side-nav/side-nav.component';
 import {MessagesComponent} from './messages/messages.component';
 import {MaterialModule} from './modules/material.module';
 import {RouterModule} from '@angular/router';
-import { AddressPipe } from '../pipes/address.pipe';
+import {AddressPipe} from "../pipes/address.pipe";
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    FlexLayoutModule
   ],
   exports: [
     OrderListComponent,
@@ -21,7 +23,8 @@ import { AddressPipe } from '../pipes/address.pipe';
     MessagesComponent,
     MaterialModule,
     SideNavComponent,
-    AddressPipe
+    AddressPipe,
+    FlexLayoutModule
   ],
   providers: [
     MessageService

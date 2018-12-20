@@ -5,7 +5,8 @@ import {CaseManagementStatus} from "./../../shared/enums/case-management-status.
 
 @Component({
   selector: 'app-case-management',
-  templateUrl: './case-management.component.html'
+  templateUrl: './case-management.component.html',
+  styleUrls: ['../customer.css']
 })
 export class CaseManagementComponent implements OnInit {
   @Input() caseManagement: CaseManagement[]=[];

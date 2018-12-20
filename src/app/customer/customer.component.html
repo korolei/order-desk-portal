@@ -1,15 +1,21 @@
-
+<div
+  gdAreas="header header | content content"
+  gdGap="6px"
+  gdRows="auto">
+  <div gdArea="header">
+    <ng-container>
 <mat-toolbar>
-  <mat-grid-list [cols]="6">
-    <mat-grid-tile [colspan]="2">
+  toolbar
+  <mat-grid-list cols="6">
+    <mat-grid-tile colspan="2">
       Ship-To-Location
       <mat-select>
         <mat-option *ngFor="let address of addresses" [value]="address?.id">
-        {{address?.city}}
-      </mat-option>
-    </mat-select>
+          {{address?.city}}
+        </mat-option>
+      </mat-select>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="4">
+    <mat-grid-tile colspan="4">
       <mat-icon>person</mat-icon>
       <span class="mat-title">{{ organizationData?.contact?.firstName}} {{ organizationData?.contact?.lastName}}</span>
       <span>{{ organizationData?.contact?.title}}</span>
@@ -23,13 +29,16 @@
     </mat-grid-tile>
   </mat-grid-list>
 </mat-toolbar>
-<mat-grid-list [cols]="6">
-  <mat-grid-tile [colspan]="2">
-    <mat-card>
+    </ng-container>
+  </div>
+  <div gdArea="content" fxLayout="row wrap" fxLayoutGap="0px" fxLayoutAlign="flex-start" fxLayout.lt-sm="column"
+       fxLayout.lt-md="column">
+    <ng-container>
+      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="0 1 calc(30%)">
       <mat-card-header>
         <mat-card-title>
           Install Base <span *ngIf="installBaseData.length > 0">(5 of {{installBaseData.length}} Machines) |
-          <a>View All</a>
+          <a href="#" [routerLink]="['/customer']" mat-button>View All</a>
         </span>
         </mat-card-title>
       </mat-card-header>
@@ -37,53 +46,50 @@
         <app-install-base [installBaseData]="installBaseData"></app-install-base>
       </mat-card-content>
     </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="2">
-    <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        Quick Account Aging <span *ngIf="quickAccountAgingData.length > 0">???</span>
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content *ngIf="quickAccountAgingData.length > 0">
-      <app-quick-account-aging [quickAccountAgingData]="quickAccountAgingData"></app-quick-account-aging>
-    </mat-card-content>
-  </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="2">
-    <mat-card>
-      <mat-card-header>
+      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="0 2 calc(25%)">
+        <mat-card-header>
           <mat-card-title>
-            Case Management <span *ngIf="caseManagementData.length > 0">(5 of {{caseManagementData.length}} Tickets)</span>
+            Quick Account Aging <span *ngIf="quickAccountAgingData.length > 0">
+        <a href="#" [routerLink]="['/customer']" mat-button><mat-icon class="icon">account_circle</mat-icon>???</a>
+      </span>
           </mat-card-title>
+        </mat-card-header>
+        <mat-card-content *ngIf="quickAccountAgingData.length > 0">
+          <app-quick-account-aging [quickAccountAgingData]="quickAccountAgingData"></app-quick-account-aging>
+        </mat-card-content>
+      </mat-card>
+      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="0 3 calc(43%)">
+      <mat-card-header>
+        <mat-card-title>
+          Case Management <span *ngIf="caseManagementData.length > 0">(5 of {{caseManagementData.length}} Tickets) |
+            <a href="#" [routerLink]="['/customer']" mat-button>View All</a>
+          </span>
+        </mat-card-title>
       </mat-card-header>
       <mat-card-content *ngIf="caseManagementData.length > 0">
         <app-case-management [caseManagement]="caseManagementData"></app-case-management>
       </mat-card-content>
     </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="3">
-    <mat-card>
+      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="1 1 calc(48%)">
       <mat-card-header>
         <mat-card-title>
           Open Quotations <span *ngIf="quotationsData.length > 0">(6 of {{quotationsData.length}})</span>
         </mat-card-title>
       </mat-card-header>
       <mat-card-content *ngIf="caseManagementData.length > 0">
-        <app-quote-list [showOrders]="true"></app-quote-list>
+
       </mat-card-content>
     </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="3">
-    <mat-card>
+      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="1 2 calc(48%)">
       <mat-card-header>
         <mat-card-title>
           Open Sales Orders <span *ngIf="ordersData.length > 0">(6 of {{ordersData.length}})</span>
         </mat-card-title>
       </mat-card-header>
       <mat-card-content *ngIf="ordersData.length > 0">
-        <app-order-list [showOrders]="true"></app-order-list>
+
       </mat-card-content>
     </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+    </ng-container>
+  </div>
+</div>

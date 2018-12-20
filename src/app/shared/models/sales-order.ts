@@ -19,36 +19,36 @@ export class SalesOrder extends Entity{
   public totalUSDSpecified: number;
   public quotationLines: Quotation[] = [];
 
-    constructor(ord: ISalesOrder)
+  constructor(so: ISalesOrder)
     {
-      super(ord.id);
-      this.creationDate;
-      this.currencyCode;
-      this.customerPO;
-      this.deliveryAddress;
-      this.plannedDeliveryDate;
-      this.plannedReceiptDate;
-      this.postalAddress;
-      this.quotationStatus;
-      this.quoteNumber;
-      this.shipToBP;
-      this.shipToBPName;
-      this.soldToBP;
-      this.soldToBPName;
-      this.totalUSD;
-      this.totalUSDSpecified;
-      this.quotationLines;
+      super(so.id);
+      this.creationDate = so.creationDate;
+      this.currencyCode = so.currencyCode;
+      this.customerPO = so.customerPO;
+      this.deliveryAddress = so.deliveryAddress;
+      this.plannedDeliveryDate = so.plannedDeliveryDate;
+      this.plannedReceiptDate = so.plannedReceiptDate;
+      this.postalAddress = so.postalAddress;
+      this.quotationStatus = so.quotationStatus;
+      this.quoteNumber = so.quoteNumber;
+      this.shipToBP = so.shiptoBP;
+      this.shipToBPName = so.shiptoBPName;
+      this.soldToBP = so.soldtoBP;
+      this.soldToBPName = so.soldtoBPName;
+      this.totalUSD = so.totalUSD;
+      this.totalUSDSpecified = so.totalUSDSpecified;
+      this.quotationLines = so.quotationLines.map(ql => new Quotation(ql));
     }
 }
 
 export interface ISalesOrder {
   id: number;
-  creationDate;
+  creationDate: Date;
   currencyCode: string;
   customerPO: string;
   deliveryAddress: string;
-  plannedDeliveryDate;
-  plannedReceiptDate;
+  plannedDeliveryDate: Date;
+  plannedReceiptDate: Date;
   postalAddress: string;
   quotationStatus: string;
   quoteNumber: string;

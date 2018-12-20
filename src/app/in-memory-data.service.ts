@@ -6,7 +6,6 @@ import {IQuote} from "./shared/interfaces/iquote";
 import {ICustomer} from "./shared/interfaces/icustomer";
 import {CaseManagement} from "./customer/models/case-management";
 import {Urgency} from "./shared/enums/urgency.enum";
-import {CaseManagementStatus} from "./shared/enums/case-management-status.enum";
 import {QuickAccountAging} from "./customer/models/quick-account-aging";
 import {AccountAgingTerm} from "./shared/enums/account-aging-term.enum";
 import {InstallBase} from "./customer/models/install-base";
@@ -54,31 +53,31 @@ export class InMemoryDataService implements InMemoryDbService {
     return [
       {id:1, customerId:1, ticketNumber: 200140823, urgency: Urgency[Urgency.Medium],
         dateOpened: new Date('2018-10-23'),
-        status: CaseManagement[CaseManagementStatus.Active]
+        status: 'Active'
       },
       {id:2, customerId:1, ticketNumber: 200140825, urgency: Urgency[Urgency.Low],
         dateOpened: new Date('2018-10-25'),
-        status: CaseManagement[CaseManagementStatus.Resolved],
+        status: 'Resolved',
         note: null
       },
       {id:3, customerId:1, ticketNumber: 200140823, urgency: Urgency[Urgency.High],
         dateOpened: new Date('2018-10-23'),
-        status: CaseManagement[CaseManagementStatus.Emergency],
+        status: 'Emergency',
         note: {id: 1, noteType: 'NoteType', noteText: 'Some Text'}
       },
       {id:4, customerId:1, ticketNumber: 200140825, urgency: Urgency[Urgency.Emergency],
         dateOpened: new Date('2018-10-25'),
-        status: CaseManagement[CaseManagementStatus.Active],
+        status: 'Active',
         note: null
       },
       {id:5, customerId:1, ticketNumber: 200140823, urgency: Urgency[Urgency.Medium],
         dateOpened: new Date('2018-10-23'),
-        status: CaseManagement[CaseManagementStatus.Active],
+        status: 'Active',
         note: {id: 1, noteType: 'NoteType', noteText: 'Some Text'}
       },
       {id:6, customerId:1, ticketNumber: 200140825, urgency: Urgency[Urgency.Medium],
         dateOpened: new Date('2018-10-23'),
-        status: CaseManagement[CaseManagementStatus.Active],
+        status: 'Active',
         note: {id: 1, noteType: 'NoteType', noteText: 'Some Text'}
       }
       ] as CaseManagement[];
@@ -87,11 +86,11 @@ export class InMemoryDataService implements InMemoryDbService {
   private getQuickAccountAging(): QuickAccountAging[] {
     var one = AccountAgingTerm[AccountAgingTerm.Days60];
     return [
-      {id: 1, agingTerm: AccountAgingTerm[AccountAgingTerm.Pending], amount:0},
-      {id: 2, agingTerm: AccountAgingTerm[AccountAgingTerm.Pending], amount:275},
-      {id: 3, agingTerm: AccountAgingTerm[AccountAgingTerm.Pending], amount:300},
-      {id: 4, agingTerm: AccountAgingTerm[AccountAgingTerm.Pending], amount:200},
-      {id: 5, agingTerm: AccountAgingTerm[AccountAgingTerm.Pending], amount:100},
+      {id: 1, agingTerm: 'Pending', amount: 0},
+      {id: 2, agingTerm: '30 Days', amount: 275},
+      {id: 3, agingTerm: '60 Days', amount: 300},
+      {id: 4, agingTerm: '90 Days', amount: 200},
+      {id: 5, agingTerm: '120 Days', amount: 100},
     ];
   }
 
