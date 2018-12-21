@@ -7,7 +7,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule,
+  MatMenuModule, MatPaginatorModule, MatProgressSpinnerModule,
   MatSelectModule,
   MatSidenavModule,
   MatSortModule,
@@ -19,16 +19,18 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   imports: [
-    MatChipsModule,MatSelectModule,
+    MatChipsModule,MatSelectModule, MatPaginatorModule,
     MatToolbarModule, MatButtonModule, MatIconModule, MatTableModule,
     MatListModule, MatGridListModule, MatCardModule, MatMenuModule,
-    MatExpansionModule, MatSidenavModule, MatSortModule, MatFormFieldModule, MatInputModule
+    MatExpansionModule, MatSidenavModule, MatSortModule, MatFormFieldModule, MatInputModule,
+    MatProgressSpinnerModule
   ],
   exports: [
-    MatChipsModule,MatSelectModule,
+    MatChipsModule,MatSelectModule, MatPaginatorModule,
     MatToolbarModule, MatButtonModule, MatIconModule, MatTableModule,
     MatListModule, MatGridListModule, MatCardModule, MatMenuModule,
-    MatExpansionModule, MatSidenavModule, MatSortModule, MatFormFieldModule, MatInputModule
+    MatExpansionModule, MatSidenavModule, MatSortModule, MatFormFieldModule, MatInputModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule { }

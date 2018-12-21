@@ -1,3 +1,36 @@
-<p>
-  open-quotes works!
-</p>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <ng-container matColumnDef="quoteNumber">
+    <th mat-header-cell *matHeaderCellDef> Quotation </th>
+    <td mat-cell *matCellDef="let element"> {{element.quoteNumber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="soldToBPName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> BP Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.soldToBPName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="soldToBP">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> BP # </th>
+    <td mat-cell *matCellDef="let element"> {{element.soldToBP}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="totalUSD">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Total $</th>
+    <td mat-cell *matCellDef="let element"> {{element.totalUSD | currency}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="creationDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Created </th>
+    <td mat-cell *matCellDef="let element"> {{element.creationDate | date: 'yyyy-MM-dd'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="quotationStatus">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+    <td mat-cell *matCellDef="let element" [ngClass]="element.quotationStatus === internalHold? 'warn':''"> {{element.quotationStatus}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator fxShow="false"></mat-paginator>

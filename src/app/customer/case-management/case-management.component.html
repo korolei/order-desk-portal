@@ -15,10 +15,8 @@
     </ng-container>
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>>
-      <mat-cell *matCellDef="let element">
-        <div [ngClass]="element.status === emergencyStatus? 'warn':''">
+      <mat-cell *matCellDef="let element" [ngClass]="element.status === emergencyStatus? 'warn':''">
         {{element.status}}
-        </div>
       </mat-cell>>
     </ng-container>
     <ng-container matColumnDef="note">
@@ -29,3 +27,4 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>>
   </mat-table>
+  <mat-paginator fxShow="false"></mat-paginator>

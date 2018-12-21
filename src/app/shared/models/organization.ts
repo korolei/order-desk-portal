@@ -10,9 +10,9 @@ export class Organization extends Entity{
 
   constructor(org: IOrganization){
     super(org.id);
-    this.bp_number = org.bp_number,
-      this.contacts = org.contacts.map(c=> new Contact(c));
-      this.bp_name = org.bp_name,
-      this.shipTo = org.shipTo
+    this.bp_number = org.bp_number ? org.bp_number : [];
+      this.contacts = org.contacts ? org.contacts.map(c=> new Contact(c)) : [];
+      this.bp_name = org.bp_name;
+      this.shipTo = org.shipTo;
   }
 }

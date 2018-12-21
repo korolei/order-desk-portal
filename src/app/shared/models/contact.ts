@@ -10,8 +10,8 @@ export class Contact extends Entity{
 
   constructor(c: IContact){
     super(c.id);
-      this.address = new Address(c.address),
-      this.email = c.email,
-      this.phones = c.phones.map(p=> new Phone(p))
+      this.address = new Address(c.address);
+      this.email = c.email;
+      this.phones = c.phones ? c.phones.map(p=> new Phone(p)) : [];
   }
 }

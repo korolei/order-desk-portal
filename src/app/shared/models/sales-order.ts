@@ -16,7 +16,7 @@ export class SalesOrder extends Entity{
   public soldToBP: string;
   public soldToBPName: string;
   public totalUSD: number;
-  public totalUSDSpecified: number;
+  public totalUSDSpecified: boolean;
   public quotationLines: Quotation[] = [];
 
   constructor(so: ISalesOrder)
@@ -37,7 +37,7 @@ export class SalesOrder extends Entity{
       this.soldToBPName = so.soldtoBPName;
       this.totalUSD = so.totalUSD;
       this.totalUSDSpecified = so.totalUSDSpecified;
-      this.quotationLines = so.quotationLines.map(ql => new Quotation(ql));
+      this.quotationLines = so.quotationLines ? so.quotationLines.map(ql => new Quotation(ql)): [];
     }
 }
 
@@ -57,6 +57,6 @@ export interface ISalesOrder {
   soldtoBP: string;
   soldtoBPName: string;
   totalUSD: number;
-  totalUSDSpecified: number;
+  totalUSDSpecified: boolean;
   quotationLines: IQuotation[];
 }

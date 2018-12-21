@@ -10,10 +10,10 @@ export class Phone extends Entity{
 
   constructor(phone: IPhone){
     super(phone.id);
-    this.areaCode = phone.areaCode,
-      this.countryCode = phone.countryCode,
-      this.extension = phone.extension,
-      this.localNumber = phone.localNumber,
-      this.type = phone.type
+    this.areaCode = phone.areaCode;
+      this.countryCode = phone.countryCode;
+      this.extension = phone.extension;
+      this.localNumber = phone.localNumber;
+      this.type = phone.type;
   }
 }

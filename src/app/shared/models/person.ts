@@ -12,12 +12,12 @@ export class Person extends Entity{
 
   constructor(p: IPerson) {
     super(p.id);
-    this.email = p.email,
-      this.firstName = p.firstName,
-      this.initial = p.initial,
-      this.lastName = p.lastName,
-      this.phone = new Phone(p.phone),
-      this.title = p.title
+    this.email = p.email;
+      this.firstName = p.firstName;
+      this.initial = p.initial;
+      this.lastName = p.lastName;
+      this.phone = new Phone(p.phone);
+      this.title = p.title;
   }
 
 }

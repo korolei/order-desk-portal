@@ -1,44 +1,42 @@
-<div
-  gdAreas="header header | content content"
-  gdGap="6px"
-  gdRows="auto">
-  <div gdArea="header">
+
+  <div fxLayout="row wrap" fxLayoutGap="1px" fxLayoutAlign="flex-start" fxLayout.lt-md="column" style="color: #cfd8dc">
     <ng-container>
-<mat-toolbar>
-  toolbar
-  <mat-grid-list cols="6">
-    <mat-grid-tile colspan="2">
-      Ship-To-Location
-      <mat-select>
-        <mat-option *ngFor="let address of addresses" [value]="address?.id">
-          {{address?.city}}
-        </mat-option>
-      </mat-select>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="4">
-      <mat-icon>person</mat-icon>
-      <span class="mat-title">{{ organizationData?.contact?.firstName}} {{ organizationData?.contact?.lastName}}</span>
-      <span>{{ organizationData?.contact?.title}}</span>
-      <span>{{ organizationData?.bp_name}}</span>
-      <span>{{ customerData?.email}}</span>
-      <span>{{ customerData?.email}}</span>
-      <span>{{ organizationData?.address?.city}},
+      <mat-toolbar>
+            Ship-To-Location
+            <mat-select fxFlex="0 1 calc(25%)">
+              <mat-option [value]="1">
+                Bolton
+              </mat-option>
+            </mat-select>
+            <mat-icon>person</mat-icon>
+            <span class="mat-title">{{ organizationData?.contact?.firstName}} {{ organizationData?.contact?.lastName}}</span>
+            <span>{{ organizationData?.contact?.title}}</span>
+            <span>{{ organizationData?.bp_name}}</span>
+            <span>{{ customerData?.email}}</span>
+            <span>{{ customerData?.email}}</span>
+            <span>{{ organizationData?.address?.city}},
         {{ organizationData?.address?.state}}
         {{ organizationData?.address?.country}} {{ organizationData?.address?.country}} {{ organizationData?.address?.zip}}</span>
-      <a>Edit Address</a>
-    </mat-grid-tile>
-  </mat-grid-list>
-</mat-toolbar>
+            <a href="#" mat-button color="primary">Edit Address</a>
+      </mat-toolbar>
     </ng-container>
   </div>
-  <div gdArea="content" fxLayout="row wrap" fxLayoutGap="0px" fxLayoutAlign="flex-start" fxLayout.lt-sm="column"
-       fxLayout.lt-md="column">
+  <div fxLayout="row wrap" fxLayoutGap="1px" fxLayoutAlign="flex-start" fxLayout.lt-md="column">
     <ng-container>
-      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="0 1 calc(30%)">
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <mat-icon class="mat-24">room</mat-icon> <span class="mat-subheading-2">500 Queen St. - Bolton CA</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </ng-container>
+  </div>
+  <div fxLayout="row wrap" fxLayoutGap="3px" fxLayoutAlign="flex-start" fxLayout.lt-md="column">
+    <ng-container>
+      <mat-card fxFlex.lt-md="100%" fxFlex="0 1 calc(30%)">
       <mat-card-header>
         <mat-card-title>
           Install Base <span *ngIf="installBaseData.length > 0">(5 of {{installBaseData.length}} Machines) |
-          <a href="#" [routerLink]="['/customer']" mat-button>View All</a>
+          <a href="#" [routerLink]="['/']" mat-button>View All</a>
         </span>
         </mat-card-title>
       </mat-card-header>
@@ -46,11 +44,11 @@
         <app-install-base [installBaseData]="installBaseData"></app-install-base>
       </mat-card-content>
     </mat-card>
-      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="0 2 calc(25%)">
+      <mat-card fxFlex.lt-md="100%" fxFlex="0 2 calc(25%)">
         <mat-card-header>
           <mat-card-title>
             Quick Account Aging <span *ngIf="quickAccountAgingData.length > 0">
-        <a href="#" [routerLink]="['/customer']" mat-button><mat-icon class="icon">account_circle</mat-icon>???</a>
+        <a href="#" [routerLink]="['/']" mat-button><mat-icon class="icon">account_circle</mat-icon>Linda Olson?</a>
       </span>
           </mat-card-title>
         </mat-card-header>
@@ -58,11 +56,11 @@
           <app-quick-account-aging [quickAccountAgingData]="quickAccountAgingData"></app-quick-account-aging>
         </mat-card-content>
       </mat-card>
-      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="0 3 calc(43%)">
+      <mat-card fxFlex.lt-md="100%" fxFlex="0 3 calc(44%)">
       <mat-card-header>
         <mat-card-title>
           Case Management <span *ngIf="caseManagementData.length > 0">(5 of {{caseManagementData.length}} Tickets) |
-            <a href="#" [routerLink]="['/customer']" mat-button>View All</a>
+            <a href="#" [routerLink]="['/']" mat-button>View All</a>
           </span>
         </mat-card-title>
       </mat-card-header>
@@ -70,26 +68,31 @@
         <app-case-management [caseManagement]="caseManagementData"></app-case-management>
       </mat-card-content>
     </mat-card>
-      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="1 1 calc(48%)">
+      <mat-card fxFlex.lt-md="100%" fxFlex="0 1 calc(49.5%)">
       <mat-card-header>
         <mat-card-title>
-          Open Quotations <span *ngIf="quotationsData.length > 0">(6 of {{quotationsData.length}})</span>
+          Open Quotations <span *ngIf="quotationsData.length > 0">(6 of {{quotationsData.length}}) |
+          <a href="#" [routerLink]="['/']" mat-button>View All</a></span>
         </mat-card-title>
       </mat-card-header>
-      <mat-card-content *ngIf="caseManagementData.length > 0">
-
+      <mat-card-content *ngIf="quotationsData.length > 0">
+        <app-open-quotes [openQuotes]="quotationsData"></app-open-quotes>
       </mat-card-content>
     </mat-card>
-      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="1 2 calc(48%)">
+      <mat-card fxFlex.lt-md="100%" fxFlex="0 2 calc(49.5%)">
       <mat-card-header>
         <mat-card-title>
-          Open Sales Orders <span *ngIf="ordersData.length > 0">(6 of {{ordersData.length}})</span>
+          Open Sales Orders <span *ngIf="ordersData.length > 0">(6 of {{ordersData.length}}) |
+          <a href="#" [routerLink]="['/']" mat-button>View All</a></span>
         </mat-card-title>
       </mat-card-header>
       <mat-card-content *ngIf="ordersData.length > 0">
-
+        <app-open-orders [openOrdersData]="ordersData"></app-open-orders>
       </mat-card-content>
     </mat-card>
     </ng-container>
+    <ng-container *ngIf="dataCount < 7">
+      <mat-spinner fxLayout="center"></mat-spinner>
+    </ng-container>
   </div>
-</div>
+

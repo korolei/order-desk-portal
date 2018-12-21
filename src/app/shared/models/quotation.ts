@@ -37,7 +37,7 @@ export class Quotation extends Entity{
       this.soldToBPName = q.soldtoBPName;
       this.totalUSD = q.totalUSD;
       this.totalUSDSpecified = q.totalUSDSpecified;
-      this.quotationLines = q.quotationLines.map(ql => new OrderItem(ql));
+      this.quotationLines = q.quotationLines ? q.quotationLines.map(ql => new OrderItem(ql)) : [];
     }
 }
 

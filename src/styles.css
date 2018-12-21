@@ -15,6 +15,10 @@ body {
   width: 15%;
 }
 
+.mat-table{
+  width: 100%;
+}
+
 .mat-toolbar {
 }
 
@@ -35,7 +39,7 @@ body {
 }
 
 .mat-card {
-  /*width: 97%;*/
+  width: 97%;
   /*max-height: 450px;*/
 }
 

@@ -9,7 +9,7 @@ export class InstallBase extends  Entity{
     super(ib.id);
     this.customerId = ib.customerId,
       this.dateInstalled = ib.dateInstalled,
-      this.customerId = ib.customerId
+      this.machineNumber = ib.machineNumber
   }
 }
 
