@@ -2,7 +2,9 @@
   <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="ticketNumber">
       <mat-header-cell *matHeaderCellDef> Ticket # </mat-header-cell>>
-      <mat-cell *matCellDef="let element"> {{element.ticketNumber}} </mat-cell>>
+      <mat-cell *matCellDef="let element">
+        <a onclick="alert('View Notes screen')" mat-button color="primary">{{element.ticketNumber}}</a>
+      </mat-cell>>
     </ng-container>
     <ng-container matColumnDef="dateOpened">
       <mat-header-cell *matHeaderCellDef> Date Opened </mat-header-cell>>
@@ -21,7 +23,9 @@
     </ng-container>
     <ng-container matColumnDef="note">
       <mat-header-cell *matHeaderCellDef> Notes </mat-header-cell>>
-      <mat-cell *matCellDef="let element"> {{element.note?.noteType}} </mat-cell>>
+      <mat-cell *matCellDef="let element">
+        <a onclick="alert('View Notes screen')" mat-button color="primary">{{element.note?.noteType}}</a>
+         </mat-cell>>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>>

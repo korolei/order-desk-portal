@@ -14,7 +14,7 @@ export class CaseManagement extends  Entity{
     super(cm.id);
     this.customerId = cm.customerId;
       this.ticketNumber = cm.ticketNumber;
-      this.dateOpened = cm.dateOpened;
+      this.dateOpened = new Date(cm.dateOpened);
       this.urgency = cm.urgency;
       this.status = cm.status;
       this.note = cm.note;
@@ -25,7 +25,7 @@ export interface ICaseManagement {
   id: number;
   customerId:number;
   ticketNumber: number;
-  dateOpened: Date;
+  dateOpened: string;
   urgency: string;
   status: string;
   note: INote;

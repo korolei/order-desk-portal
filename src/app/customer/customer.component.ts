@@ -38,6 +38,7 @@ export class CustomerComponent implements OnInit {
   constructor(private appService: AppService) { }
 
   ngOnInit() {
+    this.dataCount = 4;
     //customer data
     this.appService.getData<IPerson>(`${this.customerApi}/${this.customerId}`)
       .subscribe(data =>
@@ -53,7 +54,8 @@ export class CustomerComponent implements OnInit {
         this.dataCount = this.dataCount + 1;
       });
 
-    this.getData();
+
+    //this.getData();
   }
 
   getData(){

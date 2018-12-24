@@ -4,52 +4,44 @@ import {IOrder} from "./shared/interfaces/iorder";
 import {IOrganization} from "./shared/interfaces/iorganization";
 import {IQuote} from "./shared/interfaces/iquote";
 import {ICustomer} from "./shared/interfaces/icustomer";
-import {CaseManagement} from "./customer/models/case-management";
+import {CaseManagement, ICaseManagement} from "./customer/models/case-management";
 import {Urgency} from "./shared/enums/urgency.enum";
 import {QuickAccountAging} from "./customer/models/quick-account-aging";
-import {AccountAgingTerm} from "./shared/enums/account-aging-term.enum";
 import {InstallBase} from "./customer/models/install-base";
 import {IAddress} from "./shared/interfaces/iaddress";
 import {IPerson} from "./shared/interfaces/iperson";
 import {Person} from "./shared/models/person";
-//import {HttpClient} from "@angular/common/http";
-import {IQuotation, Quotation} from "./shared/models/quotation";
-import {IOrderItem} from "./shared/models/order-item";
+import {IQuotation} from "./shared/models/quotation";
 import {ISalesOrder} from "./shared/models/sales-order";
 import {IContact} from "./shared/interfaces/icontact";
+import CaseManagementJson from "../assets/mockData/CaseManagement.json";
 
 @Injectable({
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
   constructor() {
-    // this.getJSON('./assets/mockData/.json').subscribe(data => {
-    //   console.log(data)
-    // });
+
   }
 
   createDb() {
     const quotes: IQuotation[] = this.getQuotes();
     const orders: ISalesOrder[] = this.getOrders();
     const customers: ICustomer[] = this.getCustomers();
-    const caseManagement: CaseManagement[] = this.getCaseManagement();
     const quickAccountAging: QuickAccountAging[] = this.getQuickAccountAging();
     const installBase: InstallBase[] = this.getInstallBase();
     const organization: IOrganization[] = this.getOrganization();
     const person: IPerson[] = this.getPersons();
+    const caseManagement: ICaseManagement[] = CaseManagementJson.caseManagement as ICaseManagement[];
     return {quotes, orders, customers, caseManagement, installBase, quickAccountAging, organization, person};
   }
 
   genId<T extends IQuote | IOrder | ICustomer | CaseManagement | InstallBase | QuickAccountAging | Person>(myTable: T[]): number {
     return myTable.length > 0 ? Math.max(...myTable.map(t => t.id)) + 1 : 11;
   }
-
-  // public getJSON(url: string): Observable<any> {
-  //   return this.http.get(url)
-  // }
-
   //mock data functions
   private getCaseManagement(): CaseManagement[]{
+
     return [
       {id:1, customerId:1, ticketNumber: 200140823, urgency: Urgency[Urgency.Medium],
         dateOpened: new Date('2018-10-23'),
