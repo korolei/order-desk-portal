@@ -1,33 +1,34 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {IInstallBase, InstallBase} from "./models/install-base";
 import {CaseManagement, ICaseManagement} from "./models/case-management";
 import {IQuickAccountAging, QuickAccountAging} from "./models/quick-account-aging";
 import {ISalesOrder, SalesOrder} from "../shared/models/sales-order";
-import {Person} from "../shared/models/person";
-import {Address} from "../shared/models/address";
-import {Organization} from "../shared/models/organization";
+import {IOrganization, Organization} from "../shared/models/organization";
 import {IQuotation, Quotation} from "../shared/models/quotation";
 import {AppService} from "../app.service";
-import {IPerson} from "../shared/interfaces/iperson";
-import {IOrganization} from "../shared/interfaces/iorganization";
+import {Address} from "../shared/models/address";
+import {Contact} from "../shared/models/contact";
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html'
 })
 export class CustomerComponent implements OnInit {
-  customerId = 1;
-  organizationId = 1;
+  @Input()orgId = 9;
   dataCount=0;
-  customerData: Person;
+  maxCount = 6;
   installBaseData: InstallBase[] = [];
   caseManagementData: CaseManagement[] = [];
   quickAccountAgingData: QuickAccountAging[] = [];
   quotationsData: Quotation[] = [];
   ordersData: SalesOrder[] = [];
   organizationData: Organization;
+  contacts: Contact[]=[];
+  locations: Address[]=[];
+  currentContact: Contact;
+  currentLocationId = 0;
+
 //TODO: move it to constants
-  customerApi = 'api/person';
   organizationApi = 'api/organization';
   installBaseApi = 'api/installBase';
   quickAccountAgingApi = 'api/quickAccountAging';
@@ -38,24 +39,20 @@ export class CustomerComponent implements OnInit {
   constructor(private appService: AppService) { }
 
   ngOnInit() {
-    this.dataCount = 4;
-    //customer data
-    this.appService.getData<IPerson>(`${this.customerApi}/${this.customerId}`)
-      .subscribe(data =>
-        {
-          this.customerData = new Person(data as IPerson);
-          this.dataCount = this.dataCount + 1;
-        });
-
     //organization data
-    this.appService.getData<IOrganization>(`${this.organizationApi}/${this.organizationId}`)
+    this.appService.getData<IOrganization>(`${this.organizationApi}/${this.orgId}`)
       .subscribe(data => {
         this.organizationData = new Organization(data as IOrganization);
-        this.dataCount = this.dataCount + 1;
+        this.dataCount = this.organizationData !== undefined ? this.dataCount + 1 : this.dataCount=this.maxCount;
+        this.contacts = this.organizationData.contacts;
+        this.locations = this.contacts.map(c => c.address);
       });
+  }
 
-
-    //this.getData();
+  setContact(addressId: number){
+    this.currentContact = this.contacts.find(c=> c.address.id === addressId);
+    this.currentLocationId = addressId;
+    this.getData();
   }
 
   getData(){
@@ -67,7 +64,6 @@ export class CustomerComponent implements OnInit {
         .map(item => new QuickAccountAging(item as IQuickAccountAging));
         this.dataCount = this.dataCount + 1;
       });
-
 
     //case management data
     this.appService.getData<ICaseManagement[]>(this.caseManagementApi)

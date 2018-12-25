@@ -1,4 +1,4 @@
-import {Entity} from "../../shared/models/entity";
+import {Entity, IEntity} from "../../shared/models/entity";
 
 export class QuickAccountAging extends Entity{
   public agingTerm: string;
@@ -13,8 +13,7 @@ export class QuickAccountAging extends Entity{
   }
 }
 
-export interface IQuickAccountAging {
-  id:number;
+export interface IQuickAccountAging extends IEntity{
   agingTerm: string;
   amount: number;
   currencyCode: string;

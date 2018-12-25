@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {IItem} from '../shared/interfaces/iitem';
 import {Observable, of} from 'rxjs';
+import {IOrderItem} from "../shared/models/order-item";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemsService {
-   items: IItem[] =
+   items: IOrderItem[] =
    [
   //   {
   //     id:1,
@@ -162,10 +162,10 @@ export class ItemsService {
 
   constructor() { }
 
-  getItems() : Observable<IItem[]>
+  getItems() : Observable<IOrderItem[]>
   {
     return of(this.items);
   }
 
-  getItem(idx: number): IItem{ return this.items[idx];}
+  getItem(idx: number): IOrderItem{ return this.items[idx];}
 }

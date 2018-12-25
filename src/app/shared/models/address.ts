@@ -1,6 +1,12 @@
-import {IAddress} from "../interfaces/iaddress";
-import {Entity} from "./entity";
+import {Entity, IEntity} from "./entity";
 
+export interface IAddress extends IEntity{
+  country: string;
+  state: string;
+  city: string;
+  street: string;
+  zip: string;
+}
 export class Address extends Entity{
   city: string;
   country: string;
@@ -17,3 +23,4 @@ export class Address extends Entity{
       this.country = a.country;
   }
 }
+

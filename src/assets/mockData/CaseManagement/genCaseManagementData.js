@@ -1,13 +1,11 @@
-//run 'node generateData.js' to regenerate JSON files
-// Load Chance
+//run 'node genCaseManagementData.js' to regenerate JSON files
 const Chance = require('chance');
-// Instantiate Chance so it can be used
 const chance = new Chance();
+const faker = require('faker')
 
 const jsf = require('json-schema-faker'); // json-schema faker
 const fs = require('fs'); // nodeJS file system library to read and write files
-
-jsf.extend('faker', () => fs);
+jsf.extend('faker', () => faker);
 jsf.extend('chance', () => chance);
 
 const notesSchema ={
@@ -56,13 +54,11 @@ const caseManagementSchema = {
             "multipleOf": 7,
             "exclusiveMinimum": true
           },
-          "customerId": {
+          "contact_id": {
             "type": "integer",
             "unique": true,
-            "minimum": 6000,
-            "maximum": 7000,
-            "multipleOf": 7,
-            "exclusiveMinimum": true
+            "minimum": 1,
+            "maximum": 10
           },
           "status": {
             "type": "string",
@@ -100,7 +96,7 @@ const caseManagementSchema = {
           },
           "note": notesSchema
         },
-        "required": ["id", "customerId","ticketNumber", "urgency", "status", "dateOpened", "note"]
+        "required": ["id", "contact_id","ticketNumber", "urgency", "status", "dateOpened", "note"]
       }
     }
   },

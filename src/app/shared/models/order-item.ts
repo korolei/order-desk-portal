@@ -1,4 +1,19 @@
-import {Entity} from "./entity";
+import {Entity, IEntity} from "./entity";
+
+export interface IOrderItem extends IEntity {
+  id: number;
+  amount: number;
+  item: string;
+  itemDescription: string;
+  lineDeliveryAddress: string;
+  linePlannedDeliveryDate: Date;
+  linePlannedReceiptDate: Date;
+  orderNumber: string;
+  price: number;
+  quantity: number;
+  salesPosition: number;
+  unit: string;
+}
 
 export class OrderItem extends Entity{
   public id: number;
@@ -30,17 +45,3 @@ export class OrderItem extends Entity{
   }
 }
 
-export interface IOrderItem {
-  id: number;
-  amount: number;
-  item: string;
-  itemDescription: string;
-  lineDeliveryAddress: string;
-  linePlannedDeliveryDate: Date;
-  linePlannedReceiptDate: Date;
-  orderNumber: string;
-  price: number;
-  quantity: number;
-  salesPosition: number;
-  unit: string;
-}

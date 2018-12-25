@@ -1,23 +1,29 @@
-import {IPerson} from "../interfaces/iperson";
-import {Entity} from "./entity";
-import {Phone} from "./phone";
+import {Entity, IEntity} from "./entity";
 
-export class Person extends Entity{
+export interface IPerson extends IEntity {
   email: string;
   firstName: string;
-  initial: string;
+  prefix: string;
   lastName: string;
-  phone: Phone;
+  phone: string;
+  title: string;
+}
+
+export class Person extends Entity {
+  email: string;
+  firstName: string;
+  prefix: string;
+  lastName: string;
+  phone: string;
   title: string;
 
   constructor(p: IPerson) {
     super(p.id);
     this.email = p.email;
       this.firstName = p.firstName;
-      this.initial = p.initial;
+      this.prefix = p.prefix;
       this.lastName = p.lastName;
-      this.phone = new Phone(p.phone);
+      this.phone = p.phone;
       this.title = p.title;
   }
-
 }
