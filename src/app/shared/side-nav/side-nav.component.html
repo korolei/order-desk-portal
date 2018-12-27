@@ -39,17 +39,10 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <img src="../../assets/husky-logo.png" class="husky-logo" aria-label="husky logo">
-      <!-- <span class="toolbar-spacer"></span> -->
-      <div class="search-autocomplete">
-        <span >
-          <button mat-button class="search-button" aria-label="search">
-          Search
-          </button>
-        </span>
-        <input matInput type="text" placeholder="Type search term" value="" aria-label="search term" class="search-text">
-      </div>
+       <span class="toolbar-spacer"></span>
+
+         <ng-template #customerSearch></ng-template>
+
     </mat-toolbar>
-    <!-- Add Content Here
-    <router-outlet></router-outlet>-->
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,61 +1,76 @@
-import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import {CustomerSearchComponent} from "../customer-search/customer-search.component";
+import {AppService} from "../../app.service";
 
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
   styles: [
     `
-    .sidenav-container {
-      height: 100%;
-    }`,
-    `
-    .sidenav {
-      width: 200px;
-    }`,
-    `
-    .mat-toolbar.mat-primary {
-      position: sticky;
-      top: 0;
-    }
-    `,
-    `
-    .husky-logo{
-      margin-left: 1em;
-    }
-    `,
-    `
-    .search-autocomplete {
-      margin-left: 2em;
-      border: 1px solid #bcbcbc;
-      border-radius: 4px;
-      position: relative;
-      text-align: left;
-      width: 400px;
-    }
-    `,
-    `
-    .search-button {
-      margin: 3px;
-    }
-    `,
-    `
-    .search-text {
-      margin-left: 6px;
-      width: 290px;
-    }
+      .sidenav-container {
+        height: 100%;
+      }
+
+      `
+      ,
+      `
+      .sidenav {
+        width: 200px;
+      }
+
+      `
+      ,
+      `
+      .mat-toolbar.mat-primary {
+        position: sticky;
+        top: 0;
+      }
+
+      `
+      ,
+      `
+      .husky-logo {
+        margin-left: 1em;
+      }
     `
   ]
 })
-export class SideNavComponent {
+export class SideNavComponent implements OnInit{
+  customerSearchRef: ComponentRef<CustomerSearchComponent>;
+  @ViewChild('customerSearch', {read: ViewContainerRef}) customerSearch: ViewContainerRef;
+
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
-    
-  constructor(private breakpointObserver: BreakpointObserver) {}
-  
+
+  constructor(private breakpointObserver: BreakpointObserver,
+              private ComponentFactoryResolver: ComponentFactoryResolver,
+              private appService: AppService) {}
+
+  public showCustomerSearch() {
+    if (!this.customerSearchRef) {
+      const customerSearchComponent = this.ComponentFactoryResolver.resolveComponentFactory(CustomerSearchComponent);
+      this.customerSearchRef = this.customerSearch.createComponent(customerSearchComponent);
+    }
+
+    //this.customerSearchRef.instance;
+    this.customerSearchRef.changeDetectorRef.detectChanges();
+  }
+
+  destroyCustomerSearch() {
+    if (this.customerSearchRef) {
+      this.customerSearchRef.destroy();
+      delete this.customerSearchRef;
+    }
+  }
+
+  ngOnInit(): void {
+    this.appService.showCustomerSearch.subscribe(
+      (val)=> val === true ? this.showCustomerSearch() : this.destroyCustomerSearch())
+  }
   }

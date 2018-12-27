@@ -1,0 +1,15 @@
+<div class="search-autocomplete">
+  <div class="search-text">
+    <input  placeholder="Search company by name"  class="search-results"
+      type="text"
+      ngxTypeahead
+      [value]="queryResult"
+      [taList]="organizationsData"
+      [taListItemField]="['bp_name']"
+      [taDebounce]="300"
+      [taListItemLabel]="'bp_name'"
+      [taDisplayOnFocus]="true"
+      (keydown)="queryResult=''"
+      (taSelected)="handleHttpResult($event)">
+  </div>
+</div>

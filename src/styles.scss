@@ -1,0 +1,53 @@
+// Import library functions for theme creation.
+@import '~@angular/material/_theming.scss';
+
+
+//$my-theme-primary: mat-palette($mat-light-blue, 50, 50, 50);
+$my-theme-accent: mat-palette($mat-blue, A200, A100, A400);
+$my-theme-warn: mat-palette($mat-amber);
+
+$my-theme: mat-light-theme($my-theme-accent, $my-theme-warn);
+@include angular-material-theme($my-theme);
+
+$custom-toolbar-typography: mat-typography-config(
+  $font-family: 'Roboto, monospace',
+  $headline: mat-typography-level(16px, 24px, 200),
+  $body-1: mat-typography-level(12px, 16px, 200)
+);
+
+@include mat-toolbar-typography($custom-toolbar-typography);
+@include mat-core();
+
+//// Define a mixin that accepts a theme and outputs the theme-specific styles.
+//@mixin mat-toolbar-theme($theme)
+//{
+//// Extract the palettes you need from the theme definition.
+//  $primary: map-get($theme, primary);
+//  $accent: map-get($theme, accent);
+//
+//// Define any styles affected by the theme.
+//  .mat-toolbar-theme {
+//    // Use mat-color to extract individual colors a palette.
+//    background-color: mat-color($accent, 300);
+//    outline-color: mat-color($accent, lighter);
+//    // Get a contrast color for a hue by adding `-contrast` to any other key.
+//    border-color: mat-color($primary, '100-constrast');
+//  }
+//}
+//
+//@mixin mat-toolbar-typography($config) {
+//  .mat-toolbar-typography {
+//    font: {
+//      family: mat-font-family($config, body-1);
+//      size: mat-font-size($config, body-1);
+//      weight: mat-font-weight($config, body-1);
+//    }
+//  }
+//}
+//
+//@mixin flex-flow($values: (row nowrap)) {
+//  // No Webkit/FF Box fallback.
+//  -webkit-flex-flow: $values;
+//  -ms-flex-flow: $values;
+//  flex-flow: $values;
+//}

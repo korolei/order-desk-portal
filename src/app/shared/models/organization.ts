@@ -15,6 +15,7 @@ export class Organization extends Entity{
       this.contacts = org.contacts ? org.contacts.map(c=> new Contact(c)) : [];
       this.bp_name = org.bp_name;
   }
+
 }
 
 

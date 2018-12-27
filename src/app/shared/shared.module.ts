@@ -7,15 +7,21 @@ import {SideNavComponent} from './side-nav/side-nav.component';
 import {MessagesComponent} from './messages/messages.component';
 import {MaterialModule} from './modules/material.module';
 import {RouterModule} from '@angular/router';
-import {AddressPipe} from "../pipes/address.pipe";
+import {AddressPipe} from "./pipes/address.pipe";
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxTypeaheadModule } from 'ngx-typeahead';
+import {CustomerSearchComponent} from "./customer-search/customer-search.component";
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxTypeaheadModule
   ],
   exports: [
     OrderListComponent,
@@ -24,7 +30,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MaterialModule,
     SideNavComponent,
     AddressPipe,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxTypeaheadModule
   ],
   providers: [
     MessageService
@@ -34,7 +43,11 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     OrderListComponent,
     QuoteListComponent,
     MessagesComponent,
+    CustomerSearchComponent,
     AddressPipe
-  ]
+  ],
+  entryComponents: [
+    CustomerSearchComponent
+  ],
 })
 export class SharedModule { }

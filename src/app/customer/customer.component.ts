@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IInstallBase, InstallBase} from "./models/install-base";
 import {CaseManagement, ICaseManagement} from "./models/case-management";
 import {IQuickAccountAging, QuickAccountAging} from "./models/quick-account-aging";
@@ -13,8 +13,8 @@ import {Contact} from "../shared/models/contact";
   selector: 'app-customer',
   templateUrl: './customer.component.html'
 })
-export class CustomerComponent implements OnInit {
-  @Input()orgId = 9;
+export class CustomerComponent implements OnInit, OnDestroy {
+  orgId = 0;
   dataCount=0;
   maxCount = 6;
   installBaseData: InstallBase[] = [];
@@ -39,8 +39,20 @@ export class CustomerComponent implements OnInit {
   constructor(private appService: AppService) { }
 
   ngOnInit() {
+    if(this.orgId > 0){
+      this.getOrganizationData(this.orgId)
+    }
+    this.appService.showCustomerSearch.next(true);
+    this.appService.onCustomerFound.subscribe(
+      id => {
+        this.orgId = id;
+        this.getOrganizationData(id);
+    });
+  }
+
+  getOrganizationData(orgId: number){
     //organization data
-    this.appService.getData<IOrganization>(`${this.organizationApi}/${this.orgId}`)
+    this.appService.getData<IOrganization>(`${this.organizationApi}/${orgId}`)
       .subscribe(data => {
         this.organizationData = new Organization(data as IOrganization);
         this.dataCount = this.organizationData !== undefined ? this.dataCount + 1 : this.dataCount=this.maxCount;
@@ -48,7 +60,6 @@ export class CustomerComponent implements OnInit {
         this.locations = this.contacts.map(c => c.address);
       });
   }
-
   setContact(addressId: number){
     this.currentContact = this.contacts.find(c=> c.address.id === addressId);
     this.currentLocationId = addressId;
@@ -93,5 +104,9 @@ export class CustomerComponent implements OnInit {
         .map(item => new SalesOrder(item as ISalesOrder));
         this.dataCount = this.dataCount + 1;
       });
+  }
+
+  ngOnDestroy(): void {
+    this.appService.showCustomerSearch.next(false);
   }
 }

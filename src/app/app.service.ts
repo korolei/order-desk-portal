@@ -1,8 +1,8 @@
-import {Inject, Injectable, Optional} from '@angular/core';
+import {EventEmitter, Inject, Injectable, Optional} from '@angular/core';
 import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable, of} from "rxjs";
+import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 import {MessageService} from "./shared/services/message.service";
-import {catchError, tap} from "rxjs/operators";
+import {catchError} from "rxjs/operators";
 import {APP_BASE_HREF} from "@angular/common";
 
 const httpOptions = {
@@ -14,6 +14,10 @@ const httpOptions = {
 })
 export class AppService {
   public baseUrl: string;
+
+  public showCustomerSearch =  new EventEmitter<boolean>();
+  public onCustomerFound: EventEmitter<number> = new EventEmitter<number>();
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
@@ -67,6 +71,21 @@ export class AppService {
   /** Log a HeroService message with the MessageService */
   log(message: string) {
     this.messageService.add(`Order Desk Service: ${message}`);
+  }
+
+   flatten (obj) {
+    const newObj = {};
+    for (const key in obj) {
+      if (typeof obj[key] === 'object' && obj[key] !== null) {
+        const temp = this.flatten(obj[key])
+        for (const key2 in temp) {
+          newObj[key+"_"+key2] = temp[key2];
+        }
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+    return newObj;
   }
 }
 
