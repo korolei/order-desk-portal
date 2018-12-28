@@ -51,8 +51,8 @@
           </div>
           <div fxFlex="80%" fxLayoutAlign="flex-end">
             <mat-chip-list>
-              <mat-chip>+ New Quote</mat-chip>
-              <mat-chip>+ New Order</mat-chip>
+              <mat-chip [routerLink]="['/quote-detail']">+ New Quote</mat-chip>
+              <mat-chip [routerLink]="['/order']">+ New Order</mat-chip>
             </mat-chip-list>
           </div>
       </mat-toolbar>
