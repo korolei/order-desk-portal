@@ -3,7 +3,7 @@
     <ng-container matColumnDef="ticketNumber">
       <mat-header-cell *matHeaderCellDef> Ticket # </mat-header-cell>>
       <mat-cell *matCellDef="let element">
-        <a onclick="alert('View Notes screen')" mat-button color="primary">{{element.ticketNumber}}</a>
+        <a onclick="alert('View Notes screen')" mat-button>{{element.ticketNumber}}</a>
       </mat-cell>>
     </ng-container>
     <ng-container matColumnDef="dateOpened">
@@ -24,7 +24,7 @@
     <ng-container matColumnDef="note">
       <mat-header-cell *matHeaderCellDef> Notes </mat-header-cell>>
       <mat-cell *matCellDef="let element">
-        <a onclick="alert('View Notes screen')" mat-button color="primary">{{element.note?.noteType}}</a>
+        <a onclick="alert('View Notes screen')" mat-button>{{element.note?.noteType}}</a>
          </mat-cell>>
     </ng-container>
 

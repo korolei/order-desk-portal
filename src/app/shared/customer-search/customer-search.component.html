@@ -1,15 +1,21 @@
-<div class="search-autocomplete">
-  <div class="search-text">
-    <input  placeholder="Search company by name"  class="search-results"
-      type="text"
-      ngxTypeahead
-      [value]="queryResult"
-      [taList]="organizationsData"
-      [taListItemField]="['bp_name']"
-      [taDebounce]="300"
-      [taListItemLabel]="'bp_name'"
-      [taDisplayOnFocus]="true"
-      (keydown)="queryResult=''"
-      (taSelected)="handleHttpResult($event)">
-  </div>
-</div>
+
+  <ng-mat-autocomplete
+    [source]="items"
+    [placeholder]="'Search customer'"
+    [floatLabel] = "'auto'"
+    [displayItemFn]="displayItem"
+    (optionSelected)="handleHttpResult($event)"
+    [showAddNew] = "true"
+    [minChars] = "2"
+    [doPrefetch]= "false"
+    [clearAfterSearch] = "false"
+    [hasProgressBar] = "true"
+    [addNewText] = "'Add new customer'"
+    (createnew)="createNew($event)">
+    >
+  </ng-mat-autocomplete>
+
+
+
+
+

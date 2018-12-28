@@ -16,7 +16,7 @@ import {Contact} from "../shared/models/contact";
 export class CustomerComponent implements OnInit, OnDestroy {
   orgId = 0;
   dataCount=0;
-  maxCount = 6;
+  maxCount = 7;
   installBaseData: InstallBase[] = [];
   caseManagementData: CaseManagement[] = [];
   quickAccountAgingData: QuickAccountAging[] = [];
@@ -63,6 +63,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
   setContact(addressId: number){
     this.currentContact = this.contacts.find(c=> c.address.id === addressId);
     this.currentLocationId = addressId;
+    this.dataCount = 2;
     this.getData();
   }
 

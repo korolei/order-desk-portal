@@ -9,33 +9,10 @@ import {AppService} from "../../app.service";
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
   styles: [
-    `
-      .sidenav-container {
-        height: 100%;
-      }
-
-      `
-      ,
-      `
-      .sidenav {
-        width: 200px;
-      }
-
-      `
-      ,
-      `
-      .mat-toolbar.mat-primary {
-        position: sticky;
-        top: 0;
-      }
-
-      `
-      ,
-      `
-      .husky-logo {
-        margin-left: 1em;
-      }
-    `
+    `.sidenav-container {height: 98%; overflow: hidden; vertical-align: center;}`,
+    `.sidenav {width: 17%;}`,
+    `.mat-toolbar.mat-primary {position: sticky;top: 0;}`,
+    `.husky-logo {margin-left: 1.5em; margin-right: 2em;}`
   ]
 })
 export class SideNavComponent implements OnInit{
@@ -57,8 +34,6 @@ export class SideNavComponent implements OnInit{
       const customerSearchComponent = this.ComponentFactoryResolver.resolveComponentFactory(CustomerSearchComponent);
       this.customerSearchRef = this.customerSearch.createComponent(customerSearchComponent);
     }
-
-    //this.customerSearchRef.instance;
     this.customerSearchRef.changeDetectorRef.detectChanges();
   }
 

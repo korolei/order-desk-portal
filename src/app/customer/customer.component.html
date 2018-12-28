@@ -37,7 +37,7 @@
         <span>{{currentContact.address.country }}, {{ currentContact.address.zip }}</span>
         </div>
         <div fxFlex="0 1 calc(10% - 10px)">
-          <a onclick="alert('View Edit Address form')" mat-button color="primary">Edit Address</a>
+          <a onclick="alert('View Edit Address form')" mat-button >Edit Address</a>
         </div>
       </div>
 </mat-toolbar>
@@ -58,13 +58,14 @@
       </mat-toolbar>
     </ng-container>
   </div>
-<div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutWrap fxLayoutAlign="center" *ngIf="dataCount===maxCount">
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutWrap fxLayoutAlign="center"
+     *ngIf="dataCount===maxCount">
     <ng-container>
       <mat-card fxFlex="1 1 calc(30%)">
       <mat-card-header>
         <mat-card-title>
           Install Base <span *ngIf="installBaseData.length > 0">(5 of {{installBaseData.length}} Machines) |
-          <a onclick="alert('View All screen')" mat-button color="primary">View All</a>
+          <a onclick="alert('View All screen')" mat-button>View All</a>
         </span>
         </mat-card-title>
       </mat-card-header>
@@ -72,11 +73,12 @@
         <app-install-base [installBaseData]="installBaseData"></app-install-base>
       </mat-card-content>
     </mat-card>
-      <mat-card fxFlex="1 2 calc(25%)">
+      <mat-card fxFlex="1 2 calc(29%)">
         <mat-card-header>
           <mat-card-title>
             Quick Account Aging <span *ngIf="quickAccountAgingData.length > 0">
-            <a onclick="alert('View person info screen')" mat-button color="primary"><mat-icon class="icon">account_circle</mat-icon>Linda Olson?</a>
+            <a onclick="alert('View person info screen')" mat-button>
+              <mat-icon class="icon mat-icon">account_circle</mat-icon>Linda Olson?</a>
       </span>
           </mat-card-title>
         </mat-card-header>
@@ -84,11 +86,11 @@
           <app-quick-account-aging [quickAccountAgingData]="quickAccountAgingData"></app-quick-account-aging>
         </mat-card-content>
       </mat-card>
-      <mat-card fxFlex="1 1 calc(44%)">
+      <mat-card fxFlex="1 1 calc(40%)">
       <mat-card-header>
         <mat-card-title>
           Case Management <span *ngIf="caseManagementData.length > 0">(5 of {{caseManagementData.length}} Tickets) |
-            <a onclick="alert('View All screen')" mat-button color="primary">View All</a>
+            <a onclick="alert('View All screen')" mat-button>View All</a>
           </span>
         </mat-card-title>
       </mat-card-header>
@@ -101,7 +103,7 @@
         <mat-card-title>
           Open Quotations
           <span *ngIf="quotationsData.length > 0">(6 of {{quotationsData.length}}) |
-          <a onclick="alert('View All screen')" mat-button color="primary">View All</a>
+          <a onclick="alert('View All screen')" mat-button>View All</a>
         </span>
         </mat-card-title>
       </mat-card-header>
@@ -114,7 +116,7 @@
         <mat-card-title>
           Open Sales Orders
           <span *ngIf="ordersData.length > 0">(6 of {{ordersData.length}}) |
-          <a onclick="alert('View All screen')" mat-button color="primary">View All</a>
+          <a onclick="alert('View All screen')" mat-button>View All</a>
           </span>
         </mat-card-title>
       </mat-card-header>
@@ -130,4 +132,3 @@
   </ng-container>
   </div>
 </div>
-

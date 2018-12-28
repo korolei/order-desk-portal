@@ -12,6 +12,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxTypeaheadModule } from 'ngx-typeahead';
 import {CustomerSearchComponent} from "./customer-search/customer-search.component";
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 
 @NgModule({
   imports: [
@@ -44,10 +45,11 @@ import {CustomerSearchComponent} from "./customer-search/customer-search.compone
     QuoteListComponent,
     MessagesComponent,
     CustomerSearchComponent,
-    AddressPipe
+    AddressPipe,
+    AutocompleteComponent
   ],
   entryComponents: [
     CustomerSearchComponent
-  ],
+  ]
 })
 export class SharedModule { }

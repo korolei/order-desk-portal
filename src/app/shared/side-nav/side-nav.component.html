@@ -1,16 +1,17 @@
-<mat-sidenav-container class="sidenav-container">
+
+<mat-sidenav-container class="flexbox sidenav-container">
   <mat-sidenav
     #drawer
     class="sidenav"
     fixedInViewport="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="push"
+    [mode]="side"
     >
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
       <div mat-list-item style="text-align:left; margin-left: 1em">Sales Functions</div>
-      <a mat-list-item routerLink="" style="margin-left: 1em">Home</a>
-      <a mat-list-item [routerLink]="['/customer']">Customer Account</a>
+      <a mat-list-item routerLink="" style="margin-left: 1em" (click)="drawer.toggle()">Home</a>
+      <a mat-list-item [routerLink]="['/customer']"  (click)="drawer.toggle()">Customer Account</a>
       <a mat-list-item href="#" style="margin-left: 1em">Sales Orders</a>
       <a mat-list-item href="#" style="margin-left: 1em">Quotations</a>
       <a mat-list-item href="#" style="margin-left: 1em">Price Inquiry</a>
@@ -30,19 +31,21 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <img src="../../assets/husky-logo.png" class="husky-logo" aria-label="husky logo">
-       <span class="toolbar-spacer"></span>
-
-         <ng-template #customerSearch></ng-template>
-
+    <mat-toolbar-row>
+      <div  fxFlex="20%" fxLayoutAlign="flex-start" >
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <img src="../../assets/husky-logo.png" class="husky-logo" aria-label="husky logo">
+    </div>
+      <div fxFlex="80%" fxLayoutAlign="flex-start">
+        <ng-template #customerSearch></ng-template><!--This is placeholder for dynamically created component-->
+      </div>
+      </mat-toolbar-row>
     </mat-toolbar>
   </mat-sidenav-content>
 </mat-sidenav-container>

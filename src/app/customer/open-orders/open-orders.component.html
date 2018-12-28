@@ -3,7 +3,7 @@
   <ng-container matColumnDef="quoteNumber">
     <th mat-header-cell *matHeaderCellDef> Quotation </th>
     <td mat-cell *matCellDef="let element">
-      <a onclick="alert('View Notes screen')" mat-button color="primary">{{element.quoteNumber}}</a>
+      <a onclick="alert('View Notes screen')" mat-button>{{element.quoteNumber}}</a>
     </td>
   </ng-container>
 
@@ -29,7 +29,7 @@
 
   <ng-container matColumnDef="quotationStatus">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-    <td mat-cell *matCellDef="let element" [ngClass]="element.quotationStatus === internalHold? 'warn':''"> {{element.quotationStatus}} </td>
+    <td mat-cell *matCellDef="let element" [ngClass]="warn"> {{element.quotationStatus}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
