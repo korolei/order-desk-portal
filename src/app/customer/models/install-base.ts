@@ -8,13 +8,13 @@ export class InstallBase extends  Entity{
   constructor(ib: IInstallBase){
     super(ib.id);
     this.customerId = ib.customerId,
-      this.dateInstalled = ib.dateInstalled,
+      this.dateInstalled = new Date(ib.dateInstalled),
       this.machineNumber = ib.machineNumber
   }
 }
 
 export interface IInstallBase extends IEntity{
   machineNumber: number;
-  dateInstalled: Date;
+  dateInstalled: string;
   customerId:number;
 }

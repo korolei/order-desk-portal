@@ -27,6 +27,8 @@ export class CustomerComponent implements OnInit, OnDestroy {
   locations: Address[]=[];
   currentContact: Contact;
   currentLocationId = 0;
+  installBaseExpanded: boolean = false;
+  caseManagementExpanded: boolean = false;
 
 //TODO: move it to constants
   organizationApi = 'api/organization';
@@ -110,4 +112,5 @@ export class CustomerComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.appService.showCustomerSearch.next(false);
   }
+
 }

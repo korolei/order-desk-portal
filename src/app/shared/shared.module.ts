@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxTypeaheadModule } from 'ngx-typeahead';
 import {CustomerSearchComponent} from "./customer-search/customer-search.component";
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxTypeaheadModule
+    NgxTypeaheadModule,
+    ScrollingModule
   ],
   exports: [
     OrderListComponent,
@@ -34,7 +36,8 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxTypeaheadModule
+    NgxTypeaheadModule,
+    ScrollingModule
   ],
   providers: [
     MessageService

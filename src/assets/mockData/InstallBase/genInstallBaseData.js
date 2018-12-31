@@ -27,51 +27,31 @@ const installBaseSchema = {
             "multipleOf": 7,
             "exclusiveMinimum": true
           },
-          // "customerId": {
-          //   "type": "integer",
-          //   "unique": true,
-          //   "minimum": 6000,
-          //   "maximum": 7000,
-          //   "multipleOf": 7,
-          //   "exclusiveMinimum": true
-          // },
-          // "status": {
-          //   "type": "string",
-          //     "enum": [
-          //       'Active',
-          //       'Resolved',
-          //       'Emergency'
-          //     ]
-          // },
-          // "dateOpened": {
-          //   "type": "string",
-          //   "chance": {
-          //     "date": {
-          //       "string": true,
-          //       "year": 2018
-          //     }
-          //   }
-          // },
-          // "urgency": {
-          //   "type": "string",
-          //     "enum": [
-          //       'Low',
-          //       'Medium',
-          //       'High',
-          //       'Emergency'
-          //       ]
-          // },
-          // "ticketNumber": {
-          //   "type": "integer",
-          //   "unique": true,
-          //   "minimum": 20000,
-          //   "maximum": 30000,
-          //   "multipleOf": 7,
-          //   "exclusiveMinimum": true
-          // },
-          // "note": notesSchema
+          "machineNumber": {
+            "type": "integer",
+            "unique": true,
+            "minimum": 2001140800,
+            "maximum": 2001141000
+           },
+          "dateInstalled": {
+            "type": "string",
+            "chance": {
+              "date": {
+                "string": true,
+                "year": 2018
+              }
+            }
+          },
+          "customerId": {
+            "type": "integer",
+            "unique": true,
+            "minimum": 20000,
+            "maximum": 30000,
+            "multipleOf": 7,
+            "exclusiveMinimum": true
+          }
         },
-        "required": ["id"]
+        "required": ["id","machineNumber","dateInstalled","customerId"]
       }
     }
   },

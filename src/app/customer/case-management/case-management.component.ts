@@ -16,7 +16,7 @@ export class CaseManagementComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<CaseManagement>(this.caseManagement);
-    this.paginator.pageSize = 5;
-    this.dataSource.paginator = this.paginator;
+    //this.paginator.pageSize = 5;
+    //this.dataSource.paginator = this.paginator;
   }
 }

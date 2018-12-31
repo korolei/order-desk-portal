@@ -14,7 +14,7 @@ export class InstallBaseComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<InstallBase>(this.installBaseData);
-    this.paginator.pageSize = 5;
-    this.dataSource.paginator = this.paginator;
+    //this.paginator.pageSize = 5;
+    //this.dataSource.paginator = this.paginator;
   }
 }

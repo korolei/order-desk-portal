@@ -15,7 +15,7 @@
     </div>
   </div>
 
-      <div *ngIf="currentContact" fxFlex="0 2 calc(75% - 10px)" fxLayoutAlign="space-between" class="mat-body-strong">
+  <div *ngIf="currentContact" fxFlex="0 2 calc(75% - 10px)" fxLayoutAlign="space-between" class="mat-body-strong">
         <div fxFlex="0 1 calc(20% - 10px)">
           <span><mat-icon inline>person</mat-icon>
             {{ currentContact.firstName}} {{ currentContact.lastName}}
@@ -61,11 +61,14 @@
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutWrap fxLayoutAlign="center"
      *ngIf="dataCount===maxCount">
     <ng-container>
-      <mat-card fxFlex="1 1 calc(30%)">
+      <mat-card fxFlex="{{ installBaseExpanded ? '1 1 calc(100%)' : '1 1 calc(28%)'}}">
       <mat-card-header>
         <mat-card-title>
           Install Base <span *ngIf="installBaseData.length > 0">(5 of {{installBaseData.length}} Machines) |
-          <a onclick="alert('View All screen')" mat-button>View All</a>
+          <a (click)="installBaseExpanded = !installBaseExpanded" mat-button>
+            <span *ngIf="!installBaseExpanded">Expand</span>
+            <span *ngIf="installBaseExpanded">Collapse</span>
+          </a>
         </span>
         </mat-card-title>
       </mat-card-header>
@@ -73,7 +76,7 @@
         <app-install-base [installBaseData]="installBaseData"></app-install-base>
       </mat-card-content>
     </mat-card>
-      <mat-card fxFlex="1 2 calc(29%)">
+      <mat-card fxFlex="1 2 calc(25%)">
         <mat-card-header>
           <mat-card-title>
             Quick Account Aging <span *ngIf="quickAccountAgingData.length > 0">
@@ -86,11 +89,14 @@
           <app-quick-account-aging [quickAccountAgingData]="quickAccountAgingData"></app-quick-account-aging>
         </mat-card-content>
       </mat-card>
-      <mat-card fxFlex="1 1 calc(40%)">
+      <mat-card fxFlex="{{ caseManagementExpanded ? '1 1 calc(100%)' : '1 1 calc(38%)'}}">
       <mat-card-header>
         <mat-card-title>
           Case Management <span *ngIf="caseManagementData.length > 0">(5 of {{caseManagementData.length}} Tickets) |
-            <a onclick="alert('View All screen')" mat-button>View All</a>
+            <a (click)="caseManagementExpanded = !caseManagementExpanded" mat-button>
+              <span *ngIf="!caseManagementExpanded">Expand</span>
+              <span *ngIf="caseManagementExpanded">Collapse</span>
+            </a>
           </span>
         </mat-card-title>
       </mat-card-header>
@@ -98,7 +104,7 @@
         <app-case-management [caseManagement]="caseManagementData"></app-case-management>
       </mat-card-content>
     </mat-card>
-      <mat-card fxFlex="1 1 calc(49.5%)">
+      <mat-card fxFlex="1 1 calc(48%)">
       <mat-card-header>
         <mat-card-title>
           Open Quotations
@@ -111,7 +117,7 @@
         <app-open-quotes [openQuotes]="quotationsData"></app-open-quotes>
       </mat-card-content>
     </mat-card>
-      <mat-card fxFlex="1 1 calc(49.5%)">
+      <mat-card fxFlex="1 1 calc(48%)">
       <mat-card-header>
         <mat-card-title>
           Open Sales Orders

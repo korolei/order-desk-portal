@@ -10,6 +10,7 @@ import {IOrganization} from "./shared/models/organization";
 import {IContact} from "./shared/models/contact";
 //Json data files
 import CaseManagementJson from "../assets/mockData/CaseManagement/CaseManagement.json";
+import InstallBaseJson from "../assets/mockData/InstallBase/InstallBase.json";
 import OrgDataJson from "../assets/mockData/Organization/Organization.json";
 
 @Injectable({
@@ -24,7 +25,7 @@ export class InMemoryDataService implements InMemoryDbService {
     const quotes: IQuotation[] = this.getQuotes();
     const orders: ISalesOrder[] = this.getOrders();
     const quickAccountAging: QuickAccountAging[] = this.getQuickAccountAging();
-    const installBase: InstallBase[] = this.getInstallBase();
+    const installBase: IInstallBase[] = InstallBaseJson.installBase as IInstallBase[];
     const organization: IOrganization[] = OrgDataJson.organization as IOrganization[];
     const caseManagement: ICaseManagement[] = CaseManagementJson.caseManagement as ICaseManagement[];
     return {quotes, orders, caseManagement, installBase, quickAccountAging, organization};
