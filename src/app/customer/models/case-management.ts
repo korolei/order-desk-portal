@@ -1,32 +1,30 @@
-import {Entity} from "../../shared/models/entity";
-import {Note} from "../../shared/models/note";
-import {INote} from "../../shared/interfaces/inote";
+import {Entity, IEntity} from "../../shared/models/entity";
+import {INote, Note} from "../../shared/models/note";
 
 export class CaseManagement extends  Entity{
-  public customerId:number;
+  public contact_id:number;
   public ticketNumber: number;
   public dateOpened: Date;
   public urgency: string;
   public status: string;
-  public notes: Note[]=[];
+  public note: Note;
 
   constructor(cm: ICaseManagement){
     super(cm.id);
-    this.customerId = cm.customerId,
-      this.ticketNumber = cm.ticketNumber,
-      this.dateOpened = cm.dateOpened,
-      this.urgency = cm.urgency,
-      this.status = cm.status,
-      this.notes = cm.notes.map(n=> new Note(n))
+    this.contact_id = cm.contact_id;
+    this.ticketNumber = cm.ticketNumber;
+    this.dateOpened = new Date(cm.dateOpened);
+    this.urgency = cm.urgency;
+    this.status = cm.status;
+    this.note = cm.note;
   }
 }
 
-export interface ICaseManagement {
-  id: number;
-  customerId:number;
+export interface ICaseManagement extends IEntity{
+  contact_id:number;
   ticketNumber: number;
-  dateOpened: Date;
+  dateOpened: string;
   urgency: string;
   status: string;
-  notes: INote[];
+  note: INote;
 }

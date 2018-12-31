@@ -1,4 +1,4 @@
-import {Entity} from "../../shared/models/entity";
+import {Entity, IEntity} from "../../shared/models/entity";
 
 export class InstallBase extends  Entity{
   public machineNumber: number;
@@ -9,12 +9,11 @@ export class InstallBase extends  Entity{
     super(ib.id);
     this.customerId = ib.customerId,
       this.dateInstalled = ib.dateInstalled,
-      this.customerId = ib.customerId
+      this.machineNumber = ib.machineNumber
   }
 }
 
-export interface IInstallBase {
-  id:number;
+export interface IInstallBase extends IEntity{
   machineNumber: number;
   dateInstalled: Date;
   customerId:number;

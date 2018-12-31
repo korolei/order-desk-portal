@@ -1,44 +1,71 @@
-<div
-  gdAreas="header header | content content"
-  gdGap="6px"
-  gdRows="auto">
-  <div gdArea="header">
-    <ng-container>
-<mat-toolbar>
-  toolbar
-  <mat-grid-list cols="6">
-    <mat-grid-tile colspan="2">
-      Ship-To-Location
-      <mat-select>
-        <mat-option *ngFor="let address of addresses" [value]="address?.id">
-          {{address?.city}}
-        </mat-option>
-      </mat-select>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="4">
-      <mat-icon>person</mat-icon>
-      <span class="mat-title">{{ organizationData?.contact?.firstName}} {{ organizationData?.contact?.lastName}}</span>
-      <span>{{ organizationData?.contact?.title}}</span>
-      <span>{{ organizationData?.bp_name}}</span>
-      <span>{{ customerData?.email}}</span>
-      <span>{{ customerData?.email}}</span>
-      <span>{{ organizationData?.address?.city}},
-        {{ organizationData?.address?.state}}
-        {{ organizationData?.address?.country}} {{ organizationData?.address?.country}} {{ organizationData?.address?.zip}}</span>
-      <a>Edit Address</a>
-    </mat-grid-tile>
-  </mat-grid-list>
+
+<div *ngIf="dataCount > 0">
+<div *ngIf="locations.length > 0" fxLayout="row" fxLayoutGap="10px">
+<mat-toolbar color="accent">
+  <div fxFlex="0 1 calc(25% - 10px)" fxLayoutAlign="start">
+    <div fxFlex="0 1 calc(45% - 10px)" class="mat-body-2">
+      <span>Ship-To-Location: </span>
+    </div>
+    <div fxFlex="0 1 calc(45% - 10px)">
+        <mat-select (selectionChange)="setContact($event.value)" [(value)]="currentLocationId">
+          <mat-option *ngFor="let location of locations" [value]="location.id">
+            {{location.city}}
+          </mat-option>
+        </mat-select>
+    </div>
+  </div>
+
+      <div *ngIf="currentContact" fxFlex="0 2 calc(75% - 10px)" fxLayoutAlign="space-between" class="mat-body-strong">
+        <div fxFlex="0 1 calc(20% - 10px)">
+          <span><mat-icon inline>person</mat-icon>
+            {{ currentContact.firstName}} {{ currentContact.lastName}}
+          </span>
+        </div>
+        <div fxFlex="0 1 calc(10% - 10px)">
+          <span>{{ currentContact.jobTitle}}</span>
+        </div>
+        <div fxFlex="0 1 calc(10% - 10px)">
+          <span>{{ currentContact.email}}</span>
+        </div>
+        <div fxFlex="0 1 calc(10% - 10px)">
+          <span>{{ currentContact.phone}}</span>
+        </div>
+        <div fxFlex="0 1 calc(10% - 10px)">
+        <span>{{currentContact.address.city }}, {{ currentContact.address.state }}</span>
+        </div>
+        <div fxFlex="0 1 calc(10% - 10px)">
+        <span>{{currentContact.address.country }}, {{ currentContact.address.zip }}</span>
+        </div>
+        <div fxFlex="0 1 calc(10% - 10px)">
+          <a onclick="alert('View Edit Address form')" mat-button >Edit Address</a>
+        </div>
+      </div>
 </mat-toolbar>
+  </div>
+<div fxLayout="row wrap" fxLayoutGap="1px" fxLayout.lt-md="column" *ngIf="currentContact">
+    <ng-container>
+      <mat-toolbar>
+          <mat-icon class="mat-24">room</mat-icon>
+          <div fxFlex="20%" fxLayoutAlign="flex-start">
+            <span>{{currentContact.address.street }} - {{ currentContact.address.city }}  {{ currentContact.address.country }}</span>
+          </div>
+          <div fxFlex="80%" fxLayoutAlign="flex-end">
+            <mat-chip-list>
+              <mat-chip [routerLink]="['/quote-detail']">+ New Quote</mat-chip>
+              <mat-chip [routerLink]="['/order']">+ New Order</mat-chip>
+            </mat-chip-list>
+          </div>
+      </mat-toolbar>
     </ng-container>
   </div>
-  <div gdArea="content" fxLayout="row wrap" fxLayoutGap="0px" fxLayoutAlign="flex-start" fxLayout.lt-sm="column"
-       fxLayout.lt-md="column">
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutWrap fxLayoutAlign="center"
+     *ngIf="dataCount===maxCount">
     <ng-container>
-      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="0 1 calc(30%)">
+      <mat-card fxFlex="1 1 calc(30%)">
       <mat-card-header>
         <mat-card-title>
           Install Base <span *ngIf="installBaseData.length > 0">(5 of {{installBaseData.length}} Machines) |
-          <a href="#" [routerLink]="['/customer']" mat-button>View All</a>
+          <a onclick="alert('View All screen')" mat-button>View All</a>
         </span>
         </mat-card-title>
       </mat-card-header>
@@ -46,11 +73,12 @@
         <app-install-base [installBaseData]="installBaseData"></app-install-base>
       </mat-card-content>
     </mat-card>
-      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="0 2 calc(25%)">
+      <mat-card fxFlex="1 2 calc(29%)">
         <mat-card-header>
           <mat-card-title>
             Quick Account Aging <span *ngIf="quickAccountAgingData.length > 0">
-        <a href="#" [routerLink]="['/customer']" mat-button><mat-icon class="icon">account_circle</mat-icon>???</a>
+            <a onclick="alert('View person info screen')" mat-button>
+              <mat-icon class="icon mat-icon">account_circle</mat-icon>Linda Olson?</a>
       </span>
           </mat-card-title>
         </mat-card-header>
@@ -58,11 +86,11 @@
           <app-quick-account-aging [quickAccountAgingData]="quickAccountAgingData"></app-quick-account-aging>
         </mat-card-content>
       </mat-card>
-      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="0 3 calc(43%)">
+      <mat-card fxFlex="1 1 calc(40%)">
       <mat-card-header>
         <mat-card-title>
           Case Management <span *ngIf="caseManagementData.length > 0">(5 of {{caseManagementData.length}} Tickets) |
-            <a href="#" [routerLink]="['/customer']" mat-button>View All</a>
+            <a onclick="alert('View All screen')" mat-button>View All</a>
           </span>
         </mat-card-title>
       </mat-card-header>
@@ -70,26 +98,37 @@
         <app-case-management [caseManagement]="caseManagementData"></app-case-management>
       </mat-card-content>
     </mat-card>
-      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="1 1 calc(48%)">
+      <mat-card fxFlex="1 1 calc(49.5%)">
       <mat-card-header>
         <mat-card-title>
-          Open Quotations <span *ngIf="quotationsData.length > 0">(6 of {{quotationsData.length}})</span>
+          Open Quotations
+          <span *ngIf="quotationsData.length > 0">(6 of {{quotationsData.length}}) |
+          <a onclick="alert('View All screen')" mat-button>View All</a>
+        </span>
         </mat-card-title>
       </mat-card-header>
-      <mat-card-content *ngIf="caseManagementData.length > 0">
-
+      <mat-card-content *ngIf="quotationsData.length > 0">
+        <app-open-quotes [openQuotes]="quotationsData"></app-open-quotes>
       </mat-card-content>
     </mat-card>
-      <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="100%" fxFlex="1 2 calc(48%)">
+      <mat-card fxFlex="1 1 calc(49.5%)">
       <mat-card-header>
         <mat-card-title>
-          Open Sales Orders <span *ngIf="ordersData.length > 0">(6 of {{ordersData.length}})</span>
+          Open Sales Orders
+          <span *ngIf="ordersData.length > 0">(6 of {{ordersData.length}}) |
+          <a onclick="alert('View All screen')" mat-button>View All</a>
+          </span>
         </mat-card-title>
       </mat-card-header>
       <mat-card-content *ngIf="ordersData.length > 0">
-
+        <app-open-orders [openOrdersData]="ordersData"></app-open-orders>
       </mat-card-content>
     </mat-card>
     </ng-container>
+  <ng-container *ngIf="dataCount < maxCount">
+    <div fxLayout="row" fxLaoutAlign="center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-container>
   </div>
 </div>

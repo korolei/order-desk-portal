@@ -1,6 +1,26 @@
 import {Entity} from "./entity";
 import {IQuotation, Quotation} from "./quotation";
 
+export interface ISalesOrder {
+  id: number;
+  creationDate: Date;
+  currencyCode: string;
+  customerPO: string;
+  deliveryAddress: string;
+  plannedDeliveryDate: Date;
+  plannedReceiptDate: Date;
+  postalAddress: string;
+  quotationStatus: string;
+  quoteNumber: string;
+  shiptoBP: string;
+  shiptoBPName: string;
+  soldtoBP: string;
+  soldtoBPName: string;
+  totalUSD: number;
+  totalUSDSpecified: boolean;
+  quotationLines: IQuotation[];
+}
+
 export class SalesOrder extends Entity{
   public creationDate: Date;
   public currencyCode: string;
@@ -16,7 +36,7 @@ export class SalesOrder extends Entity{
   public soldToBP: string;
   public soldToBPName: string;
   public totalUSD: number;
-  public totalUSDSpecified: number;
+  public totalUSDSpecified: boolean;
   public quotationLines: Quotation[] = [];
 
   constructor(so: ISalesOrder)
@@ -37,26 +57,7 @@ export class SalesOrder extends Entity{
       this.soldToBPName = so.soldtoBPName;
       this.totalUSD = so.totalUSD;
       this.totalUSDSpecified = so.totalUSDSpecified;
-      this.quotationLines = so.quotationLines.map(ql => new Quotation(ql));
+      this.quotationLines = so.quotationLines ? so.quotationLines.map(ql => new Quotation(ql)): [];
     }
 }
 
-export interface ISalesOrder {
-  id: number;
-  creationDate: Date;
-  currencyCode: string;
-  customerPO: string;
-  deliveryAddress: string;
-  plannedDeliveryDate: Date;
-  plannedReceiptDate: Date;
-  postalAddress: string;
-  quotationStatus: string;
-  quoteNumber: string;
-  shiptoBP: string;
-  shiptoBPName: string;
-  soldtoBP: string;
-  soldtoBPName: string;
-  totalUSD: number;
-  totalUSDSpecified: number;
-  quotationLines: IQuotation[];
-}

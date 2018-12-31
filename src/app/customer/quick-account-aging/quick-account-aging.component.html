@@ -1,13 +1,14 @@
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
   <ng-container matColumnDef="agingTerm">
     <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>>
     <mat-cell *matCellDef="let element"> {{element.agingTerm}} </mat-cell>>
   </ng-container>
   <ng-container matColumnDef="amount">
-    <mat-header-cell *matHeaderCellDef> {{totalAmount | currency}} </mat-header-cell>>
-    <mat-cell *matCellDef="let element"> {{element.amount | currency}} </mat-cell>>
+    <mat-header-cell *matHeaderCellDef> {{totalAmount | currency}} {{totalCurrencyCode}}</mat-header-cell>>
+    <mat-cell *matCellDef="let element"> {{element.amount | currency}} {{element.currencyCode}}</mat-cell>>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>>
 </mat-table>
+<mat-paginator fxShow="false"></mat-paginator>

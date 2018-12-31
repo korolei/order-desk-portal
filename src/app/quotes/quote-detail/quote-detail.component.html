@@ -4,7 +4,7 @@
       Quote # {{quote.id}}
     </span>
     <span class="sale-details-header-status">
-      Status: <span style="font-size: smaller; font-weight: lighter">{{quote.status}}</span>
+      <!--Status: <span style="font-size: smaller; font-weight: lighter">{{quote.status}}</span>-->
     </span>
     <span class="toolbar-spacer"></span>
     <mat-chip-list>
@@ -26,20 +26,20 @@
         <mat-card-content class="dashboard-card-content">
           <section class="mat-typography">
           <h3>Ship-To Address </h3>
-          <p>{{quote?.customer?.organization?.shipTo?.name}}</p>
-          <h3>Ship-To BP </h3>
-          <p>{{quote?.customer?.organization?.bp_name}}</p>
-          <h3>Address </h3>
-          <p>{{quote?.customer?.organization?.shipTo | address}}</p>
-          <!-- <p>{{quote?.customer?.organization?.address?.street}} , 
-             {{quote?.customer?.organization?.address?.zip}} 
-             {{quote?.customer?.organization?.address?.city}} ,
-             {{quote?.customer?.organization?.address?.state}}
-          </p> -->
+            <!--<p>{{quote?.customer?.organization?.shipTo?.name}}</p>
+            <h3>Ship-To BP </h3>
+            <p>{{quote?.customer?.organization?.bp_name}}</p>
+            <h3>Address </h3>
+            <p>{{quote?.customer?.organization?.shipTo | address}}</p>
+       <p>{{quote?.customer?.organization?.address?.street}} ,
+               {{quote?.customer?.organization?.address?.zip}}
+               {{quote?.customer?.organization?.address?.city}} ,
+               {{quote?.customer?.organization?.address?.state}}
+            </p> -->
           <h3>Ship-To Contact </h3>
           <p>
-            {{quote?.customer?.organization?.contact?.firstName}}
-            {{quote?.customer?.organization?.contact?.lastName}}
+            <!--{{quote?.customer?.organization?.contact?.firstName}}-->
+            <!--{{quote?.customer?.organization?.contact?.lastName}}-->
           </p>
           </section>
         </mat-card-content>
@@ -55,11 +55,11 @@
           <mat-card-content class="dashboard-card-content">
             <section class="mat-typography">
             <h3>Sold-To Address </h3>
-            <p>{{quote?.customer?.organization?.address?.name}}</p>
-            <h3>Ship-To BP </h3>
-            <p>{{quote?.customer?.organization?.bp_name}}</p>
-            <h3>Address </h3>
-            <p>{{quote?.customer?.organization?.address | address}}</p>
+            <!--<p>{{quote?.customer?.organization?.address?.name}}</p>-->
+            <!--<h3>Ship-To BP </h3>-->
+            <!--<p>{{quote?.customer?.organization?.bp_name}}</p>-->
+            <!--<h3>Address </h3>-->
+            <!--<p>{{quote?.customer?.organization?.address | address}}</p>-->
             <h3>Ship-To Contact </h3>
             <p>Mike DeCampo</p>
             <mat-grid-list class="dashboard-card-grid" cols="3" rowHeight="100px">
@@ -104,7 +104,7 @@
           <mat-card-content class="dashboard-card-content">
               <section class="mat-typography">
                 <h3>Requested Date</h3>
-                <p>{{quote.quotedOn | date: shortDate}}</p>
+                <!--<p>{{quote.quotedOn | date: shortDate}}</p>-->
               </section>
               <section>
                 <div class="item-list-header">Items:</div>

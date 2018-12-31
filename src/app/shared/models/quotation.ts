@@ -1,6 +1,26 @@
 import {Entity} from "./entity";
 import {IOrderItem, OrderItem} from "./order-item";
 
+export interface IQuotation {
+  id: number;
+  creationDate: Date;
+  currencyCode: string;
+  customerPO: string;
+  deliveryAddress: string;
+  plannedDeliveryDate: Date;
+  plannedReceiptDate: Date;
+  postalAddress: string;
+  quotationStatus: string;
+  quoteNumber: string;
+  shiptoBP: string;
+  shiptoBPName: string;
+  soldtoBP: string;
+  soldtoBPName: string;
+  totalUSD: number;
+  totalUSDSpecified: boolean;
+  quotationLines: IOrderItem[];
+}
+
 export class Quotation extends Entity{
   public creationDate: Date;
   public currencyCode: string;
@@ -37,27 +57,8 @@ export class Quotation extends Entity{
       this.soldToBPName = q.soldtoBPName;
       this.totalUSD = q.totalUSD;
       this.totalUSDSpecified = q.totalUSDSpecified;
-      this.quotationLines = q.quotationLines.map(ql => new OrderItem(ql));
+      this.quotationLines = q.quotationLines ? q.quotationLines.map(ql => new OrderItem(ql)) : [];
     }
 }
 
-export interface IQuotation {
-  id: number;
-  creationDate: Date;
-  currencyCode: string;
-  customerPO: string;
-  deliveryAddress: string;
-  plannedDeliveryDate: Date;
-  plannedReceiptDate: Date;
-  postalAddress: string;
-  quotationStatus: string;
-  quoteNumber: string;
-  shiptoBP: string;
-  shiptoBPName: string;
-  soldtoBP: string;
-  soldtoBPName: string;
-  totalUSD: number;
-  totalUSDSpecified: boolean;
-  quotationLines: IOrderItem[];
-}
 

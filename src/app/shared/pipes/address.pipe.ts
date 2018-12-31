@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { IAddress } from '../shared/interfaces/iaddress';
+import {Pipe, PipeTransform} from '@angular/core';
+import {IAddress} from "../models/address";
 
 @Pipe({
   name: 'address'

@@ -8,27 +8,33 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
   MatSelectModule,
   MatSidenavModule,
   MatSortModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatAutocompleteModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatProgressBarModule
 } from '@angular/material';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   imports: [
-    MatChipsModule,MatSelectModule,
+    MatChipsModule,MatSelectModule, MatPaginatorModule,
     MatToolbarModule, MatButtonModule, MatIconModule, MatTableModule,
     MatListModule, MatGridListModule, MatCardModule, MatMenuModule,
-    MatExpansionModule, MatSidenavModule, MatSortModule, MatFormFieldModule, MatInputModule
+    MatExpansionModule, MatSidenavModule, MatSortModule, MatFormFieldModule, MatInputModule,
+    MatProgressSpinnerModule,MatAutocompleteModule,MatProgressBarModule
   ],
   exports: [
-    MatChipsModule,MatSelectModule,
+    MatChipsModule,MatSelectModule, MatPaginatorModule,
     MatToolbarModule, MatButtonModule, MatIconModule, MatTableModule,
     MatListModule, MatGridListModule, MatCardModule, MatMenuModule,
-    MatExpansionModule, MatSidenavModule, MatSortModule, MatFormFieldModule, MatInputModule
+    MatExpansionModule, MatSidenavModule, MatSortModule, MatFormFieldModule, MatInputModule,
+    MatProgressSpinnerModule,MatAutocompleteModule,MatProgressBarModule
   ]
 })
 export class MaterialModule { }
