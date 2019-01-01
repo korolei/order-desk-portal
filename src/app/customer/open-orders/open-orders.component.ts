@@ -14,14 +14,14 @@ export class OpenOrdersComponent implements OnInit {
   ];
   internalHold = 'Internal Hold';
   dataSource: MatTableDataSource<SalesOrder>;
-  //@ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor() { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<SalesOrder>(this.openOrdersData);
-    //this.paginator.pageSize = 6;
-    //this.dataSource.paginator = this.paginator;
+    this.paginator.pageSize = 6;
+    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 

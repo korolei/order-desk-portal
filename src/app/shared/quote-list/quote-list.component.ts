@@ -1,7 +1,9 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {Quotation} from '../models/quotation';
-import {QuotesService} from 'src/app/quotes/quotes.service';
+import {IQuotation, Quotation} from '../models/quotation';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {AppService} from "../../app.service";
+import {AppSettings} from "../app-settings";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-quote-list',
@@ -44,29 +46,28 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 export class QuoteListComponent implements OnInit {
 
   @Input() showOrders: boolean;
-  list: Quotation[];
-  count: number;
-  displayColumns: string[];
+  displayedColumns: string[] =       [
+    'quoteNumber', 'soldToBPName', 'soldToBP',
+    'totalUSD', 'creationDate', 'quotationStatus'
+  ];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<Quotation> = new MatTableDataSource<Quotation>();
-  constructor(private quoteService: QuotesService) {
+  public isLoading = new BehaviorSubject<boolean>(false);
 
-  }
+  constructor(private appService: AppService) {}
 
   ngOnInit() {
+    this.isLoading.next(true);
+    this.appService.getData<IQuotation[]>(AppSettings.openQuotationsApi)
+      .subscribe(data => {
+        this.dataSource.data = (data as IQuotation[])
+        .map(item => new Quotation(item as IQuotation));
+        this.isLoading.next(false);
+      });
+
+    this.paginator.pageSize = 10;
+    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.displayColumns =
-      [
-        'id', 'customer.name', 'customer.id',
-        'total', 'quotedOn',
-        'status'
-      ];
-      this.quoteService.getQuotes()
-        .subscribe(quotes => {
-          this.list = quotes;
-          this.count = this.list.length;
-          this.dataSource.data = this.list;
-        });
     }
 }

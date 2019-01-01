@@ -31,8 +31,8 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <div  fxFlex="20%" fxLayoutAlign="flex-start" >
+    <mat-toolbar-row fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutWrap fxLayoutAlign="stretch">
+      <div  fxFlex="20%">
         <button
           type="button"
           aria-label="Toggle sidenav"
@@ -42,7 +42,7 @@
         </button>
         <img src="../../assets/husky-logo.png" class="husky-logo" aria-label="husky logo">
     </div>
-      <div fxFlex="80%" fxLayoutAlign="flex-start">
+      <div fxFlex="70%">
         <ng-template #customerSearch></ng-template><!--This is placeholder for dynamically created component-->
       </div>
       </mat-toolbar-row>

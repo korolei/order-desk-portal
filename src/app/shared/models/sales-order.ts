@@ -4,21 +4,21 @@ import {IQuotation, Quotation} from "./quotation";
 export interface ISalesOrder {
   id: number;
   creationDate: Date;
-  currencyCode: string;
-  customerPO: string;
-  deliveryAddress: string;
-  plannedDeliveryDate: Date;
-  plannedReceiptDate: Date;
-  postalAddress: string;
-  quotationStatus: string;
-  quoteNumber: string;
-  shiptoBP: string;
-  shiptoBPName: string;
-  soldtoBP: string;
-  soldtoBPName: string;
-  totalUSD: number;
-  totalUSDSpecified: boolean;
-  quotationLines: IQuotation[];
+  currencyCode?: string;
+  customerPO?: string;
+  deliveryAddress?: string;
+  plannedDeliveryDate?: Date;
+  plannedReceiptDate?: Date;
+  postalAddress?: string;
+  quotationStatus?: string;
+  quoteNumber?: string;
+  shiptoBP?: string;
+  shiptoBPName?: string;
+  soldtoBP?: string;
+  soldtoBPName?: string;
+  totalUSD?: number;
+  totalUSDSpecified?: boolean;
+  quotationLines?: IQuotation[];
 }
 
 export class SalesOrder extends Entity{

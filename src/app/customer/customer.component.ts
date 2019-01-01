@@ -8,6 +8,7 @@ import {IQuotation, Quotation} from "../shared/models/quotation";
 import {AppService} from "../app.service";
 import {Address} from "../shared/models/address";
 import {Contact} from "../shared/models/contact";
+import {AppSettings} from "../shared/app-settings";
 
 @Component({
   selector: 'app-customer',
@@ -30,14 +31,6 @@ export class CustomerComponent implements OnInit, OnDestroy {
   installBaseExpanded: boolean = false;
   caseManagementExpanded: boolean = false;
 
-//TODO: move it to constants
-  organizationApi = 'api/organization';
-  installBaseApi = 'api/installBase';
-  quickAccountAgingApi = 'api/quickAccountAging';
-  caseManagementApi = 'api/caseManagement';
-  openQuotationsApi = 'api/quotes';
-  openSalesOrderApi = 'api/orders';
-
   constructor(private appService: AppService) { }
 
   ngOnInit() {
@@ -54,7 +47,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
 
   getOrganizationData(orgId: number){
     //organization data
-    this.appService.getData<IOrganization>(`${this.organizationApi}/${orgId}`)
+    this.appService.getData<IOrganization>(`${AppSettings.organizationApi}/${orgId}`)
       .subscribe(data => {
         this.organizationData = new Organization(data as IOrganization);
         this.dataCount = this.organizationData !== undefined ? this.dataCount + 1 : this.dataCount=this.maxCount;
@@ -72,7 +65,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
   getData(){
 
     //quick account aging data
-    this.appService.getData<IQuickAccountAging[]>(`${this.quickAccountAgingApi}`)
+    this.appService.getData<IQuickAccountAging[]>(`${AppSettings.quickAccountAgingApi}`)
       .subscribe(data => {
         this.quickAccountAgingData = (data as IQuickAccountAging[])
         .map(item => new QuickAccountAging(item as IQuickAccountAging));
@@ -80,7 +73,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
       });
 
     //case management data
-    this.appService.getData<ICaseManagement[]>(this.caseManagementApi)
+    this.appService.getData<ICaseManagement[]>(AppSettings.caseManagementApi)
       .subscribe(data => {
         this.caseManagementData = (data as ICaseManagement[])
         .map(item => new CaseManagement(item as ICaseManagement));
@@ -88,21 +81,21 @@ export class CustomerComponent implements OnInit, OnDestroy {
       });
 
     // install base data
-    this.appService.getData<IInstallBase[]>(this.installBaseApi)
+    this.appService.getData<IInstallBase[]>(AppSettings.installBaseApi)
       .subscribe(data => {this.installBaseData = (data as IInstallBase[])
         .map(item => new InstallBase(item as IInstallBase));
         this.dataCount = this.dataCount + 1;
       });
 
     //open quotation data
-    this.appService.getData<IQuotation[]>(this.openQuotationsApi)
+    this.appService.getData<IQuotation[]>(AppSettings.openQuotationsApi)
       .subscribe(data => {this.quotationsData = (data as IQuotation[])
         .map(item => new Quotation(item as IQuotation));
         this.dataCount = this.dataCount + 1;
       });
 
     //open sales orders
-    this.appService.getData<ISalesOrder[]>(this.openSalesOrderApi)
+    this.appService.getData<ISalesOrder[]>(AppSettings.openSalesOrderApi)
       .subscribe(data => {this.ordersData = (data as ISalesOrder[])
         .map(item => new SalesOrder(item as ISalesOrder));
         this.dataCount = this.dataCount + 1;

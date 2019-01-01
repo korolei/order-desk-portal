@@ -53,7 +53,7 @@ export class Quotation extends Entity{
       this.quoteNumber = q.quoteNumber;
       this.shipToBP = q.shiptoBP;
       this.shipToBPName = q.shiptoBPName;
-      this.soldToBP = q.shiptoBP;
+      this.soldToBP = q.soldtoBP;
       this.soldToBPName = q.soldtoBPName;
       this.totalUSD = q.totalUSD;
       this.totalUSDSpecified = q.totalUSDSpecified;

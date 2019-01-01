@@ -1,5 +1,8 @@
 
 <div *ngIf="dataCount > 0">
+  <mat-toolbar color="warn" class="mat-body-2">
+        <span>{{organizationData.bp_name}}</span>
+  </mat-toolbar>
 <div *ngIf="locations.length > 0" fxLayout="row" fxLayoutGap="10px">
 <mat-toolbar color="accent">
   <div fxFlex="0 1 calc(25% - 10px)" fxLayoutAlign="start">
@@ -8,6 +11,7 @@
     </div>
     <div fxFlex="0 1 calc(45% - 10px)">
         <mat-select (selectionChange)="setContact($event.value)" [(value)]="currentLocationId">
+          <mat-option [value]="">Select Location</mat-option>
           <mat-option *ngFor="let location of locations" [value]="location.id">
             {{location.city}}
           </mat-option>

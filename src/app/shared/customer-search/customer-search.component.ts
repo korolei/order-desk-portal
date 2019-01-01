@@ -9,9 +9,8 @@ import {AppService} from "../../app.service";
 })
 export class CustomerSearchComponent implements OnInit, OnDestroy{
   organizationApi = 'api/organization';
-  private queryResult = '';
   items: Organization[]=[];
-  displayItem = (x: Organization) => x.bp_name.toUpperCase() + ' #:' + x.contacts[0].bp_number;
+  displayItem = (x: Organization) => x.bp_name.toUpperCase() + ', BP#: ' + x.contacts[0].bp_number;
 
   constructor(private appService: AppService) { }
 
@@ -27,7 +26,6 @@ export class CustomerSearchComponent implements OnInit, OnDestroy{
   }
 
   public handleHttpResult(result: Organization) {
-    this.queryResult = result.bp_name;
     this.appService.onCustomerFound.next(result.id);
   }
 

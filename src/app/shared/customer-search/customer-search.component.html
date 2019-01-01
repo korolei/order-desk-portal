@@ -1,21 +1,23 @@
 
-  <ng-mat-autocomplete
-    [source]="items"
-    [placeholder]="'Search customer'"
-    [floatLabel] = "'auto'"
-    [displayItemFn]="displayItem"
-    (optionSelected)="handleHttpResult($event)"
-    [showAddNew] = "true"
-    [minChars] = "2"
-    [doPrefetch]= "false"
-    [clearAfterSearch] = "true"
-    [hasProgressBar] = "true"
-    [addNewText] = "'Add new customer'"
-    [hasSearchButton]="true"
-    [doPrefetch]="true"
-    (createnew)="createNew($event)">
-    >
-  </ng-mat-autocomplete>
+  <div  fxFlex="0 2 calc(40%)">
+    <ng-mat-autocomplete
+      [source]="items"
+      [placeholder]="'Search customer'"
+      [floatLabel] = "'auto'"
+      [displayItemFn]="displayItem"
+      (optionSelected)="handleHttpResult($event)"
+      [showAddNew] = "true"
+      [minChars] = "2"
+      [doPrefetch]= "false"
+      [clearAfterSearch] = "true"
+      [hasProgressBar] = "true"
+      [addNewText] = "'Add new customer'"
+      [hasSearchButton]="true"
+      [doPrefetch]="true"
+      (createnew)="createNew($event)">
+    </ng-mat-autocomplete>
+  </div>
+
 
 
 

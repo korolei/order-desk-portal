@@ -12,17 +12,16 @@ export class OpenQuotesComponent implements OnInit {
     'quoteNumber', 'soldToBPName', 'soldToBP',
     'totalUSD', 'creationDate', 'quotationStatus'
   ];
-  internalHold = 'Modified';
   dataSource: MatTableDataSource<Quotation>;
-  //@ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor() { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<Quotation>(this.openQuotes);
-    //this.paginator.pageSize = 6;
-    //this.dataSource.paginator = this.paginator;
+    this.paginator.pageSize = 6;
+    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 }
