@@ -10,7 +10,6 @@ import {RouterModule} from '@angular/router';
 import {AddressPipe} from "./pipes/address.pipe";
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxTypeaheadModule } from 'ngx-typeahead';
 import {CustomerSearchComponent} from "./customer-search/customer-search.component";
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -23,7 +22,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxTypeaheadModule,
     ScrollingModule
   ],
   exports: [
@@ -36,7 +34,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxTypeaheadModule,
     ScrollingModule
   ],
   providers: [
