@@ -22,5 +22,10 @@ export class Address extends Entity{
       this.zip = a.zip;
       this.country = a.country;
   }
+
+  toString(): string
+  {
+    return this.street + "," + this.zip + "," + this.city + "," + this.state + "," + this.country;
+  }
 }
 
