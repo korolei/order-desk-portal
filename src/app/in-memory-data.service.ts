@@ -5,12 +5,13 @@ import {IQuickAccountAging, QuickAccountAging} from "./customer/models/quick-acc
 import {IInstallBase, InstallBase} from "./customer/models/install-base";
 import {IPerson} from "./shared/models/person";
 import {IQuotation} from "./shared/models/quotation";
-import {ISalesOrder} from "./shared/models/sales-order";
+import {ISalesOrder, SalesOrder} from "./shared/models/sales-order";
 import {IOrganization} from "./shared/models/organization";
 import {IContact} from "./shared/models/contact";
 //Json data files
 import CaseManagementJson from "../assets/mockData/CaseManagement/CaseManagement.json";
 import OrgDataJson from "../assets/mockData/Organization/Organization.json";
+import OrderJson from "../assets/order.json";
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
     const quotes: IQuotation[] = this.getQuotes();
-    const orders: ISalesOrder[] = this.getOrders();
+    const orders: ISalesOrder[] = OrderJson.orders as ISalesOrder[];
     const quickAccountAging: QuickAccountAging[] = this.getQuickAccountAging();
     const installBase: InstallBase[] = this.getInstallBase();
     const organization: IOrganization[] = OrgDataJson.organization as IOrganization[];

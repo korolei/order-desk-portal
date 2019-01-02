@@ -4,64 +4,64 @@ import { Address } from "./address";
 import { IOrderItem, OrderItem } from "./order-item";
 
 export interface ISalesOrder {
-  id: number;
-  creationDate: Date;
+  id?: number;
+  //creationDate: Date;
   currencyCode: string;
-  customerPO: string;
+  customerPO: number;
   deliveryAddress: Address;
   owner: string;
-  plannedDeliveryDate: Date;
-  plannedReceiptDate: Date;
+  plannedDeliveryDate: string;
+  plannedReceiptDate: string;
   postalAddress: Address;
-  quotationStatus: string;
-  quoteNumber: string;
-  shiptoBP: string;
+  orderStatus: string;
+  orderNumber: number;
+  shiptoBP: number;
   shiptoBPName: string;
-  soldtoBP: string;
+  soldtoBP: number;
   soldtoBPName: string;
-  totalUSD?: number;
+  orderTotalUSD?: number;
   warn?: boolean;
-  quotationLines: IOrderItem[];
+  salesOrderLines: IOrderItem[];
 }
 
 export class SalesOrder extends Entity{
-  public creationDate: Date;
+  //public creationDate: Date;
   public currencyCode: string;
-  public customerPO: string;
+  public customerPO: number;
   public deliveryAddress: Address;
   public owner: string;
   public plannedDeliveryDate: Date;
   public plannedReceiptDate: Date;
   public postalAddress: Address;
-  public quotationStatus: string;
-  public quoteNumber: string;
-  public shipToBP: string;
-  public shipToBPName: string;
-  public soldToBP: string;
-  public soldToBPName: string;
-  public totalUSD?: number;
+  public orderStatus: string;
+  public orderNumber: number;
+  public shiptoBP: number;
+  public shiptoBPName: string;
+  public soldtoBP: number;
+  public soldtoBPName: string;
+  public orderTotalUSD?: number;
   public warn?: boolean;
-  public quotationLines: OrderItem[] = [];
+  public salesOrderLines: OrderItem[] = [];
 
   constructor(so: ISalesOrder)
     {
-      super(so.id);
-      this.creationDate = so.creationDate;
+      super(so.id?so.id:so.orderNumber);
+      //this.creationDate = so.creationDate;
       this.currencyCode = so.currencyCode;
       this.customerPO = so.customerPO;
       this.deliveryAddress = so.deliveryAddress;
-      this.plannedDeliveryDate = so.plannedDeliveryDate;
-      this.plannedReceiptDate = so.plannedReceiptDate;
+      this.plannedDeliveryDate = new Date(so.plannedDeliveryDate);
+      this.plannedReceiptDate = new Date(so.plannedReceiptDate);
       this.postalAddress = so.postalAddress;
-      this.quotationStatus = so.quotationStatus;
-      this.quoteNumber = so.quoteNumber;
-      this.shipToBP = so.shiptoBP;
-      this.shipToBPName = so.shiptoBPName;
-      this.soldToBP = so.soldtoBP;
-      this.soldToBPName = so.soldtoBPName;
-      this.totalUSD = so.totalUSD;
+      this.orderStatus = so.orderStatus;
+      this.orderNumber = so.orderNumber;
+      this.shiptoBP = so.shiptoBP;
+      this.shiptoBPName = so.shiptoBPName;
+      this.soldtoBP = so.soldtoBP;
+      this.soldtoBPName = so.soldtoBPName;
+      this.orderTotalUSD = so.orderTotalUSD;
       this.warn = so.warn;
-      this.quotationLines = so.quotationLines ? so.quotationLines.map(ql => new OrderItem(ql)): [];
+      this.salesOrderLines = so.salesOrderLines ? so.salesOrderLines.map(ql => new OrderItem(ql)): [];
     }
 }
 

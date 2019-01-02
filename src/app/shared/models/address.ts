@@ -23,9 +23,9 @@ export class Address extends Entity{
       this.country = a.country;
   }
 
-  toString(): string
-  {
-    return this.street + "," + this.zip + "," + this.city + "," + this.state + "," + this.country;
-  }
+  // toString(): string
+  // {
+  //   return this.street + "," + this.zip + "," + this.city + "," + this.state + "," + this.country;
+  // }
 }
 

@@ -3,20 +3,20 @@ import {IOrderItem, OrderItem} from "./order-item";
 import { Address } from "./address";
 
 export interface IQuotation {
-  id: number;
-  creationDate: Date;
+  id?: number;
+  creationDate: string;
   currencyCode: string;
-  customerPO: string;
+  customerPO: number;
   deliveryAddress: Address;
   owner: string;
-  plannedDeliveryDate: Date;
-  plannedReceiptDate: Date;
+  plannedDeliveryDate: string;
+  plannedReceiptDate: string;
   postalAddress: Address;
   quotationStatus: string;
-  quoteNumber: string;
-  shiptoBP: string;
+  quoteNumber: number;
+  shiptoBP: number;
   shiptoBPName: string;
-  soldtoBP: string;
+  soldtoBP: number;
   soldtoBPName: string;
   totalUSD?: number;
   warn?: boolean;
@@ -26,17 +26,17 @@ export interface IQuotation {
 export class Quotation extends Entity{
   public creationDate: Date;
   public currencyCode: string;
-  public customerPO: string;
+  public customerPO: number;
   public deliveryAddress: Address;
   public owner: string;
   public plannedDeliveryDate: Date;
   public plannedReceiptDate: Date;
   public postalAddress: Address;
   public quotationStatus: string;
-  public quoteNumber: string;
-  public shipToBP: string;
+  public quoteNumber: number;
+  public shipToBP: number;
   public shipToBPName: string;
-  public soldToBP: string;
+  public soldToBP: number;
   public soldToBPName: string;
   public totalUSD?: number;
   public warn?: boolean;
@@ -44,13 +44,13 @@ export class Quotation extends Entity{
 
     constructor(q: IQuotation)
     {
-      super(q.id);
-      this.creationDate = q.creationDate;
+      super(q.id?q.id:q.quoteNumber);
+      this.creationDate = new Date(q.creationDate);
       this.currencyCode = q.currencyCode;
       this.customerPO = q.customerPO;
       this.deliveryAddress = q.deliveryAddress;
-      this.plannedDeliveryDate = q.plannedDeliveryDate;
-      this.plannedReceiptDate = q.plannedReceiptDate;
+      this.plannedDeliveryDate = new Date(q.plannedDeliveryDate);
+      this.plannedReceiptDate = new Date(q.plannedReceiptDate);
       this.postalAddress = q.postalAddress;
       this.quotationStatus = q.quotationStatus;
       this.quoteNumber = q.quoteNumber;
