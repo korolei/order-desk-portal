@@ -48,7 +48,7 @@ export class QuoteListComponent implements OnInit {
   count: number;
   displayColumns: string[];
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  //@ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<Quotation> = new MatTableDataSource<Quotation>();
   constructor(private quoteService: QuotesService) {
 
