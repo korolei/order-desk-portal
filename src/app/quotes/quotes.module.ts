@@ -4,7 +4,7 @@ import { QuotesService } from "./quotes.service";
 import { QuotesComponent } from './quotes/quotes.component';
 import { QuoteDetailComponent } from './quote-detail/quote-detail.component';
 import { SharedModule } from '../shared/shared.module';
-import { MaterialModule } from '../shared/modules/material.module';
+import { MaterialModule } from '../core/material.module';
 
 
 @NgModule({

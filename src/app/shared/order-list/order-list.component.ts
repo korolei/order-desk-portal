@@ -1,9 +1,8 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ISalesOrder, SalesOrder} from '../models/sales-order';
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
-import {AppSettings} from "../app-settings";
+import {AppSettings} from "../../core/app-settings";
 import {AppService} from "../../app.service";
-import {Quotation} from "../models/quotation";
 import {BehaviorSubject} from "rxjs";
 
 @Component({

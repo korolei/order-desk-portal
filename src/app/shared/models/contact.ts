@@ -10,6 +10,7 @@ export interface IContact extends IEntity {
   lastName: string;
   phone: string;
   jobTitle: string;
+  companyName: string;
 }
 
 export class Contact extends Entity{
@@ -21,6 +22,7 @@ export class Contact extends Entity{
   lastName: string;
   phone: string;
   jobTitle: string;
+  companyName: string;
 
   constructor(c: IContact){
     super(c.id);
@@ -32,6 +34,7 @@ export class Contact extends Entity{
       this.lastName = c.lastName;
       this.prefix = c.prefix;
       this.jobTitle = c.jobTitle;
+      this.companyName = c.companyName;
   }
 }
 

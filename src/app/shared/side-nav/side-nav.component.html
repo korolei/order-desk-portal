@@ -1,5 +1,5 @@
 
-<mat-sidenav-container class="flexbox sidenav-container">
+<mat-sidenav-container class="sidenav-container mat-elevation-z2">
   <mat-sidenav
     #drawer
     class="sidenav"
@@ -30,9 +30,9 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-    <mat-toolbar-row fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutWrap fxLayoutAlign="stretch">
-      <div  fxFlex="20%">
+    <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="stretch" style="padding-right: 0px; overflow-y: hidden">
+
+      <div  fxFlex="0 1 calc(4% - 5px)">
         <button
           type="button"
           aria-label="Toggle sidenav"
@@ -40,12 +40,14 @@
           (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <img src="../../assets/husky-logo.png" class="husky-logo" aria-label="husky logo">
     </div>
-      <div fxFlex="70%">
-        <ng-template #customerSearch></ng-template><!--This is placeholder for dynamically created component-->
+      <div fxFlex="0 1 calc(6% - 5px)" class="top-toolbar">
+          <img src="../../assets/husky-logo.png" class="husky-logo" aria-label="husky logo">
       </div>
-      </mat-toolbar-row>
+      <div fxFlex="0 1 calc(90% - 5px)" class="top-toolbar">
+          <ng-template #customerSearch></ng-template><!--This is placeholder for dynamically created component-->
+      </div>
+
     </mat-toolbar>
   </mat-sidenav-content>
 </mat-sidenav-container>

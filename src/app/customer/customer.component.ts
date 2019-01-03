@@ -8,14 +8,16 @@ import {IQuotation, Quotation} from "../shared/models/quotation";
 import {AppService} from "../app.service";
 import {Address} from "../shared/models/address";
 import {Contact} from "../shared/models/contact";
-import {AppSettings} from "../shared/app-settings";
+import {AppSettings} from "../core/app-settings";
+import {MatDialog, MatDialogConfig} from "@angular/material";
+import {ContactInfoComponent} from "./contact-info/contact-info.component";
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html'
 })
 export class CustomerComponent implements OnInit, OnDestroy {
-  orgId = 0;
+  orgId = 9;
   dataCount=0;
   maxCount = 7;
   installBaseData: InstallBase[] = [];
@@ -28,10 +30,9 @@ export class CustomerComponent implements OnInit, OnDestroy {
   locations: Address[]=[];
   currentContact: Contact;
   currentLocationId = 0;
-  installBaseExpanded: boolean = false;
-  caseManagementExpanded: boolean = false;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     if(this.orgId > 0){
@@ -57,6 +58,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
   }
   setContact(addressId: number){
     this.currentContact = this.contacts.find(c=> c.address.id === addressId);
+    this.currentContact.companyName = this.organizationData.bp_name;
     this.currentLocationId = addressId;
     this.dataCount = 2;
     this.getData();
@@ -99,6 +101,21 @@ export class CustomerComponent implements OnInit, OnDestroy {
       .subscribe(data => {this.ordersData = (data as ISalesOrder[])
         .map(item => new SalesOrder(item as ISalesOrder));
         this.dataCount = this.dataCount + 1;
+      });
+  }
+
+  editContactInfo(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = '550px';
+    dialogConfig.width = '350px';
+    dialogConfig.data = this.currentContact;
+    const dialogRef = this.dialog.open(ContactInfoComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(
+      val => {
+        this.currentContact = val;
+        this.organizationData.bp_name = this.currentContact.companyName;
       });
   }
 

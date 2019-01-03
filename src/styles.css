@@ -23,6 +23,26 @@ body {
   /*width: 290px;*/
 /*}*/
 
+.Aligner {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  overflow-wrap: break-word;
+}
+
+.Aligner-item {
+  max-width: 50%;
+}
+
+.Aligner-item--top {
+  align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+  align-self: flex-end;
+}
+
 .icon {
   display: inline-block;
   height: 30px;
@@ -31,6 +51,7 @@ body {
   text-align: center;
   vertical-align: middle;
   width: 15%;
+  color: black;
 }
 
 .flexbox{
@@ -42,48 +63,6 @@ body {
   flex-grow: 1;
 }
 
-.mat-table{
-  width: 100%;
-}
-
-.mat-toolbar {
-}
-
-.mat-grid-list {
-}
-
-.mat-grid-tile {
-  /*height: 400px;*/
-}
-
-.mat-select {
-}
-
-.mat-option {
-}
-
-.mat-icon {
-}
-
-.mat-card {
-  width: 97%;
-  /*max-height: 450px;*/
-}
-
-.mat-card-header {
-}
-
-.mat-card-title {
-}
-
-.mat-card-content {
-}
-
-.mat-header-cell {
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
 .warning {
   color: crimson;
   font-weight: bolder;
@@ -92,3 +71,17 @@ body {
 .white-background{
   background-color: white;
 }
+
+a.mat-button{
+  color: blue;
+  text-underline: blue;
+}
+
+a.mat-button-icon{
+  color: black;
+}
+
+.warn {
+  color: red;
+}
+

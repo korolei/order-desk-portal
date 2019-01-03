@@ -7,7 +7,7 @@ import {IPerson} from "./shared/models/person";
 import {IQuotation} from "./shared/models/quotation";
 import {ISalesOrder} from "./shared/models/sales-order";
 import {IOrganization} from "./shared/models/organization";
-import {IContact} from "./shared/models/contact";
+import {Contact, IContact} from "./shared/models/contact";
 //Json data files
 import CaseManagementJson from "../assets/mockData/CaseManagement/CaseManagement.json";
 import InstallBaseJson from "../assets/mockData/InstallBase/InstallBase.json";
@@ -20,7 +20,6 @@ import QuoteDataJson from "../assets/mockData/Quotation/Quotation.json";
 })
 export class InMemoryDataService implements InMemoryDbService {
   constructor() {
-
   }
 
   createDb() {
@@ -29,11 +28,12 @@ export class InMemoryDataService implements InMemoryDbService {
     const quickAccountAging: QuickAccountAging[] = this.getQuickAccountAging();
     const installBase: IInstallBase[] = InstallBaseJson.installBase as IInstallBase[];
     const organization: IOrganization[] = OrgDataJson.organization as IOrganization[];
+    const contact: Contact[] = organization.map(o=> o.contacts) as any[];
     const caseManagement: ICaseManagement[] = CaseManagementJson.caseManagement as ICaseManagement[];
-    return {quotes, orders, caseManagement, installBase, quickAccountAging, organization};
+    return {quotes, orders, caseManagement, installBase, quickAccountAging, organization, contact};
   }
 
-  genId<T extends IQuotation | ISalesOrder | IContact | ICaseManagement | IInstallBase | IQuickAccountAging | IPerson>(myTable: T[]): number {
+  genId<T extends IQuotation | ISalesOrder | Contact | ICaseManagement | IInstallBase | IQuickAccountAging | IPerson>(myTable: T[]): number {
     return myTable.length > 0 ? Math.max(...myTable.map(t => t.id)) + 1 : 11;
   }
   //mock data functions

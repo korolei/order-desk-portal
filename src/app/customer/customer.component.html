@@ -1,17 +1,16 @@
 
 <div *ngIf="dataCount > 0">
-  <mat-toolbar color="warn" class="mat-body-2">
+  <mat-toolbar color="warn" class="mat-body-2 mat-elevation-z1 mat-headline" style="height: 40px">
         <span>{{organizationData.bp_name}}</span>
   </mat-toolbar>
-<div *ngIf="locations.length > 0" fxLayout="row" fxLayoutGap="10px">
-<mat-toolbar color="accent">
-  <div fxFlex="0 1 calc(25% - 10px)" fxLayoutAlign="start">
-    <div fxFlex="0 1 calc(45% - 10px)" class="mat-body-2">
+<div *ngIf="locations.length > 0" fxLayout="row">
+<mat-toolbar color="accent" class="mat-elevation-z1 Aligner-item--bottom" style="height: 50px">
+  <div fxFlex="0 1 22%">
+    <div class="mat-body-2" fxFlex="0 1 40%">
       <span>Ship-To-Location: </span>
     </div>
-    <div fxFlex="0 1 calc(45% - 10px)">
-        <mat-select (selectionChange)="setContact($event.value)" [(value)]="currentLocationId">
-          <mat-option [value]="">Select Location</mat-option>
+    <div fxFlex="0 1 60%">
+        <mat-select (selectionChange)="setContact($event.value)" [(value)]="currentLocationId" placeholder="Select Location">
           <mat-option *ngFor="let location of locations" [value]="location.id">
             {{location.city}}
           </mat-option>
@@ -19,36 +18,35 @@
     </div>
   </div>
 
-  <div *ngIf="currentContact" fxFlex="0 2 calc(75% - 10px)" fxLayoutAlign="space-between" class="mat-body-strong">
-        <div fxFlex="0 1 calc(20% - 10px)">
-          <span><mat-icon inline>person</mat-icon>
+  <div *ngIf="currentContact" fxFlex="0 1 88%"  class="mat-body-strong Aligner">
+        <div fxFlex="0 1 15%" style="font-size:larger;">
+          <mat-icon class="icon">person</mat-icon>
             {{ currentContact.firstName}} {{ currentContact.lastName}}
-          </span>
         </div>
-        <div fxFlex="0 1 calc(10% - 10px)">
+        <div fxFlex="0 1 20%">
           <span>{{ currentContact.jobTitle}}</span>
         </div>
-        <div fxFlex="0 1 calc(10% - 10px)">
+        <div fxFlex="0 1 20%">
           <span>{{ currentContact.email}}</span>
         </div>
-        <div fxFlex="0 1 calc(10% - 10px)">
+        <div fxFlex="0 1 15%">
           <span>{{ currentContact.phone}}</span>
         </div>
-        <div fxFlex="0 1 calc(10% - 10px)">
+        <div fxFlex="0 1 10%">
         <span>{{currentContact.address.city }}, {{ currentContact.address.state }}</span>
         </div>
-        <div fxFlex="0 1 calc(10% - 10px)">
+        <div fxFlex="0 1 10%">
         <span>{{currentContact.address.country }}, {{ currentContact.address.zip }}</span>
         </div>
-        <div fxFlex="0 1 calc(10% - 10px)">
-          <a onclick="alert('View Edit Address form')" mat-button >Edit Address</a>
+        <div fxFlex="0 1 5%" class="Aligner-item--bottom">
+          <a (click)="editContactInfo()" mat-button>Edit Address</a>
         </div>
       </div>
 </mat-toolbar>
   </div>
-<div fxLayout="row wrap" fxLayoutGap="1px" fxLayout.lt-md="column" *ngIf="currentContact">
+<div fxLayout="row wrap" fxLayoutGap="5px" fxLayout.lt-md="column" *ngIf="currentContact" style="padding-bottom: 1px;">
     <ng-container>
-      <mat-toolbar>
+      <mat-toolbar class="mat-elevation-z1" style="height: 50px">
           <mat-icon class="mat-24">room</mat-icon>
           <div fxFlex="20%" fxLayoutAlign="flex-start">
             <span>{{currentContact.address.street }} - {{ currentContact.address.city }}  {{ currentContact.address.country }}</span>
@@ -65,14 +63,11 @@
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutWrap fxLayoutAlign="center"
      *ngIf="dataCount===maxCount">
     <ng-container>
-      <mat-card fxFlex="{{ installBaseExpanded ? '1 1 calc(100%)' : '1 1 calc(28%)'}}">
+      <mat-card fxFlex="1 1 calc(28%)">
       <mat-card-header>
         <mat-card-title>
           Install Base <span *ngIf="installBaseData.length > 0">(5 of {{installBaseData.length}} Machines) |
-          <a (click)="installBaseExpanded = !installBaseExpanded" mat-button>
-            <span *ngIf="!installBaseExpanded">Expand</span>
-            <span *ngIf="installBaseExpanded">Collapse</span>
-          </a>
+          <a mat-button>View All</a>
         </span>
         </mat-card-title>
       </mat-card-header>
@@ -93,14 +88,11 @@
           <app-quick-account-aging [quickAccountAgingData]="quickAccountAgingData"></app-quick-account-aging>
         </mat-card-content>
       </mat-card>
-      <mat-card fxFlex="{{ caseManagementExpanded ? '1 1 calc(100%)' : '1 1 calc(38%)'}}">
+      <mat-card fxFlex="1 1 calc(38%)">
       <mat-card-header>
         <mat-card-title>
           Case Management <span *ngIf="caseManagementData.length > 0">(5 of {{caseManagementData.length}} Tickets) |
-            <a (click)="caseManagementExpanded = !caseManagementExpanded" mat-button>
-              <span *ngIf="!caseManagementExpanded">Expand</span>
-              <span *ngIf="caseManagementExpanded">Collapse</span>
-            </a>
+            <a mat-button>View All</a>
           </span>
         </mat-card-title>
       </mat-card-header>

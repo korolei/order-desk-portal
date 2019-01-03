@@ -1,7 +1,7 @@
 import {EventEmitter, Inject, Injectable, Optional} from '@angular/core';
 import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {BehaviorSubject, Observable, of, Subject} from "rxjs";
-import {MessageService} from "./shared/services/message.service";
+import {Observable, of} from "rxjs";
+import {MessageService} from "./shared/messages/message.service";
 import {catchError} from "rxjs/operators";
 import {APP_BASE_HREF} from "@angular/common";
 
@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class AppService {
   public baseUrl: string;
-
+  public showMessage = new EventEmitter<string>();
   public showCustomerSearch =  new EventEmitter<boolean>();
   public onCustomerFound: EventEmitter<number> = new EventEmitter<number>();
 
@@ -26,7 +26,7 @@ export class AppService {
   }
 
   public getData<T>(endPoint: string): Observable<T> {
-    let data =this.http.get<T>(`${endPoint}`)
+    let data =this.http.get<T>(`${this.baseUrl}${endPoint}`)
       .pipe(
         catchError(this.handleError(endPoint, null))
       );
@@ -34,19 +34,24 @@ export class AppService {
   }
 
   public add<T>(endPoint: string, itemToAdd: any): Observable<T> {
-    return this.http.post<T>(`${this.baseUrl}/${endPoint}`, itemToAdd, httpOptions)
+    return this.http.post<T>(`${this.baseUrl}${endPoint}`, itemToAdd, httpOptions)
       .pipe(
         catchError(this.handleError(endPoint, null))
       );
   }
 
   public update<T>(endPoint: string, id: number, itemToUpdate: any): Observable<T> {
-    return this.http
-      .put<T>(`${this.baseUrl}/${endPoint}/${id}`, itemToUpdate, httpOptions);
+    return this.http.put<T>(`${this.baseUrl}${endPoint}/${id}`, itemToUpdate, httpOptions)
+      .pipe(
+      catchError(this.handleError(endPoint, null))
+    );
   }
 
   public delete<T>(endPoint: string, id: number): Observable<T> {
-    return this.http.delete<T>(`${this.baseUrl}/${endPoint}/${id}`, httpOptions);
+    return this.http.delete<T>(`${this.baseUrl}${endPoint}/${id}`, httpOptions)
+      .pipe(
+      catchError(this.handleError(endPoint, null))
+    );
   }
   /**
    * Handle Http operation that failed.
@@ -68,24 +73,10 @@ export class AppService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a Service message with the MessageService */
   log(message: string) {
-    this.messageService.add(`Order Desk Service: ${message}`);
-  }
-
-   flatten (obj) {
-    const newObj = {};
-    for (const key in obj) {
-      if (typeof obj[key] === 'object' && obj[key] !== null) {
-        const temp = this.flatten(obj[key])
-        for (const key2 in temp) {
-          newObj[key+"_"+key2] = temp[key2];
-        }
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-    return newObj;
+    this.showMessage.next(message);
+    console.error(`Order Desk Portal message: ${message}`);
   }
 }
 

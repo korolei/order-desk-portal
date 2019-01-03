@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {CaseManagement} from "../models/case-management";
 import {MatPaginator, MatTableDataSource} from '@angular/material';
-import {CaseManagementStatus} from "./../../shared/enums/case-management-status.enum";
+import {CaseManagementStatus} from "./../../core/enums/case-management-status.enum";
 
 @Component({
   selector: 'app-case-management',
@@ -16,7 +16,7 @@ export class CaseManagementComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<CaseManagement>(this.caseManagement);
-    //this.paginator.pageSize = 5;
-    //this.dataSource.paginator = this.paginator;
+    this.paginator.pageSize = 5;
+    this.dataSource.paginator = this.paginator;
   }
 }

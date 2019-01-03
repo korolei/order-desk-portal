@@ -9,10 +9,10 @@ import {AppService} from "../../app.service";
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
   styles: [
-    `.sidenav-container {height: 98%; overflow: hidden; vertical-align: center;}`,
-    `.sidenav {width: 17%;}`,
-    `.mat-toolbar.mat-primary {position: sticky;top: 0;}`,
-    `.husky-logo {margin-left: 1.5em; margin-right: 2em;}`
+    `.sidenav-container {height: 100%; vertical-align: center;}`,
+    `.sidenav {width: 17%; vertical-align: center;}`,
+    `.top-toolbar {background-color: white; color: black;}`,
+    `.husky-logo {margin-left: 1.5em; margin-right: 2em; margin-top: 0.8em; position: relative;}`
   ]
 })
 export class SideNavComponent implements OnInit{

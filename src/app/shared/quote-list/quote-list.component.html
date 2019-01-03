@@ -43,7 +43,8 @@
 
     <ng-container matColumnDef="quotationStatus">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-      <td mat-cell *matCellDef="let element" [ngClass]="warn"> {{element.quotationStatus}} </td>
+      <td mat-cell *matCellDef="let element" [ngClass]="element.quotationStatus === 'In Process'
+      ? 'warn':''" > {{element.quotationStatus}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -45,7 +45,7 @@ const contactSchema = {
   "type": "object",
       "type": "array",
       "minItems": 1,
-      "maxItems": 5,
+      "maxItems": 10,
       "items": {
         "type": "object",
         "properties": {

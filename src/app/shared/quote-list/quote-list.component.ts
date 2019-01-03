@@ -2,7 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {IQuotation, Quotation} from '../models/quotation';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {AppService} from "../../app.service";
-import {AppSettings} from "../app-settings";
+import {AppSettings} from "../../core/app-settings";
 import {BehaviorSubject} from "rxjs";
 
 @Component({

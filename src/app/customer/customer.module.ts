@@ -8,6 +8,7 @@ import {QuickAccountAgingComponent} from './quick-account-aging/quick-account-ag
 import {CaseManagementComponent} from './case-management/case-management.component';
 import {OpenQuotesComponent} from './open-quotes/open-quotes.component';
 import {OpenOrdersComponent} from './open-orders/open-orders.component';
+import { ContactInfoComponent } from './contact-info/contact-info.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,11 @@ import {OpenOrdersComponent} from './open-orders/open-orders.component';
     QuickAccountAgingComponent,
     CaseManagementComponent,
     OpenQuotesComponent,
-    OpenOrdersComponent
+    OpenOrdersComponent,
+    ContactInfoComponent
+  ],
+  entryComponents: [
+    ContactInfoComponent
   ]
 })
 export class CustomerModule { }

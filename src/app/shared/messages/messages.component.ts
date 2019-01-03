@@ -1,16 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {MessageService} from '../services/message.service';
+import {MessageService} from './message.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css']
 })
-export class MessagesComponent implements OnInit {
+export class MessagesComponent {
 
-  constructor(public messageService: MessageService) {}
+  constructor(public messageService: MessageService, public snackBar: MatSnackBar) {}
 
-  ngOnInit() {
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
-
 }
