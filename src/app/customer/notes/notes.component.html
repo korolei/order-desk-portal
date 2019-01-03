@@ -1,0 +1,24 @@
+<div fxLayout="column" >
+<h2 mat-dialog-title>New Note</h2>
+<mat-dialog-content [formGroup]="form" class="form">
+  <mat-form-field fxFlexFill class="full-width">
+    <mat-select placeholder="Select note type" formControlName="noteType">
+      <mat-option value="Info">Info</mat-option>
+      <mat-option value="Warning">Warning</mat-option>
+      <mat-option value="Error">Error</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="full-width" >
+    <textarea matInput placeholder="Note Text" formControlName="noteText" rows="10"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">
+    Close
+  </button>
+  <button class="mat-raised-button mat-primary" (click)="save()">
+    Save
+  </button>
+</mat-dialog-actions>
+</div>

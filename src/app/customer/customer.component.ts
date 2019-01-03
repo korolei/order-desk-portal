@@ -114,8 +114,10 @@ export class CustomerComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(ContactInfoComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
       val => {
-        this.currentContact = val;
-        this.organizationData.bp_name = this.currentContact.companyName;
+        if(val){
+          this.currentContact = val;
+          this.organizationData.bp_name = this.currentContact.companyName;
+        }
       });
   }
 

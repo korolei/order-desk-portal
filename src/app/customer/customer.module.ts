@@ -9,6 +9,7 @@ import {CaseManagementComponent} from './case-management/case-management.compone
 import {OpenQuotesComponent} from './open-quotes/open-quotes.component';
 import {OpenOrdersComponent} from './open-orders/open-orders.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
+import { NotesComponent } from './notes/notes.component';
 
 @NgModule({
   imports: [
@@ -23,10 +24,12 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
     CaseManagementComponent,
     OpenQuotesComponent,
     OpenOrdersComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    NotesComponent
   ],
   entryComponents: [
-    ContactInfoComponent
+    ContactInfoComponent,
+    NotesComponent
   ]
 })
 export class CustomerModule { }

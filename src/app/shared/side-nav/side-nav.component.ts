@@ -10,7 +10,7 @@ import {AppService} from "../../app.service";
   templateUrl: './side-nav.component.html',
   styles: [
     `.sidenav-container {height: 100%; vertical-align: center;}`,
-    `.sidenav {width: 17%; vertical-align: center;}`,
+    `.sidenav {width: 17%; vertical-align: bottom;line-height: 60px;}`,
     `.top-toolbar {background-color: white; color: black;}`,
     `.husky-logo {margin-left: 1.5em; margin-right: 2em; margin-top: 0.8em; position: relative;}`
   ]

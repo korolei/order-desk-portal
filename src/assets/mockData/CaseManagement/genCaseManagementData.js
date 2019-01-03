@@ -11,12 +11,6 @@ jsf.extend('chance', () => chance);
 const notesSchema ={
     "type": "object",
     "properties": {
-      "id": {
-        "type": "integer",
-        "chance": {
-          "integer": {min: 500, max: 10000}
-        }
-      },
       "noteText": {
         "type": "string",
         "chance": {

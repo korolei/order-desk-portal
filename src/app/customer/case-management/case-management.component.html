@@ -17,14 +17,14 @@
     </ng-container>
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>>
-      <mat-cell *matCellDef="let element" [ngClass]="element.status === emergencyStatus ? 'warn':''">
+      <mat-cell *matCellDef="let element" [className]="element.status === emergencyStatus ? 'warn':''">
         {{element.status}}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="note">
       <mat-header-cell *matHeaderCellDef> Notes </mat-header-cell>>
       <mat-cell *matCellDef="let element">
-        <a onclick="alert('View Notes screen')" mat-button>{{element.note?.noteType}}</a>
+        <a (click)="editNote(element)" mat-button>{{element.note?.noteType}}</a>
          </mat-cell>>
     </ng-container>
 

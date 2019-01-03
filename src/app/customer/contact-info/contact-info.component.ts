@@ -23,7 +23,7 @@ export class ContactInfoComponent {
     this.form = fb.group({
       firstName: [contact.firstName, Validators.required],
       lastName: [contact.lastName, Validators.required],
-      email: [contact.email, Validators.required],
+      email: [contact.email, Validators.required, Validators.email],
       phone: [contact.phone, Validators.required],
       jobTitle: [contact.jobTitle, Validators.required],
       companyName: [contact.companyName, Validators.required]

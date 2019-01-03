@@ -6,4 +6,5 @@ export class AppSettings {
   public static openQuotationsApi = 'api/quotes';
   public static openSalesOrderApi = 'api/orders';
   public static updateContactInfoApi = 'api/contact';
+  public static updateCaseManagementApi = 'api/caseManagement';
 }
