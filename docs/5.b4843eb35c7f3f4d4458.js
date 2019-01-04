@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{"F/Pw":function(n,c,o){"use strict";o.r(c),o.d(c,"OrdersModuleNgFactory",function(){return u});var r=o("CcnG"),b=o("h9W5"),t=o("Ip0R"),u=r.tb(b.a,[],function(n){return r.Db([r.Eb(512,r.k,r.ib,[[8,[]],[3,r.k],r.B]),r.Eb(4608,t.o,t.n,[r.y,[2,t.A]]),r.Eb(1073742336,t.c,t.c,[]),r.Eb(1073742336,b.a,b.a,[])])})}}]);
