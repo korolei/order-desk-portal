@@ -2,8 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {CaseManagement} from "../models/case-management";
 import {MatDialog, MatDialogConfig, MatPaginator, MatTableDataSource} from '@angular/material';
 import {CaseManagementStatus} from "./../../core/enums/case-management-status.enum";
-import {Note} from "../../shared/models/note";
-import {NotesComponent} from "../notes/notes.component";
+import {NotesComponent} from "../dialogs/notes/notes.component";
 import {AppService} from "../../app.service";
 
 @Component({

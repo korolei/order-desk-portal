@@ -53,8 +53,8 @@
           </div>
           <div fxFlex="80%" fxLayoutAlign="flex-end">
             <mat-chip-list>
-              <mat-chip [routerLink]="['/quote-detail']">+ New Quote</mat-chip>
-              <mat-chip [routerLink]="['/order']">+ New Order</mat-chip>
+              <mat-chip [routerLink]="['../quotes/quote-form']">+ New Quote</mat-chip>
+              <mat-chip [routerLink]="['../orders/order-form']">+ New Order</mat-chip>
             </mat-chip-list>
           </div>
       </mat-toolbar>
@@ -67,7 +67,7 @@
       <mat-card-header>
         <mat-card-title>
           Install Base <span *ngIf="installBaseData.length > 0" class="mat-body-1">(5 of {{installBaseData.length}} Machines) |
-          <a mat-button>View All</a>
+          <span mat-button >View All?</span>
         </span>
         </mat-card-title>
       </mat-card-header>
@@ -93,7 +93,7 @@
         <mat-card-title>
           Case Management
           <span *ngIf="caseManagementData.length > 0" class="mat-body-1">(5 of {{caseManagementData.length}} Tickets) |
-            <a mat-button>View All</a>
+            <span mat-button>View All?</span>
           </span>
         </mat-card-title>
       </mat-card-header>
@@ -106,7 +106,7 @@
         <mat-card-title>
           Open Quotations
           <span *ngIf="quotationsData.length > 0" class="mat-body-1">(6 of {{quotationsData.length}}) |
-          <a onclick="alert('View All screen')" mat-button>View All</a>
+          <span mat-button>View All?</span>
         </span>
         </mat-card-title>
       </mat-card-header>
@@ -119,7 +119,7 @@
         <mat-card-title>
           Open Sales Orders
           <span *ngIf="ordersData.length > 0" class="mat-body-1">(6 of {{ordersData.length}}) |
-          <a onclick="alert('View All screen')" mat-button>View All</a>
+          <span mat-button>View All?</span>
           </span>
         </mat-card-title>
       </mat-card-header>
@@ -129,7 +129,7 @@
     </mat-card>
     </ng-container>
   <ng-container *ngIf="dataCount < maxCount">
-    <div fxLayout="row" fxLaoutAlign="center">
+    <div fxLayout="row" fxLaoutAlign="center" class="loading-spinner">
       <mat-spinner></mat-spinner>
     </div>
   </ng-container>

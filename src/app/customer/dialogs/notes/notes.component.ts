@@ -1,10 +1,10 @@
 import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AppService} from "../../app.service";
+import {AppService} from "../../../app.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {AppSettings} from "../../core/app-settings";
-import {Note} from "../../shared/models/note";
-import {CaseManagement} from "../models/case-management";
+import {AppSettings} from "../../../core/app-settings";
+import {Note} from "../../../shared/models/note";
+import {CaseManagement} from "../../models/case-management";
 
 @Component({
   selector: 'app-notes',

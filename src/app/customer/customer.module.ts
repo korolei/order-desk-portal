@@ -8,8 +8,8 @@ import {QuickAccountAgingComponent} from './quick-account-aging/quick-account-ag
 import {CaseManagementComponent} from './case-management/case-management.component';
 import {OpenQuotesComponent} from './open-quotes/open-quotes.component';
 import {OpenOrdersComponent} from './open-orders/open-orders.component';
-import { ContactInfoComponent } from './contact-info/contact-info.component';
-import { NotesComponent } from './notes/notes.component';
+import { ContactInfoComponent } from './dialogs/contact-info/contact-info.component';
+import { NotesComponent } from './dialogs/notes/notes.component';
 
 @NgModule({
   imports: [

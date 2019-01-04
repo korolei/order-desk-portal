@@ -10,14 +10,14 @@ import {Address} from "../shared/models/address";
 import {Contact} from "../shared/models/contact";
 import {AppSettings} from "../core/app-settings";
 import {MatDialog, MatDialogConfig} from "@angular/material";
-import {ContactInfoComponent} from "./contact-info/contact-info.component";
+import {ContactInfoComponent} from "./dialogs/contact-info/contact-info.component";
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html'
 })
 export class CustomerComponent implements OnInit, OnDestroy {
-  orgId = 9;
+  orgId = 0;
   dataCount=0;
   maxCount = 7;
   installBaseData: InstallBase[] = [];
@@ -124,5 +124,4 @@ export class CustomerComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.appService.showCustomerSearch.next(false);
   }
-
 }

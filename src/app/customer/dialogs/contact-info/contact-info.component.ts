@@ -1,9 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import { Contact } from "../../shared/models/contact";
+import { Contact } from "../../../shared/models/contact";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
-import {AppService} from "../../app.service";
-import {AppSettings} from "../../core/app-settings";
+import {AppService} from "../../../app.service";
+import {AppSettings} from "../../../core/app-settings";
 
 @Component({
   selector: 'app-contact-info',
@@ -23,7 +23,7 @@ export class ContactInfoComponent {
     this.form = fb.group({
       firstName: [contact.firstName, Validators.required],
       lastName: [contact.lastName, Validators.required],
-      email: [contact.email, Validators.required, Validators.email],
+      email: [contact.email, Validators.required],
       phone: [contact.phone, Validators.required],
       jobTitle: [contact.jobTitle, Validators.required],
       companyName: [contact.companyName, Validators.required]

@@ -1,7 +1,6 @@
 import {EventEmitter, Inject, Injectable, Optional} from '@angular/core';
 import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable, of} from "rxjs";
-import {MessageService} from "./shared/messages/message.service";
 import {catchError} from "rxjs/operators";
 import {APP_BASE_HREF} from "@angular/common";
 
@@ -20,7 +19,6 @@ export class AppService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService,
     @Optional() @Inject(APP_BASE_HREF) baseHref: string) {
       this.baseUrl = baseHref;
   }

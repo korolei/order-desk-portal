@@ -95,7 +95,7 @@ const orgSchema = {
     "organization": {
       "type": "array",
       "minItems": 10,
-      "maxItems": 10,
+      "maxItems": 100,
       "items": {
         "type": "object",
         "properties": {
@@ -103,7 +103,7 @@ const orgSchema = {
             "type": "integer",
             "unique": true,
             "minimum": 1,
-            "maximum": 10
+            "maximum": 1000
           },
           "bp_name":{
             "type": "string",

@@ -15,12 +15,12 @@ export class Address extends Entity{
   zip: string;
 
   constructor(a: IAddress){
-    super(a.id);
-      this.city = a.city;
-      this.state = a.state;
-      this.street = a.street;
-      this.zip = a.zip;
-      this.country = a.country;
+    super(a.id || 0);
+      this.city = a.city || "";
+      this.state = a.state || "";
+      this.street = a.street || "";
+      this.zip = a.zip || "";
+      this.country = a.country || "";
   }
 }
 

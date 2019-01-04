@@ -1,17 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MessageService} from "./messages/message.service";
 import {OrderListComponent} from './order-list/order-list.component';
 import {QuoteListComponent} from './quote-list/quote-list.component';
 import {SideNavComponent} from './side-nav/side-nav.component';
-import {MessagesComponent} from './messages/messages.component';
 import {MaterialModule} from '../core/material.module';
 import {RouterModule} from '@angular/router';
 import {AddressPipe} from "../core/pipes/address.pipe";
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CustomerSearchComponent} from "./customer-search/customer-search.component";
-import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { AutocompleteComponent } from '../core/autocomplete/autocomplete.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
@@ -27,7 +25,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
   exports: [
     OrderListComponent,
     QuoteListComponent,
-    MessagesComponent,
     MaterialModule,
     SideNavComponent,
     AddressPipe,
@@ -36,14 +33,11 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     ReactiveFormsModule,
     ScrollingModule
   ],
-  providers: [
-    MessageService
-  ],
+
   declarations: [
     SideNavComponent,
     OrderListComponent,
     QuoteListComponent,
-    MessagesComponent,
     CustomerSearchComponent,
     AddressPipe,
     AutocompleteComponent

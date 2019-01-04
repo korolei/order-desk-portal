@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {QuotesService} from "../quotes.service";
-import {Quotation} from 'src/app/shared/models/quotation';
+import {IQuotation, Quotation} from 'src/app/shared/models/quotation';
+import {AppSettings} from "../../core/app-settings";
+import {AppService} from "../../app.service";
 
 // @ts-ignore
 @Component({
@@ -10,9 +11,12 @@ import {Quotation} from 'src/app/shared/models/quotation';
 })
 export class QuotesComponent implements OnInit {
   quotes: Quotation[];
-  constructor(private quotesService: QuotesService) { }
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
-    this.quotesService.getQuotes().subscribe(q=> this.quotes = q);
+    this.appService.getData<IQuotation[]>(AppSettings.openQuotationsApi)
+      .subscribe(data => {this.quotes = (data as IQuotation[])
+        .map(item => new Quotation(item as IQuotation));
+      });
   }
 }

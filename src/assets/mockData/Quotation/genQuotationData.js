@@ -22,8 +22,8 @@ const quotationSchema = {
           "id": {
             "type": "integer",
             "unique": true,
-            "minimum": 1000,
-            "maximum": 3000
+            "minimum": 500,
+            "maximum": 1000
           },
           "quoteNumber": {
             "type": "integer",
@@ -38,6 +38,10 @@ const quotationSchema = {
           "soldtoBP": {
             "type": "string",
             "faker": "finance.bic"
+          },
+          "deliveryAddress": {
+            "type": "string",
+            "faker": "address"
           },
           "totalUSD": {
             "type": "string",

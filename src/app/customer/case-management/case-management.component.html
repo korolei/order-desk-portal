@@ -3,7 +3,7 @@
     <ng-container matColumnDef="ticketNumber">
       <mat-header-cell *matHeaderCellDef> Ticket # </mat-header-cell>>
       <mat-cell *matCellDef="let element">
-        <a onclick="alert('View Notes screen')" mat-button>{{element.ticketNumber}}</a>
+        {{element.ticketNumber}}
       </mat-cell>>
     </ng-container>
     <ng-container matColumnDef="dateOpened">
