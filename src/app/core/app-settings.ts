@@ -7,4 +7,5 @@ export class AppSettings {
   public static openSalesOrderApi = 'api/orders';
   public static updateContactInfoApi = 'api/contact';
   public static updateCaseManagementApi = 'api/caseManagement';
+  public static allSalesOrderApi = 'api/orders';
 }

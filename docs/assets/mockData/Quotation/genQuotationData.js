@@ -14,8 +14,8 @@ const quotationSchema = {
   "properties": {
     "quotation": {
       "type": "array",
-      "minItems": 3000,
-      "maxItems": 5000,
+      "minItems": 1000,
+      "maxItems": 2000,
       "items": {
         "type": "object",
         "properties": {
@@ -56,6 +56,10 @@ const quotationSchema = {
               }
             }
           },
+          "postalAddress": {
+            "type": "string",
+            "faker": "address.zipCode"
+          },
           "quotationStatus": {
             "type": "string",
               "enum": [
@@ -65,7 +69,7 @@ const quotationSchema = {
                 ]
           }
         },
-        "required": ["id","quoteNumber","soldtoBPName","soldtoBP","totalUSD","creationDate","quotationStatus"]
+        "required": ["id","quoteNumber","soldtoBPName","soldtoBP","totalUSD","creationDate","postalAddress","quotationStatus"]
       }
     }
   },

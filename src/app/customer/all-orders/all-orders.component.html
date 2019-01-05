@@ -1,0 +1,64 @@
+<ng-template #loading>
+    <mat-spinner color="primary" diameter="50" strokeWidth="20" value="100"></mat-spinner>
+  </ng-template>
+  <mat-card fxFlex="0 1 100%">
+    <mat-card-header>
+      <mat-card-title>
+        All Sales Orders
+        <span *ngIf="ordersData.length > 0" class="mat-body-1">(6 of {{ordersData.length}}) |</span>
+        <a (click)="toggleView(0)" mat-button>Back</a>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="dataSource" *ngIf="ordersData.length > 0; else loading"
+             matSort class="mat-elevation-z8" fxFlexFill>
+        <ng-container matColumnDef="quoteNumber">
+          <th mat-header-cell *matHeaderCellDef> Quotation </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.quoteNumber}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="soldToBPName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> BP Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.soldToBPName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="soldToBP">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> BP # </th>
+          <td mat-cell *matCellDef="let element"> {{element.soldToBP}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalUSD">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Total $</th>
+          <td mat-cell *matCellDef="let element"> {{element.totalUSD | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="plannedDeliveryDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Planned Delivery </th>
+          <td mat-cell *matCellDef="let element"> {{element.plannedDeliveryDate | date: 'yyyy-MM-dd'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="plannedReceiptDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Promised Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.plannedReceiptDate | date: 'yyyy-MM-dd'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="postalAddress">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Postal Code </th>
+          <td mat-cell *matCellDef="let element"> {{element.postalAddress}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quotationStatus">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let element"
+              [className]="(element.quotationStatus === internalHold || element.quotationStatus === creditHold) ? 'warn':''">
+            {{element.quotationStatus}}
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator ></mat-paginator>
+    </mat-card-content>
+  </mat-card>

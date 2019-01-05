@@ -10,6 +10,7 @@ import {OpenQuotesComponent} from './open-quotes/open-quotes.component';
 import {OpenOrdersComponent} from './open-orders/open-orders.component';
 import { ContactInfoComponent } from './dialogs/contact-info/contact-info.component';
 import { NotesComponent } from './dialogs/notes/notes.component';
+import { AllOrdersComponent } from './all-orders/all-orders.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { NotesComponent } from './dialogs/notes/notes.component';
     OpenQuotesComponent,
     OpenOrdersComponent,
     ContactInfoComponent,
-    NotesComponent
+    NotesComponent,
+    AllOrdersComponent
   ],
   entryComponents: [
     ContactInfoComponent,

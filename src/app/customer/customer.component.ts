@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IInstallBase, InstallBase} from "./models/install-base";
 import {CaseManagement, ICaseManagement} from "./models/case-management";
 import {IQuickAccountAging, QuickAccountAging} from "./models/quick-account-aging";
-import {ISalesOrder, SalesOrder} from "../shared/models/sales-order";
 import {IOrganization, Organization} from "../shared/models/organization";
 import {IQuotation, Quotation} from "../shared/models/quotation";
 import {AppService} from "../app.service";
@@ -11,6 +10,8 @@ import {Contact} from "../shared/models/contact";
 import {AppSettings} from "../core/app-settings";
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import {ContactInfoComponent} from "./dialogs/contact-info/contact-info.component";
+import {CustomerService, VIEW_SCREENS} from "./customer.service";
+import {ISalesOrder, SalesOrder} from "../shared/models/sales-order";
 
 @Component({
   selector: 'app-customer',
@@ -30,9 +31,15 @@ export class CustomerComponent implements OnInit, OnDestroy {
   locations: Address[]=[];
   currentContact: Contact;
   currentLocationId = 0;
+  allViewScreens  = VIEW_SCREENS;
+  currentView = VIEW_SCREENS[0];
+
 
   constructor(private appService: AppService,
-              private dialog: MatDialog) { }
+              private customerService: CustomerService,
+              private dialog: MatDialog) {
+    customerService.viewIndx.subscribe(val => this.currentView = this.allViewScreens[val]);
+  }
 
   ngOnInit() {
     if(this.orgId > 0){
@@ -56,6 +63,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
         this.locations = this.contacts.map(c => c.address);
       });
   }
+
   setContact(addressId: number){
     this.currentContact = this.contacts.find(c=> c.address.id === addressId);
     this.currentContact.companyName = this.organizationData.bp_name;

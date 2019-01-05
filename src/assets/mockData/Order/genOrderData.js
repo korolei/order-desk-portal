@@ -2,7 +2,6 @@
 const Chance = require('chance');
 const chance = new Chance();
 const faker = require('faker')
-
 const jsf = require('json-schema-faker'); // json-schema faker
 const fs = require('fs'); // nodeJS file system library to read and write files
 jsf.extend('faker', () => faker);
@@ -14,8 +13,8 @@ const orderSchema = {
   "properties": {
     "orders": {
       "type": "array",
-      "minItems": 3000,
-      "maxItems": 5000,
+      "minItems": 1000,
+      "maxItems": 2000,
       "items": {
         "type": "object",
         "properties": {
@@ -52,6 +51,19 @@ const orderSchema = {
               }
             }
           },
+          "plannedReceiptDate": {
+            "type": "string",
+            "chance": {
+              "date": {
+                "string": true,
+                "year": 2018
+              }
+            }
+          },
+          "postalAddress": {
+            "type": "string",
+            "faker": "address.zipCode"
+          },
           "quotationStatus": {
             "type": "string",
               "enum": [
@@ -63,7 +75,8 @@ const orderSchema = {
                 ]
           }
         },
-        "required": ["id","quoteNumber","soldtoBPName","soldtoBP","totalUSD","plannedDeliveryDate","quotationStatus"]
+        "required": ["id","quoteNumber","soldtoBPName","soldtoBP","totalUSD","plannedDeliveryDate",
+          "plannedReceiptDate","postalAddress","quotationStatus"]
       }
     }
   },
