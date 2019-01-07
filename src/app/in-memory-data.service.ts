@@ -12,6 +12,7 @@ import {IContact} from "./shared/models/contact";
 import CaseManagementJson from "../assets/mockData/CaseManagement/CaseManagement.json";
 import OrgDataJson from "../assets/mockData/Organization/Organization.json";
 import OrderJson from "../assets/order.json";
+import QuoteJson from "../assets/quote.json";
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ export class InMemoryDataService implements InMemoryDbService {
   }
 
   createDb() {
-    const quotes: IQuotation[] = this.getQuotes();
+    const quotes: IQuotation[] = QuoteJson.quotes as IQuotation[];
     const orders: ISalesOrder[] = OrderJson.orders as ISalesOrder[];
     const quickAccountAging: QuickAccountAging[] = this.getQuickAccountAging();
     const installBase: InstallBase[] = this.getInstallBase();

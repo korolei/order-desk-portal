@@ -1,0 +1,32 @@
+<div class="grid-container">
+    <mat-grid-list cols="2">
+      <mat-grid-tile>
+      <div class="dashboard-card">
+      <div>
+      {{quoteCount}} Open Quotes
+      <span class="subtitle">
+        <a href="#">View all</a>
+        <button mat-stroked-button class="new-order"> + New Order</button>
+      </span>
+    </div>
+      <div>
+        <app-quote-list ></app-quote-list>
+      </div>
+      </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="dashboard-card">
+          <div>
+          {{orderCount}} Open Orders
+          <span class="subtitle">
+            <a href="#">View all</a>
+            <button mat-stroked-button class="new-order"> + New Order</button>
+          </span>
+        </div>
+          <div>
+            <app-order-list  [hide]="orderHide"></app-order-list>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>

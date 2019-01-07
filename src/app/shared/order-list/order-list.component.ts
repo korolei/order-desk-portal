@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {SalesOrder} from '../models/sales-order';
 import {OrdersService} from 'src/app/orders/orders.service';
+import { MatPaginator, MatSort } from '@angular/material';
+import { OrderDataSource } from './orders-datasource';
 
 @Component({
   selector: 'app-order-list',
@@ -10,6 +12,16 @@ import {OrdersService} from 'src/app/orders/orders.service';
   table {
     width: 100%;
   }
+  `
+  ,
+  `.gray { 
+    background-color: #f8f8f8; 
+  }`
+  ,
+  `  
+  .warn {
+      color: red;
+  }  
   `
   ,
   `
@@ -24,22 +36,25 @@ import {OrdersService} from 'src/app/orders/orders.service';
     padding-left: 2em;
   }
   `
-  ,
-  `  
-  .warn {
-      color: red;
-  }  
-  `
-  ]
+]
 })
 export class OrderListComponent implements OnInit {
+  @Input()
+  hide: boolean[];
 
-  @Input() showOrders: boolean;
-  list: SalesOrder[];
-  count: number;
+  @Input()
+  paginate: boolean = false;
+
+  @Input()
+  pageSize: number = 15;
+
+  pageOptions: number[] = [this.pageSize, this.pageSize*2, this.pageSize*4];
+  //count: number;
   displayColumns: string[];
-  //@ViewChild(MatPaginator) paginator: MatPaginator;
-  //dataSource: MatTableDataSource<Order>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  dataSource: OrderDataSource;
+  
   constructor(private orderService: OrdersService) {
 
   }
@@ -48,13 +63,12 @@ export class OrderListComponent implements OnInit {
       this.displayColumns =
       [
         'id', 'customer.name', 'customer.id',
-        'total', 'deliverBy',
-        'status'
+        'total', 'deliverBy', 'createdOn', 'postalCode',
+        'owner', 'status'
       ];
-      this.orderService.getOrders()
-        .subscribe(orders => {
-          this.list = orders;
-          this.count = this.list.length;
-        });
+      this.dataSource = new OrderDataSource(this.paginator, this.sort, this.orderService);
+      this.dataSource.disconnect();
+      this.dataSource.connect();
+      //this.dataSource.data = this.list;
   }
 }

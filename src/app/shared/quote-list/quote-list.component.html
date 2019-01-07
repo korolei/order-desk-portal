@@ -14,19 +14,19 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Quotation </th>
       <td mat-cell *matCellDef="let element" >
         <!-- <a href="#">  -->
-          {{element.id}} 
+          {{element.quoteNumber}} 
         <!-- </a> -->
       </td>
     </ng-container>
 
     <ng-container matColumnDef="customer.name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> BP Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.soldToBPName}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.soldtoBPName}} </td>
     </ng-container>
 
     <ng-container matColumnDef="customer.id" >
       <th mat-header-cell *matHeaderCellDef mat-sort-header> BP Id </th>
-      <td mat-cell *matCellDef="let element"> {{element.soldToBP}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.soldtoBP}} </td>
     </ng-container>
 
     <ng-container matColumnDef="total">

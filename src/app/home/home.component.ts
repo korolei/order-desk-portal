@@ -1,21 +1,27 @@
 import {Component, OnInit} from '@angular/core';
+import { OrdersService } from '../orders/orders.service';
+import { QuotesService } from '../quotes/quotes.service';
+import { SalesOrder } from '../shared/models/sales-order';
+import { Quotation } from '../shared/models/quotation';
 
 @Component({
   selector: 'app-home',
-  template: `
-  <div class="grid-container">
-    <mat-grid-list cols="2">
-      <mat-grid-tile>
-          <app-quote-list class="dashboard-card"></app-quote-list>
-      </mat-grid-tile>
-      <mat-grid-tile>
-          <app-order-list class="dashboard-card"></app-order-list>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
-  `,
+  templateUrl: './home.component.html',
   styles: [
     `
+    .new-order {
+        margin-left: 5em;
+    }
+    `
+    ,
+    `
+    .subtitle{
+      font-size: smaller;
+      padding-left: 2em;
+    }
+    `
+    ,
+      `
     .dashboard-card {
       position: absolute;
       top: 5px;
@@ -26,10 +32,25 @@ import {Component, OnInit} from '@angular/core';
   ]
 })
 export class HomeComponent implements OnInit {
+  orderList: SalesOrder[];
+  quoteList: Quotation[];
+  orderHide: boolean[] = [
+    false, false, false, false, false, true, true, true, false
+  ];
+  quoteHide: boolean[] = [
+    false, false, false, false, false, true, true, true, false
+  ];
+  orderCount: number;
+  quoteCount: number;
 
-  constructor() { }
+  constructor(private orderService: OrdersService, private quoteService: QuotesService) { }
 
   ngOnInit() {
-  }
+    this.orderService.getOrders()
+    .subscribe(orders => {
+      this.orderList = orders.slice(0, 10);
+      this.orderCount = orders.length;
+    });
+}
 
 }
