@@ -21,7 +21,7 @@ export class OrderFormComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       deliveryAddress: [this.order.deliveryAddress, Validators.required],
-      shipToBP: [this.order.shipToBP, Validators.required]
+      shipToBP: [this.order.shiptoBP, Validators.required]
     })
   }
 }

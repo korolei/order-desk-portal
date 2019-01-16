@@ -13,8 +13,8 @@ const orderSchema = {
   "properties": {
     "orders": {
       "type": "array",
-      "minItems": 1000,
-      "maxItems": 2000,
+      "minItems": 100,
+      "maxItems": 200,
       "items": {
         "type": "object",
         "properties": {
@@ -35,8 +35,9 @@ const orderSchema = {
             "faker": "company.companyName"
           },
           "soldtoBP": {
-            "type": "string",
-            "faker": "finance.bic"
+            "type": "integer",
+            "minimum": 22000,
+            "maximum": 23000
           },
           "totalUSD": {
             "type": "string",

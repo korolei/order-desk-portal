@@ -30,16 +30,29 @@ import {BehaviorSubject} from "rxjs";
   ,
   `
   .warn {
-      color: red;
+      color: #ca4840;
   }
   `
+  ,
+  `
+  .order-flag {
+    color: #ca4840;
+    font-size: smaller;
+  }
+  `,
+  `.material-icons.md-18 { font-size: 14px; }`
+  ,
+  `h2.mat-typography { font-weight: bold; padding-left: 2em; }`
   ]
 })
 export class OrderListComponent implements OnInit {
-  @Input() openOrdersData: SalesOrder[]=[];
+  @Input() showHeader: boolean = false;
+  @Input() fullView: boolean = false;
+  //@Input() openOrdersData: SalesOrder[]=[];
   displayedColumns: string[] =       [
-    'quoteNumber', 'soldToBPName', 'soldToBP',
-    'totalUSD', 'plannedDeliveryDate', 'quotationStatus'
+    'order', 'soldToBPName', 'soldToBP',
+    'total', 'plannedDeliveryDate', 'promisedDate',
+    'postalCode', 'owner', 'status'
   ];
   internalHold = 'Internal Hold';
   creditCard = 'Credit Card'

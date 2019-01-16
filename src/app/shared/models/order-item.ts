@@ -1,47 +1,70 @@
 import {Entity, IEntity} from "./entity";
+import { IAddress } from "./address";
 
-export interface IOrderItem extends IEntity {
-  id: number;
+export interface IOrderItem {
   amount: number;
-  item: string;
-  itemDescription: string;
-  lineDeliveryAddress: string;
-  linePlannedDeliveryDate: Date;
-  linePlannedReceiptDate: Date;
-  orderNumber: string;
+  item: number;
+  description: string;
+  deliveryAddress: IAddress;
+  plannedDeliveryDate: Date;
+  plannedReceiptDate: Date;
+  orderNumber: number;
   price: number;
   quantity: number;
-  salesPosition: number;
+  position: number;
   unit: string;
+  discount: number;
+  configuration: string;
+  warehouse: string;
+  warehouseDescr: string;
+  internalText: string;
+  externalText: string;
+  availableDate: Date;
+  availableMsg: string;
 }
 
 export class OrderItem extends Entity{
-  public id: number;
   public amount: number;
-  public item: string;
-  public itemDescription: string;
-  public lineDeliveryAddress: string;
-  public linePlannedDeliveryDate: Date;
-  public linePlannedReceiptDate: Date;
-  public orderNumber: string;
+  public item: number;
+  public description: string;
+  public deliveryAddress: IAddress;
+  public plannedDeliveryDate: Date;
+  public plannedReceiptDate: Date;
+  public orderNumber: number;
   public price: number;
   public quantity: number;
-  public salesPosition: number;
+  public position: number;
   public unit: string;
+  public discount: number;
+  public configuration: string;
+  public warehouse: string;
+  public warehouseDescr: string;
+  public internalText: string;
+  public externalText: string;
+  public availableDate: Date;
+  public availableMsg: string;
 
   constructor(oi:IOrderItem){
-    super(oi.id);
+    super(oi.item);
     this.amount = oi.amount;
     this.item = oi.item;
-    this.itemDescription = oi.itemDescription;
-    this.lineDeliveryAddress = oi.lineDeliveryAddress;
-    this.linePlannedDeliveryDate = oi.linePlannedDeliveryDate;
-    this.linePlannedReceiptDate = oi.linePlannedReceiptDate;
+    this.description = oi.description;
+    this.deliveryAddress = oi.deliveryAddress;
+    this.plannedDeliveryDate = oi.plannedDeliveryDate;
+    this.plannedReceiptDate = oi.plannedReceiptDate;
     this.orderNumber = oi.orderNumber;
     this.price = oi.price;
     this.quantity = oi.quantity;
-    this.salesPosition = oi.salesPosition;
+    this.position = oi.position;
     this.unit = oi.unit;
+    this.discount = oi.discount;
+    this.configuration = oi.configuration;
+    this.warehouse = oi.warehouse;
+    this.warehouseDescr = oi.warehouseDescr;
+    this.internalText = oi.internalText;
+    this.externalText = oi.externalText;
+    this.availableDate = oi.availableDate;
+    this.availableMsg = oi.availableMsg;
   }
 }
 

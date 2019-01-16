@@ -33,7 +33,7 @@ export class InMemoryDataService implements InMemoryDbService {
     return {quotes, orders, caseManagement, installBase, quickAccountAging, organization, contact};
   }
 
-  genId<T extends IQuotation | ISalesOrder | Contact | ICaseManagement | IInstallBase | IQuickAccountAging | IPerson>(myTable: T[]): number {
+  genId<T extends  Contact | ICaseManagement | IInstallBase | IQuickAccountAging | IPerson>(myTable: T[]): number {
     return myTable.length > 0 ? Math.max(...myTable.map(t => t.id)) + 1 : 11;
   }
   //mock data functions

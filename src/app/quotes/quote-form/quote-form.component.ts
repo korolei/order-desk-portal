@@ -19,7 +19,7 @@ export class QuoteFormComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       deliveryAddress: [this.quote.deliveryAddress, Validators.required],
-      shipToBP: [this.quote.shipToBP, Validators.required]
+      shipToBP: [this.quote.shiptoBP, Validators.required]
     })
   }
 

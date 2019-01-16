@@ -1,54 +1,71 @@
 <div>
-  <h2 >
-    My Open Sales Orders ({{paginator.pageSize}} of {{dataSource.data.length}})
-    <span class="subtitle">
-      |<a href="#" mat-button>View all</a>
-        <button mat-stroked-button class="new-order"> + New Order</button>
-      </span>
-  </h2>
+    <div>
+    <h2 class="mat-typography" *ngIf="showHeader">
+      My Open Sales Orders ({{paginator.pageSize}} of {{dataSource.data.length}})
+      <span class="subtitle">
+        |<a href="#" mat-button>View all</a>
+          <button mat-stroked-button class="new-order"> + New Order</button>
+        </span>
+    </h2>
+  </div>
+  <div class="spinner-container" *ngIf="isLoading | async">
+    <mat-spinner></mat-spinner>
+  </div>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="order">
+      <th mat-header-cell *matHeaderCellDef> Quotation </th>
+      <td mat-cell *matCellDef="let element">
+        <a onclick="alert('View Notes screen')" mat-button>{{element.orderNumber}}</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="soldToBPName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> BP Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.soldtoBPName}}
+        <div class="order-flag" *ngIf="element.status === creditCard"><i class="material-icons md-18">face</i> some text</div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="soldToBP">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> BP # </th>
+      <td mat-cell *matCellDef="let element"> {{element.soldtoBP}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Total $</th>
+      <td mat-cell *matCellDef="let element"> {{element.total | currency}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="plannedDeliveryDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Planned Delivery</th>
+      <td mat-cell *matCellDef="let element"> {{element.plannedDeliveryDate | date: 'yyyy-MM-dd'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="promisedDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header  [style.display]="fullView?'table-cell':'none'">Promised Date</th>
+      <td mat-cell *matCellDef="let element" [style.display]="fullView?'table-cell':'none'"> {{element.plannedReceiptDate | date: 'yyyy-MM-dd'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="postalCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header [style.display]="fullView?'table-cell':'none'"> Postal Code </th>
+      <td mat-cell *matCellDef="let element" [style.display]="fullView?'table-cell':'none'"> {{element.postalAddress.zip}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="owner">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header [style.display]="fullView?'table-cell':'none'"> Owner </th>
+      <td mat-cell *matCellDef="let element" [style.display]="fullView?'table-cell':'none'"> {{element.owner}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+      <td mat-cell *matCellDef="let element" [ngClass]="element.warn? 'warn':''">
+        {{element.status}}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator></mat-paginator>
 </div>
-<div class="spinner-container" *ngIf="isLoading | async">
-  <mat-spinner></mat-spinner>
-</div>
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
-  <ng-container matColumnDef="quoteNumber">
-    <th mat-header-cell *matHeaderCellDef> Quotation </th>
-    <td mat-cell *matCellDef="let element">
-      <a onclick="alert('View Notes screen')" mat-button>{{element.quoteNumber}}</a>
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="soldToBPName">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> BP Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.soldToBPName}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="soldToBP">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> BP # </th>
-    <td mat-cell *matCellDef="let element"> {{element.soldToBP}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="totalUSD">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Total $</th>
-    <td mat-cell *matCellDef="let element"> {{element.totalUSD | currency}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="plannedDeliveryDate">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Planned Delivery</th>
-    <td mat-cell *matCellDef="let element"> {{element.plannedDeliveryDate | date: 'yyyy-MM-dd'}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="quotationStatus">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-    <td mat-cell *matCellDef="let element"
-              [ngClass]="(element.quotationStatus === internalHold || element.quotationStatus === creditCard)
-      ? 'warn':''" >
-     {{element.quotationStatus}}
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-<mat-paginator></mat-paginator>

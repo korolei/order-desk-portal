@@ -41,14 +41,18 @@ import {BehaviorSubject} from "rxjs";
       color: navy;
     }  
     `
-    ]
+    ,
+    `.material-icons.md-18 { font-size: 14px; }`
+    ,
+    `h2.mat-typography { font-weight: bolder; padding-left: 2em; }`
+      ]
   })
 export class QuoteListComponent implements OnInit {
-
-  @Input() showOrders: boolean;
+  @Input() showHeader: boolean = false;
+  @Input() fullView: boolean = false;
   displayedColumns: string[] =       [
-    'quoteNumber', 'soldToBPName', 'soldToBP',
-    'totalUSD', 'creationDate', 'quotationStatus'
+    'quote', 'soldToBPName', 'soldToBP',
+    'total', 'creationDate', 'expiryDate', 'postalCode', 'owner', 'status'
   ];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
