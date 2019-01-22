@@ -12,7 +12,7 @@
       <div mat-list-item style="text-align:left; margin-left: 1em">Sales Functions</div>
       <a mat-list-item routerLink="" style="margin-left: 1em" (click)="drawer.toggle()">Home</a>
       <a mat-list-item [routerLink]="['/customer']"  (click)="drawer.toggle()">Customer Account</a>
-      <a mat-list-item href="#" style="margin-left: 1em">Sales Orders</a>
+      <a mat-list-item [routerLink]="['/orders']" style="margin-left: 1em">Sales Orders</a>
       <a mat-list-item href="#" style="margin-left: 1em">Quotations</a>
       <a mat-list-item href="#" style="margin-left: 1em">Price Inquiry</a>
       <a mat-list-item href="#" style="margin-left: 1em">Invoices</a>
