@@ -1,0 +1,57 @@
+<mat-sidenav-container class="sidenav-container mat-elevation-z10" fxFlexFill 
+                       style="position:relative;z-index: 1000;">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                 [opened]="false">
+        <mat-toolbar color="primary" (click)="drawer.toggle()">Menu</mat-toolbar>
+        <mat-nav-list class="navbar-always-left" (click)="drawer.toggle()">
+            <a mat-list-item [routerLink]="['./home']">Home</a>
+            <a mat-list-item [routerLink]="['./sales-rep']">Sales Agent</a>
+            <a mat-list-item [routerLink]="['./customer']">Customer Account</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item (click)="showQuickLink(5);">Price Inquiry</a>
+            <a mat-list-item (click)="showQuickLink(6);">Invoices</a>
+            <a mat-list-item (click)="showQuickLink(7);">Inventory Fulfillment</a>
+            <a mat-list-item (click)="showQuickLink(8);">Sales Order Blocking</a>
+            <a mat-list-item (click)="showQuickLink(9);">Maintenance SO</a>
+            <a mat-list-item (click)="showQuickLink(10);">MSO Part Lines</a>
+            <a mat-list-item (click)="showQuickLink(11);">Configurations</a>
+            <a mat-list-item (click)="showQuickLink(12);">Calls</a>
+            <a mat-list-item (click)="showQuickLink(13);">SIF</a>
+            <a mat-list-item (click)="showQuickLink(14);">SIR</a>
+            <mat-divider ></mat-divider>
+            <div *ngFor="let link of huskyLinks">
+                <a mat-list-item target="_blank" [href]="link.path">{{link.linkType}}</a>
+            </div>
+            <a mat-list-item target="_blank" href="http://hrlib/">3rd party Hot Runner DB</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary" style="padding-right: 0; overflow: hidden">
+            <div fxFill>
+                <div fxFlex="0 1 calc(4% -10px)">
+                    <button (click)="drawer.toggle()"  disableRipple 
+                            type="button"
+                            aria-label="Toggle sidenav"
+                            mat-icon-button>
+                        <mat-icon aria-label="Side nav toggle icon" style="margin-bottom: -25px; position: center">
+                            menu
+                        </mat-icon>
+                    </button>
+                </div>
+
+                <div fxFlex="1 1 calc(20%)" class="top-toolbar">
+                    <a [routerLink]="['./home']"><img src="./assets/images/husky-logo.png" class="husky-logo"
+                                                      aria-label="husky logo"></a>
+                </div>
+
+                <div fxFlex="1 1 calc(75%)" class="top-toolbar">
+                    <!--This is placeholder for dynamically created component-->
+                    <ng-template #customerSearch></ng-template>
+                    <ng-template #salesRegions></ng-template>
+                </div>
+            </div>
+        </mat-toolbar>
+    </mat-sidenav-content>
+</mat-sidenav-container>

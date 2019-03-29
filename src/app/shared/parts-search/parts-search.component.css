@@ -1,0 +1,17 @@
+.parts-search-form {
+  min-width: 250px;
+  max-width: 450px;
+  margin-top: -20px;
+  width: 80%;
+  align-content: flex-end;
+  font-size: smaller;
+}
+
+.parts-search-full-width{
+  width: 100%;
+}
+
+.chip-list {
+  width: 100%;
+  font-size: smaller;
+}

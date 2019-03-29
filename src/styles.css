@@ -1,0 +1,232 @@
+/* You can add global styles to this file, and also import other style files*/
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~material-design-icons/iconfont/material-icons.css";
+
+body {
+  height: 100%;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures contextual;
+  font-feature-settings: "kern", "liga", "clig", "calt";
+  background-color: lightgrey !important;
+}
+
+.mat-card{
+  background-color: gainsboro !important;
+  margin: 3px;
+}
+.mat-card, .no-data{
+  background-color: whitesmoke !important;
+  text-align: center;
+  color:black;
+}
+.mat-card-header{
+  background-color: whitesmoke !important;
+  width: 100%;
+  display: flex;
+}
+.mat-card-header-center{
+  text-align: center !important;
+}
+
+.mat-card-subtitle{
+  background-color: gainsboro !important;
+}
+
+.mat-card-subtitle, .mat-card-content{
+  background-color: whitesmoke !important;
+  margin-top:3px;
+}
+
+.mat-cell{
+  color: black !important;
+  text-align: left !important;
+}
+.mat-cell-right{
+  text-align: right !important;
+  padding-right: 30px !important;
+}
+
+td.mat-cell{
+ border-bottom: 0 !important;
+}
+
+th.mat-header-cell, th.mat-table-sticky {
+  font-weight: bold !important;
+  background-color: rgb(238, 235, 235) !important;
+  color: black !important;
+  text-align: left;
+}
+.mat-cell-amount{
+     white-space: unset !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
+}
+.mat-row:nth-child(even){
+    background-color: gainsboro;
+  }
+
+.mat-row:nth-child(odd){
+    background-color:white;
+  }
+
+.icon {
+  display: inline-block;
+  margin: 0 auto;
+  padding-left: 10px;
+  text-align: center;
+  vertical-align: middle;
+  width: 15%;
+  color: black;
+}
+
+.flexbox{
+  display: flex;
+}
+
+.warning {
+  background-color: crimson;
+}
+
+a.mat-button{
+  border-bottom: grey;
+  color: midnightblue;
+   text-decoration-line: underline !important;
+}
+
+a.mat-button-icon{
+  color: black;
+}
+
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.secondary-toolbar{
+  height: 45px !important;
+}
+
+.mat-spinner {
+  position: relative;
+  margin-left: 50%;
+  margin-right: 50%;
+}
+
+.pull-right, .right, .fr {
+  float: right !important; 
+}
+
+.pull-left, .left, .fl {
+  float: left !important; 
+}
+
+.mat-form-field{
+  height: 15px;
+  border-top: 0 solid transparent;
+}
+
+table {
+  width: 100%;
+}
+
+.table-container {
+  height: 700px;
+  overflow: auto;
+}
+
+.subtitle{
+  font-size: smaller;
+  padding-left: 2em;
+}
+
+.warn {
+  color: orange !important;
+}
+
+.info{
+  color:lightslategray !important;
+}
+
+.error{
+  color:crimson !important;
+  font-weight: 500;
+}
+
+a.normal {
+  font-size: smaller;
+  color: navy;
+}
+
+.material-icons.md-18, .mat-icon-inline { font-size: 14px !important; }
+.material-icons.md-24, .mat-icon-inline { font-size: 20px !important; }
+.material-icons.md-48, .mat-icon-inline { font-size: 60px !important;}
+
+h2.mat-typography { font-weight: bolder; padding-left: 2em; }
+
+.mat-select {
+  font-size: smaller;
+  font-weight: 400;
+}
+.mat-select-panel{
+  min-width: 100% !important;
+  display: block !important;
+}
+
+.mat-checkbox-label{
+  font-size: smaller;
+  font-weight: 400;
+}
+
+.search-icon {
+  font-size: 12px;
+}
+
+.mat-progress-bar {
+  position: absolute;
+}
+
+.create-new {
+  color: #27ae60;
+}
+
+.add-icon {
+  position: relative;
+  color: #27ae60;
+}
+
+.cross-icon {
+  position: absolute;
+  right: 0;
+}
+
+.autocomplete-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.autocomplete-full-width {width: 100%;}
+
+.order-flag {transform: scale(0.75);}
+.space{padding-right: 5px; padding-bottom:0px; padding-left: 10px}
+.red{ color:crimson}
+.green{ color: green}
+.yellow{ color: #ca4840}
+
+.filter {
+  display: block;
+  max-width: 120px;
+  width: 100px; 
+  margin-bottom:30px;
+}
+
+.mat-tooltip{
+  font-size: 14px !important;
+}

@@ -1,0 +1,42 @@
+<div *ngIf="!isLoading;else loading" style="height: 100vh; background-color: lightgray">
+        <mat-toolbar color="primary" class="mat-elevation-z1 secondary-toolbar">
+            <div fxFlex="0 1 100%" class="sub-header">
+                Hi {{ userData?.firstName }}, please select options below:
+            </div>
+        </mat-toolbar>
+    
+        <mat-grid-list cols="2" rowHeight="200px" gutterSize="10px" style="border-color: grey;">
+            <mat-grid-tile>
+                <mat-card > 
+                    <mat-card-title>
+                        <a mat-list-item [routerLink]="['/sales-rep']">
+                            <i class="material-icons md-48">contact_phone</i>
+                            Sales Agent Dashboard</a>                       
+                    </mat-card-title>
+                </mat-card>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-card>
+                    <mat-card-title>
+                        <a mat-list-item [routerLink]="['/customer']" >
+                            <i class="material-icons md-48">business</i>
+                            Customer Account Dashboard</a>                        
+                    </mat-card-title>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>   
+</div>
+
+<ng-template #loading>
+    <mat-spinner color="primary" diameter="100" strokeWidth="3" value="100"></mat-spinner>
+</ng-template>
+<ng-template #notFound>
+    <mat-toolbar color="warn" class="mat-elevation-z5 secondary-toolbar">
+        <div fxFlex="0 1 100%" class="sub-header">
+            Sorry, but we could not identify you at this time. Please contact Technical Support to resolve this issue.
+        </div>
+      </mat-toolbar>
+</ng-template>
+<ng-template #noEmpNum>
+    No Employee # was found for user:'{{userData.userName}}'.
+</ng-template>

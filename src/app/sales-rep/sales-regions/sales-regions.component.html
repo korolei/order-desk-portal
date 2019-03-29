@@ -1,0 +1,13 @@
+<div fxFlex="0 1 50%" class="sales-region">
+  <div fxFlex="0 1 20%">
+    <span class="mat-body-1 pull-left pull-down">Sales Office: </span>
+  </div>
+  <div fxFlex="0 1 80%">
+    <mat-select (selectionChange)="onSalesRegionSelected($event.value)" [(value)]="selectedSalesOffice" placeholder="Select Sales Office">
+      <mat-option *ngFor="let region of salesRegionData" [value]="region.code">
+        {{region.code}} - {{region.name}}
+      </mat-option>
+    </mat-select>
+    <mat-checkbox class="subtitle" [checked]="checked" (change)="onChecked()" [disabled]="!selectedSalesOffice">Default Sales Office</mat-checkbox>
+  </div>
+</div>

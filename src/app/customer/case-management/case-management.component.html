@@ -1,0 +1,39 @@
+<mat-card *ngIf="dataSource.data.length === 0" class="no-data">
+  <mat-card-subtitle>No data has been found.</mat-card-subtitle>
+</mat-card>
+<div *ngIf="dataSource.data.length > 0">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource.data.length > 0">
+    <ng-container matColumnDef="ticketNumber">
+      <mat-header-cell *matHeaderCellDef class="mat-column-ticket"> Ticket # </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="mat-column-ticket">
+        {{element.ticketNumber}}
+      </mat-cell>>
+    </ng-container>
+    <ng-container matColumnDef="dateOpened">
+      <mat-header-cell *matHeaderCellDef class="mat-column-date"> Date Opened </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="mat-column-date"> {{element.dateOpened | date:'yyyy-MM-dd'}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="urgency">
+      <mat-header-cell *matHeaderCellDef class="mat-column-urgency"> Urgency </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="mat-column-urgency"> {{element.urgency}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef class="mat-column-status"> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element" [ngClass]="coreService.getStatusColor(element.status)" class="mat-column-status">
+        {{element.status}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="notes">
+      <mat-header-cell *matHeaderCellDef class="mat-column-note"> Notes </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="mat-column-note">
+          <i class="material-icons mat-text-body2" [matTooltip]="element.notes" *ngIf="element.notes">
+            speaker_notes
+        </i>
+         </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+  <mat-paginator [fxShow]="dataSource.data.length> paginator.pageSize"></mat-paginator>

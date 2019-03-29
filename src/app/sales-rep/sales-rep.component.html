@@ -1,0 +1,23 @@
+
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="center" fxLayoutGap="5px" style="min-height:850px"
+     *ngIf="currentView === allViewScreens[0]">
+  <div fxFlex="0 1 calc(50% - 5px)">
+    <app-quotes></app-quotes>
+  </div>
+  <div fxFlex="0 1 calc(50% - 5px)">
+    <app-orders></app-orders>
+  </div>
+</div>
+  <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column"  fxLayoutAlign="center" style="min-height:850px"
+       *ngIf="currentView === allViewScreens[1]">
+    <div fxFlex="0 1 calc(100% - 10px)">
+      <app-all-quotes></app-all-quotes>
+    </div>
+  </div>
+  <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column"  fxLayoutAlign="center"
+       *ngIf="currentView === allViewScreens[2]">
+    <div fxFlex="0 1 calc(100% - 10px)">
+      <app-all-orders></app-all-orders>
+    </div>
+  </div>

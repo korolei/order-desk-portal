@@ -1,0 +1,38 @@
+<mat-card *ngIf="dataSource.data.length === 0" class="no-data">
+  <mat-card-subtitle>No data has been found.</mat-card-subtitle>
+</mat-card>
+
+<div *ngIf="dataSource.data.length > 0">
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="configuration">
+    <mat-header-cell *matHeaderCellDef class="mat-column-configuration">
+          <mat-form-field class="filter" floatLabel="never">
+            <mat-label>Config #</mat-label>
+            <input matInput (keyup)="applyFilter($event.target.value)">
+          </mat-form-field>
+    </mat-header-cell>
+    <td mat-cell *matCellDef="let element" class="mat-column-configuration">
+      <a (click)="viewBom(element.configuration)" [matTooltip]="'Click to see BOM details'" mat-button>{{element.configuration}}</a>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="topItem">
+      <mat-header-cell *matHeaderCellDef class="mat-column-topItem"> Top Item </mat-header-cell>
+    <td mat-cell *matCellDef="let element" class="mat-column-topItem"> 
+      {{element.topItem}}
+      <div style="font-size: smaller">
+      {{coreService.truncateText(element.topItemDescr,40)}}
+      <span *ngIf="element.topItemDescr.length>40" [matTooltip]="element.topItemDescr">...</span>
+    </div>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="dateInstalled">
+      <mat-header-cell *matHeaderCellDef class="mat-column-date"> Date Installed </mat-header-cell>
+    <td mat-cell *matCellDef="let element" class="mat-column-date"> {{element.dateInstalled | date:'yyyy-MM-dd'}}</td>
+  </ng-container>
+  
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+  
+</div>
+<mat-paginator [fxShow]="dataSource.data.length> paginator.pageSize"></mat-paginator> 

@@ -1,0 +1,20 @@
+// Import library functions for theme creation.
+@import '~@angular/material/_theming.scss';
+@include mat-core();
+
+$husky-app-primary: mat-palette($mat-red);
+$husky-app-accent:  mat-palette($mat-blue-gray, A100, A200, A300);
+$husky-app-warn:    mat-palette($mat-amber);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$husky-app-theme: mat-light-theme($husky-app-primary, $husky-app-accent, $husky-app-warn);
+@include angular-material-theme($husky-app-theme);
+
+$custom-toolbar-typography: mat-typography-config(
+  $font-family: 'Roboto, monospace',
+  $headline: mat-typography-level(16px, 24px, 200),
+  $body-1: mat-typography-level(12px, 16px, 200)
+);
+
+@include mat-toolbar-typography($custom-toolbar-typography);
+

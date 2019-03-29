@@ -1,0 +1,62 @@
+[
+  {
+    "name": "SAU001",
+    "description": "Australia SPC Sales"
+  },
+  {
+    "name": "SBR001",
+    "description": "Brazil SPC Sales"
+  },
+  {
+    "name": "SBU001",
+    "description": "Americas SPC Sales"
+  },
+  {
+    "name": "SCA001",
+    "description": "Americas SPC Sales"
+  },
+  {
+    "name": "SCA002",
+    "description": "Australia SPC Sales"
+  },
+  {
+    "name": "SIN001",
+    "description": "India SPC Sales Office"
+  },
+  {
+    "name": "SJP001",
+    "description": "Japan SPC Sales"
+  },
+  {
+    "name": "SKR001",
+    "description": "Korea SPC Sales"
+  },
+  {
+    "name": "SLU001",
+    "description": "Luxembourg SP Sales"
+  },
+  {
+    "name": "SMX001",
+    "description": "Mexico SPC Sales"
+  },
+  {
+    "name": "SMX002",
+    "description": "Mexico Refurb Sales"
+  },
+  {
+    "name": "SMX003",
+    "description": "Mexico Service (Manual)"
+  },
+  {
+    "name": "SRU001",
+    "description": "Russia Sales Office"
+  },
+  {
+    "name": "SSG001",
+    "description": "Singapore SPC Sales"
+  },
+  {
+    "name": "SSH001",
+    "description": "Shanghai SPC Sales"
+  }
+]

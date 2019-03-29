@@ -1,0 +1,25 @@
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      My Open Orders
+      <span *ngIf="orders.length > paginator.pageSize" class="mat-body-1">({{paginator.pageSize}} of {{orders.length}})</span>
+      | <a (click)="toggleView(2)" mat-button>Global View</a> |
+      <a (click)="viewNewOrder()" mat-button [matTooltip]="'Click to open New Order form'">
+        +New Order
+      </a>
+    |
+    <a mat-icon-button [disabled]="isLoading" (click)="getData();">
+      <mat-icon [inline]="true" matTooltip="Refresh Orders data" class="icon md-24 space">
+        cached</mat-icon>
+      </a>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-template #loading>
+      <mat-spinner color="primary" diameter="50" strokeWidth="3" value="100"></mat-spinner>
+    </ng-template>
+    <app-orders-table [dataSource]="dataSource" [fullView]="false"  *ngIf="!isLoading; else loading"></app-orders-table>
+  </mat-card-content>
+  <mat-paginator [fxShow]="orders.length > paginator.pageSize"></mat-paginator>
+</mat-card>

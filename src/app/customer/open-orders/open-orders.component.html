@@ -1,0 +1,13 @@
+
+  <mat-card-header>
+    <mat-card-title>
+      Open Sales Orders
+      <span class="mat-body-1" *ngIf="ordersData.length > 0">({{ordersData.length}})
+         |<a (click)="toggleView(2)" mat-button>View All</a>
+          </span>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content >
+    <app-orders-table [dataSource]="dataSource" [fullView]="false"></app-orders-table>
+    <mat-paginator  [fxShow]="dataSource.data.length> paginator.pageSize"></mat-paginator>
+  </mat-card-content>

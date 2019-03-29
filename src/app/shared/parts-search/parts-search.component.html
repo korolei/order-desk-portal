@@ -1,0 +1,22 @@
+
+<mat-form-field class="chip-list form-inline"  floatLabel="never">
+  <div fxFlex="70%">
+  <mat-chip-list #chipList>
+    <mat-chip *ngFor="let id of selectedParts" [selectable]="selectable" [removable]="removable" (removed)="remove(id)">
+      {{id}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="Filter by part#..." #partInput [formControl]="partsCtrl" [matAutocomplete]="auto"
+      [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+</div>
+<div fxFlex="30%">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let id of filteredParts | async" [value]="id">
+      {{id}}
+    </mat-option>
+  </mat-autocomplete>
+</div>
+
+</mat-form-field>

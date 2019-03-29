@@ -1,0 +1,42 @@
+
+<mat-grid-list cols="6" rowHeight="60px" rowWidth="100%">
+  <mat-grid-tile [colspan]="2">
+    <div class="mat-title pull-left" style="margin-bottom: -26px">
+    <span>All Quotations </span>
+    <span> ({{quotations.length}}) 
+      <a mat-icon-button [disabled]="isLoading">
+        <mat-icon [inline]="true" (click)="cacheData(false)" matTooltip="Force to refresh data" class="icon md-24 space">cached</mat-icon>
+      </a>
+      |  <a (click)="toggleView(0)" mat-button> << Back </a> 
+      </span>      
+    </div>
+  </mat-grid-tile>
+<mat-grid-tile [colspan]="3">
+  <div *ngIf="quotations.length > 0" style="width:80%">
+    <app-parts-search (optionSelected)="filterByParts($event)" [items]="orderItems"></app-parts-search>
+  </div>
+</mat-grid-tile>
+  <mat-grid-tile [colspan]="1" style="font-size: smaller; font-weight: 500">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearAllFilters()" *ngIf="quotations.length > 0">
+      <mat-icon class="md-18">close</mat-icon>Reset all filters
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>
+<div *ngIf="salesOfficeCode.length > 0; else noSalesOffice">  
+<mat-card>
+  <mat-card-content>
+      <ng-template #loading>
+        <mat-spinner color="primary" diameter="50" strokeWidth="3" value="100"></mat-spinner>
+      </ng-template>
+      <div  *ngIf="!isLoading; else loading">
+        <app-quotes-table [dataSource]="dataSource" [fullView]="true" [isStickyHeader]="true"></app-quotes-table>
+      </div>
+      <mat-paginator [fxShow]="quotations.length>0"></mat-paginator>
+  </mat-card-content>
+</mat-card>
+</div>
+<ng-template #noSalesOffice>
+  <mat-card>
+    <mat-card-title>Please select Sales Office.</mat-card-title>
+  </mat-card>
+</ng-template>

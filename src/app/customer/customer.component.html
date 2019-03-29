@@ -1,0 +1,150 @@
+
+<div fxFlexFill>
+  <div *ngIf="orgDataLoading">
+    <mat-spinner color="primary" diameter="50" strokeWidth="3" value="100"></mat-spinner>
+  </div>
+  
+  <mat-toolbar *ngIf="phoneNum" color="warn" class="mat-elevation-z2 secondary-toolbar" style="max-height: 35px;">
+    <div fxFlex="0 1 99%">
+      <div fxFlex="0 1 calc(77%-5px)">
+      </div>
+      <div fxFlex="0 1 calc(20%-5px)" class="pull-right">
+        <mat-icon style="margin-top: 15px;padding-right: 5px">phone</mat-icon>
+        <span>Last call phone #:{{phoneNum}}</span>
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" class="icon-content-grey600" (click)="phoneNum=''">
+          <mat-icon class="md-18" style="max-height: 15px; margin-bottom:10px;">close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-toolbar>
+<div *ngIf="orgData || currentPhoneNum" style="margin-bottom: 3px;">
+  <div>
+    <mat-toolbar color="primary" class="mat-elevation-z2 secondary-toolbar" *ngIf="orgData">
+      <div fxFlex="0 1 99%">
+        <div fxFlex="0 1 93%">
+          <span *ngIf="orgData">{{orgData?.bp_name}} | BP#: {{orgData?.bp_number}}</span>
+          <span *ngIf="currentPhoneNum && orgData"> | Phone #:{{currentPhoneNum}}</span>
+        </div>
+        <div fxFlex="0 1 7%" class="pull-right">
+          <mat-chip>
+            <a mat-flat-button target="_blank" [matTooltip]="isDisabled() ? 'Disabled. Location must be selected.':'Open New Quote form'" [disabled]="isDisabled()"
+               (click)="showNewQuoteForm()">
+              +New Quote
+            </a>
+          </mat-chip>
+        </div>
+      </div>
+    </mat-toolbar>
+    <mat-toolbar color="accent" class="mat-elevation-z1 secondary-toolbar" *ngIf="locations">
+      <div fxFlex="0 1 calc(95%)">
+        <div fxFlex="0 1 calc(90%)" *ngIf="locations.length>0; else noLocations">
+          <input type="text" aria-label="Select Location" matInput [formControl]="locationControl"
+                 [matAutocomplete]="locationsAutoComplete" [(ngModel)]="currentLocation"
+                 placeholder="Select Location" style="font-size: smaller;" class="secondary-toolbar">
+          <button mat-button *ngIf="currentLocation" matSuffix mat-icon-button aria-label="Clear" (click)="clearLocation()">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-autocomplete #locationsAutoComplete="matAutocomplete" [displayWith]="displayLocationsFn" (optionSelected)="setLocation($event)">
+            <mat-option *ngFor="let location of filteredLocations | async" [value]="location">
+              {{ location.toString()}}
+            </mat-option>
+          </mat-autocomplete>
+        </div>
+        <ng-template #noLocations>
+          <div *ngIf="currentPhoneNum.length>0 && !currentContact && contacts.length > 0">Please select customer contact:</div>
+          
+          <div *ngIf="orgData">No Locations are available for Customer: {{orgData?.bp_name}}.</div>
+        </ng-template>
+      </div>
+    </mat-toolbar>    
+  </div>
+    <mat-toolbar class="mat-elevation-z3 mat-background-accent secondary-toolbar">
+      <div fxFlex="0 1 95%" *ngIf="!contactsDataLoading">
+        <div fxFlex="0 1 90%" *ngIf="contacts.length>0; else noContacts">
+          <div fxFlex="0 1 100%">
+              <input type="text" aria-label="Select Contact" matInput [formControl]="contactControl"
+                      [matAutocomplete]="contactsAutoComplete" placeholder="Select Contact" [(ngModel)]="currentContact"
+                      style="font-size: smaller;" class="secondary-toolbar">
+                <button mat-button *ngIf="currentContact" matSuffix mat-icon-button aria-label="Clear" (click)="clearContact()">
+                  <mat-icon>close</mat-icon>
+                </button>
+              <mat-autocomplete #contactsAutoComplete="matAutocomplete" [displayWith]="displayContactsFn" (optionSelected)="setContact($event)">
+                <mat-option *ngFor="let contact of filteredContacts | async" [value]="contact">
+                  {{contact.toString()}}
+                </mat-option>
+              </mat-autocomplete>
+          </div>
+        </div>
+        <ng-template #noContacts>No Contacts were found.</ng-template>
+      </div>
+        <mat-spinner *ngIf="contactsDataLoading" color="primary" diameter="25" strokeWidth="3" value="100"></mat-spinner>
+    </mat-toolbar>
+</div>
+<div *ngIf="currentLocationId>0" class="mat-app-background">
+  <div [fxShow]="currentView === allViewScreens[0]" 
+  fxLayoutGap="5px" fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="center">
+  <ng-container>
+      <mat-card fxFlex="0 1 calc(33%-5px)">
+      <mat-card-header>
+        <mat-card-title>
+          Install Base <span *ngIf="installBaseData?.length > 0" class="mat-body-1">({{installBaseData.length}} Top Items)
+        </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <mat-spinner color="primary" diameter="25" strokeWidth="3" value="100" *ngIf="installBaseLoading"></mat-spinner>
+          <app-install-base [installBaseData]="installBaseData" *ngIf="!installBaseLoading"></app-install-base>
+      </mat-card-content>
+    </mat-card>
+      <mat-card fxFlex="0 1 calc(25%)">
+        <mat-card-header>
+          <mat-card-title style="text-align: left">
+            Quick Account Aging
+            <span class="mat-body-1">
+              <mat-icon class="mat-icon icon">account_circle</mat-icon>{{ quickAccountAgingData?.name }}
+            </span>
+          </mat-card-title>
+          <mat-card-subtitle [ngClass]="quickAccountAgingData?.creditRating === '002'? 'error':''">
+            {{ quickAccountAgingData?.creditRating}} - {{ quickAccountAgingData?.creditRatingDescr}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-spinner color="primary" diameter="25" strokeWidth="3" value="100" *ngIf="quickAccountAgingLoading"></mat-spinner>
+            <app-quick-account-aging [quickAccountAgingData]="quickAccountAgingData" *ngIf="!quickAccountAgingLoading"></app-quick-account-aging>
+        </mat-card-content>
+      </mat-card>
+      <mat-card fxFlex="0 1 calc(33%-5px)">
+      <mat-card-header>
+        <mat-card-title>
+          Case Management
+          <span *ngIf="caseManagementData?.length > 0" class="mat-body-1">({{caseManagementData.length}} Tickets)
+          </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-spinner color="primary" diameter="25" strokeWidth="3" value="100" *ngIf="caseManagementLoading"></mat-spinner>
+        <app-case-management [caseManagement]="caseManagementData" *ngIf="!caseManagementLoading"></app-case-management>
+      </mat-card-content>
+    </mat-card>
+    <mat-divider><div style="height: 5px !important"></div></mat-divider>
+    
+      <mat-card fxFlex="1 1 calc(44% - 5px)">
+          <mat-spinner color="primary" diameter="25" strokeWidth="3" value="100" *ngIf="quotationLoading"></mat-spinner>
+          <app-open-quotes [openQuotes]="quotationsData" *ngIf="!quotationLoading"></app-open-quotes>
+    </mat-card>
+      <mat-card fxFlex="1 1 calc(44% - 5px)">
+          <mat-spinner color="primary" diameter="25" strokeWidth="3" value="100" *ngIf="ordersLoading"></mat-spinner>
+          <app-open-orders [ordersData]="ordersData" *ngIf="!ordersLoading"></app-open-orders>
+    </mat-card>
+    </ng-container>
+  </div>
+  <ng-container *ngIf="currentView !== allViewScreens[0]">
+    <div fxFill *ngIf="currentView === allViewScreens[1]">
+      <app-all-quotes [openQuotes]="quotationsData"></app-all-quotes>
+    </div>
+    <div fxFill *ngIf="currentView === allViewScreens[2]">
+      <app-all-orders  [ordersData]="ordersData"></app-all-orders>
+    </div>
+  </ng-container>
+</div>
+</div>

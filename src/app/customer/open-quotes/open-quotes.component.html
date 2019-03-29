@@ -1,0 +1,13 @@
+
+<mat-card-header>
+  <mat-card-title>
+    Open Quotations
+    <span class="mat-body-1" *ngIf="openQuotes.length > 0">({{openQuotes.length}}) 
+      | <a (click)="toggleView(1)" mat-button>View All</a>
+          </span>
+  </mat-card-title>
+</mat-card-header>
+<mat-card-content >
+  <app-quotes-table [dataSource]="dataSource" [fullView]="false"></app-quotes-table>
+  <mat-paginator  [fxShow]="dataSource.data.length> paginator.pageSize"></mat-paginator>
+</mat-card-content>

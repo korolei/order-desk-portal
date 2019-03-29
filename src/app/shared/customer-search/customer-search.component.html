@@ -1,0 +1,21 @@
+
+  <div fxFlex="0 2 calc(60%)" class="subtitle" *ngIf="items.length>0">
+    <ng-mat-autocomplete
+      [source]="items"
+      [placeholder]="'Search by Customer Name or BP#'"
+      [floatLabel] = "'auto'"
+      [displayItemFn]="displayItem"
+      (optionSelected)="handleHttpResult($event)"
+      [showAddNew] = "false"
+      [minChars] = "2"
+      [doPrefetch]= "false"
+      [clearAfterSearch] = "true"
+      [hasProgressBar] = "false"
+      [hasSearchButton]="false"
+      >
+    </ng-mat-autocomplete>
+  </div>
+  <div *ngIf="isLoading" fxFlexFill>
+    <mat-spinner color="primary" diameter="15" strokeWidth="3" value="100"></mat-spinner>
+  </div>
+    

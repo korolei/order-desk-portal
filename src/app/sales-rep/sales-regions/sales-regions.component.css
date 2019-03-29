@@ -1,0 +1,10 @@
+.sales-region {
+  padding-top: 20px;
+  
+  border-bottom: black solid 1px;
+  color: #323232;
+}
+
+.sales-region, .pull-down{
+  padding-top: 10px;
+}
